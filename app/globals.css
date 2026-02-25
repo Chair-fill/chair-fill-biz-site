@@ -1,21 +1,22 @@
 @import "tailwindcss";
 
 
-/* Modern design system — #cd1c18 theme */
+/* Golden & black theme */
 :root {
-  --background: #F8F7F5;
-  --foreground: #1a1a1a;
-  --primary: #cd1c18;
-  --primary-dark: #a81712;
-  --cream: #F8F7F5;
-  --muted: #4a4a4a;
-  --border: #e5e4e0;
-  --card: #ffffff;
-  --footer-bg: #2D2D2D;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.1);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --primary: #D4AF37;
+  --primary-dark: #B8962E;
+  --primary-light: #E8C547;
+  --cream: #141414;
+  --muted: #a3a3a3;
+  --border: rgba(212, 175, 55, 0.25);
+  --card: #141414;
+  --footer-bg: #0a0a0a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
 @theme inline {
@@ -39,13 +40,13 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea {
 
 /* Modern CTAs */
 .cta-primary {
-  @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+  @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-black transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
   background: var(--primary);
   box-shadow: var(--shadow-md);
 }
 
 .cta-primary:hover {
-  background: var(--primary-dark);
+  background: var(--primary-light);
   box-shadow: var(--shadow-lg);
 }
 
@@ -57,18 +58,21 @@ body, h1, h2, h3, h4, h5, h6, p, span, a, li, button, input, textarea {
 
 .cta-secondary:hover {
   background: var(--primary);
-  color: white;
+  color: black;
 }
 
-/* Modern card — soft shadow, hover lift */
+/* Modern card — golden border, dark bg */
 .card-modern {
-  @apply rounded-2xl border border-[#e5e4e0]/80 bg-white transition-all duration-300;
+  @apply rounded-2xl border transition-all duration-300;
+  border-color: rgba(212, 175, 55, 0.3);
+  background: var(--card);
   box-shadow: var(--shadow-sm);
 }
 
 .card-modern:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
 /* Section container */
@@ -82,5 +86,5 @@ html {
 
 /* Subtle focus ring for accessibility */
 *:focus-visible {
-  @apply outline-none ring-2 ring-[#cd1c18] ring-offset-2 ring-offset-[#F8F7F5];
+  @apply outline-none ring-2 ring-[#D4AF37] ring-offset-2 ring-offset-[#0a0a0a];
 }

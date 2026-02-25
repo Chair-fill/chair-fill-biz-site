@@ -1,0 +1,13 @@
+# Redirect waitlist API to Netlify Function (stores signups in Netlify Blobs)
+[[redirects]]
+  from = "/api/join-waitlist"
+  to = "/.netlify/functions/join-waitlist"
+  status = 200
+  force = true
+
+# Protected admin: fetch waitlist (with optional date/duration filters)
+[[redirects]]
+  from = "/api/admin/waitlist"
+  to = "/.netlify/functions/get-waitlist"
+  status = 200
+  force = true

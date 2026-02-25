@@ -4,6 +4,11 @@ import { useState } from "react";
 
 const faqs = [
   {
+    question: "What is the waitlist?",
+    answer:
+      "ChairFill is coming soon. Join the waitlist with your email and we will notify you as soon as we launch. You will be first in line for early access and launch pricing.",
+  },
+  {
     question: "How does ChairFill work?",
     answer:
       "ChairFill connects to your client list and booking system. Our AI automatically sends reminders before appointments, reaches out to rebook no-shows, and fills last-minute cancellations by texting available clients—all via iMessage.",
@@ -44,17 +49,17 @@ export default function FAQ() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <div className="divide-y divide-[#e5e4e0]">
+      <div className="divide-y divide-[#D4AF37]/30">
         {faqs.map((faq, index) => (
           <div key={index} className="py-5">
             <button
               onClick={() => toggle(index)}
               className="flex w-full items-center justify-between gap-4 text-left"
             >
-              <span className="text-lg font-semibold text-[#1a1a1a]">
+              <span className="text-lg font-semibold text-white">
                 {faq.question}
               </span>
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#cd1c18]/10 text-[#cd1c18] transition-transform duration-200">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D4AF37]/20 text-[#D4AF37] transition-transform duration-200">
                 <svg
                   className={`h-5 w-5 transition-transform duration-200 ${
                     openIndex === index ? "rotate-180" : ""
@@ -77,7 +82,7 @@ export default function FAQ() {
                 openIndex === index ? "mt-3 max-h-96 opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <p className="leading-relaxed text-[#4a4a4a]">{faq.answer}</p>
+              <p className="leading-relaxed text-[#a3a3a3]">{faq.answer}</p>
             </div>
           </div>
         ))}

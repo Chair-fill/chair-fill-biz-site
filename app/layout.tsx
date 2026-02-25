@@ -74,11 +74,11 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "ChairFill — Fill Every Chair. For Barbers. AI Outreach via iMessage.",
   description:
-    "Built for barbers. Our AI chatbot fills your chair by automating client outreach and rebooking via iMessage—fewer no-shows, more appointments.",
+    "Built for barbers. Join the waitlist for AI-powered client outreach via iMessage—reminders, rebooks, fill-ins. Coming soon.",
   openGraph: {
-    title: "ChairFill — Fill Every Chair | AI Outreach for Barbers via iMessage",
+    title: "ChairFill — Join the Waitlist | AI Outreach for Barbers via iMessage",
     description:
-      "For barbers: automate client outreach via iMessage. Fill your chair, reduce no-shows, recover lost revenue.",
+      "For barbers: join the waitlist. AI that texts your clients on iMessage. Fill your chair, reduce no-shows. Coming soon.",
   },
 };
 

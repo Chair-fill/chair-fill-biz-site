@@ -34,3 +34,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Waitlist admin API (protected)
+
+To fetch the full waitlist or filter by date/duration, use the admin endpoint with a secret.
+
+- **Endpoint:** `GET /api/admin/waitlist`
+- **Auth:** Set `WAITLIST_ADMIN_SECRET` in your environment (Netlify: Site settings → Environment variables). Send it as:
+  - `Authorization: Bearer <your-secret>` or
+  - `x-api-key: <your-secret>`
+- **Query params (optional):**
+  - `days=<number>` — entries from the last N days (e.g. `?days=7`)
+  - `from=<ISO date>&to=<ISO date>` — entries between two dates (e.g. `?from=2025-01-01&to=2025-01-31`)
+  - `from=<ISO date>` — entries on or after this date
+  - `to=<ISO date>` — entries on or before this date
+- **Response:** `{ "total": number, "entries": [ { "email", "name", "createdAt", "source" }, ... ] }`
+
+Without any query params, returns the entire list (newest first).
+
+**Examples:**
+
+```bash
+# Full list
+curl -H "Authorization: Bearer YOUR_SECRET" "https://yoursite.com/api/admin/waitlist"
+
+# Last 7 days
+curl -H "x-api-key: YOUR_SECRET" "https://yoursite.com/api/admin/waitlist?days=7"
+
+# Date range
+curl -H "Authorization: Bearer YOUR_SECRET" "https://yoursite.com/api/admin/waitlist?from=2025-01-01&to=2025-01-31"
+```
