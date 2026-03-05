@@ -72,13 +72,18 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://chairfill.co"),
   title: "ChairFill — Fill Every Chair. For Barbers. AI Outreach via iMessage.",
   description:
     "Built for barbers. Join the waitlist for AI-powered client outreach via iMessage—reminders, rebooks, fill-ins. Coming soon.",
+  icons: "/logo.png",
   openGraph: {
-    title: "ChairFill — Join the Waitlist | AI Outreach for Barbers via iMessage",
+    title:
+      "ChairFill — Join the Waitlist | AI Outreach for Barbers via iMessage",
     description:
       "For barbers: join the waitlist. AI that texts your clients on iMessage. Fill your chair, reduce no-shows. Coming soon.",
+    images:
+      "/assets/8f845499-d9e9-44f4-9672-25682e2938c4_removalai_preview.png",
   },
 };
 
