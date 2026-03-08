@@ -10,14 +10,15 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#D4AF37]/20 bg-[#0a0a0a]/95 backdrop-blur-md">
       <nav className="section-inner flex items-center justify-between py-4">
-        <Link
-          href="/"
-          className="flex gap-1 items-center text-2xl font-bold tracking-wide text-white"
-        >
-          <div>
-            <Image src="/logo.png" alt="logo" width={20} height={20} />
-          </div>
-          chairfill
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-new.png"
+            alt="ChairFill Logo"
+            width={140}
+            height={44}
+            className="h-11 w-auto"
+            priority
+          />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

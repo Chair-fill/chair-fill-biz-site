@@ -3,6 +3,18 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import AnimateIn from "./components/AnimateIn";
 import FAQ from "./components/FAQ";
+import {
+  MessageSquare,
+  Bot,
+  DollarSign,
+  Zap,
+  ClipboardList,
+  Lightbulb,
+  CheckCircle2,
+  Smartphone,
+  Mic,
+  ShieldCheck,
+} from "lucide-react";
 
 // ── Three new components ───────────────────────────────────────────────────────
 import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
@@ -26,14 +38,28 @@ export default function Home() {
       {/* ── HERO — animated rotating words (replaces static hero) ── */}
       <AnimatedHero />
 
-      {/* ── WAITLIST SOCIAL PROOF BAR ── */}
-      <section className="border-y border-[#D4AF37]/20 bg-[#141414] py-8">
+      {/* ── PROOF BAR ── */}
+      <div className="border-y border-[#222] bg-[#141414]/50 py-6 sm:py-8">
         <div className="section-inner">
-          <p className="text-center text-sm font-medium text-[#a3a3a3]">
-            Join barbers on the waitlist. Be first in line when we launch.
-          </p>
+          <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
+            {[
+              { num: "Up to 75%", label: "rebook rate" },
+              { num: "$200+", label: "target monthly lift" },
+              { num: "Under 5 min", label: "to go live" },
+              { num: "Easiest", label: "ROI ever" },
+            ].map(({ num, label }) => (
+              <div key={label} className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-[#D4AF37] [font-family:var(--font-satoshi)]">
+                  {num}
+                </div>
+                <div className="text-[10px] sm:text-xs font-medium text-[#888880] uppercase tracking-widest mt-1">
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* ── BENEFITS ── */}
       <section id="benefits" className="py-20 sm:py-24">
@@ -52,28 +78,26 @@ export default function Home() {
               {
                 title: "iMessage = real replies",
                 desc: "98% open rate. Your clients read and respond.",
-                icon: "💬",
+                icon: <MessageSquare className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
                 title: "AI that sounds like you",
                 desc: "Personalized messages, rebooks, fill-ins. No robotic scripts.",
-                icon: "🤖",
+                icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
                 title: "Fill your chair",
                 desc: "Fewer no-shows. Last-minute openings get filled.",
-                icon: "💰",
+                icon: <DollarSign className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
                 title: "Set it and forget it",
                 desc: "Reminders and rebooking on autopilot.",
-                icon: "⚡",
+                icon: <Zap className="w-8 h-8 text-[#D4AF37]" />,
               },
             ].map(({ title, desc, icon }) => (
               <div key={title} className="card-modern p-8">
-                <span className="text-3xl" role="img" aria-hidden>
-                  {icon}
-                </span>
+                <div className="mb-4">{icon}</div>
                 <h3 className="mt-4 text-lg font-bold text-white">{title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#a3a3a3]">
                   {desc}
@@ -84,98 +108,89 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROBLEM / SOLUTION ── */}
-      <section className="py-20 sm:py-24">
+      {/* ── THE PROBLEM ── */}
+      <section id="problem" className="bg-[#111111] py-20 sm:py-32">
         <div className="section-inner">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 lg:items-center">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <AnimateIn direction="left">
-              <h2 className="text-3xl font-normal tracking-tight text-white sm:text-4xl [font-family:var(--font-bebas)]">
-                Empty chair = lost money. Manual texts don&apos;t scale.
+              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4">
+                The problem
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
+                You have clients who stopped coming. They didn't leave — they
+                just went quiet.
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-[#a3a3a3]">
-                No-shows and last-minute cancellations leave your chair empty.
-                You&apos;re busy cutting—you don&apos;t have time to chase every
-                client by text.
+              <p className="mt-6 text-lg leading-relaxed text-[#888880] max-w-xl">
+                The average barber has 40–60 clients who haven't shown up in 60+
+                days. That's thousands of dollars in recurring revenue sitting
+                dormant in your phone.
+                <br />
+                <br />
+                The problem isn't that they don't want a cut. It's that nobody
+                reached out. ChairFill does that for you — automatically, and in
+                a way that actually sounds human.
               </p>
-              <ul className="mt-8 space-y-4">
-                {[
-                  "Hours spent texting reminders and rebooking",
-                  "Clients forget or ghost—empty chairs",
-                  "No way to fill last-minute openings",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-4 text-white">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D4AF37] text-black">
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </span>
-                    <span className="font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
             </AnimateIn>
 
-            <AnimateIn
-              direction="right"
-              delay={150}
-              className="relative flex min-h-[280px] justify-center sm:min-h-[360px] md:min-h-[420px] lg:min-h-[520px] lg:justify-end"
-            >
-              <div className="relative aspect-square w-full max-w-[280px] sm:max-w-[360px] md:max-w-[420px] lg:max-w-[520px]">
-                <div className="absolute left-1/2 top-0 z-0 h-[32%] w-[32%] -translate-x-1/2 overflow-hidden rounded-2xl border-2 border-white shadow-lg">
-                  <Image
-                    src={IMG_BARBER}
-                    alt="Barber at work"
-                    fill
-                    className="object-cover"
-                    sizes="170px"
-                  />
-                </div>
-                <div className="absolute right-0 top-1/2 z-10 h-[42%] w-[42%] -translate-y-1/2 overflow-hidden rounded-2xl border-2 border-white shadow-xl">
-                  <Image
-                    src={IMG_CHAIR}
-                    alt="Barber chair"
-                    fill
-                    className="object-cover"
-                    sizes="220px"
-                  />
-                </div>
-                <div className="absolute bottom-0 left-1/2 z-10 h-[38%] w-[38%] -translate-x-1/2 overflow-hidden rounded-2xl border-2 border-white shadow-xl">
-                  <Image
-                    src={IMG_BARBER_2}
-                    alt="Barber"
-                    fill
-                    className="object-cover"
-                    sizes="200px"
-                  />
-                </div>
-                <div className="absolute left-0 top-1/2 z-0 h-[30%] w-[30%] -translate-y-1/2 overflow-hidden rounded-xl border-2 border-white shadow-lg">
-                  <Image
-                    src={IMG_BARBER_1}
-                    alt="Client"
-                    fill
-                    className="object-cover"
-                    sizes="160px"
-                  />
-                </div>
-                <div className="absolute left-1/2 top-1/2 z-20 h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border-2 border-white shadow-2xl ring-2 ring-[#D4AF37]/25">
-                  <Image
-                    src={IMG_HAIRCUT}
-                    alt="Haircut"
-                    fill
-                    className="object-cover"
-                    sizes="300px"
-                  />
-                </div>
+            <AnimateIn direction="right" delay={150}>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  {
+                    type: "empty",
+                    time: "Mon 10:00 AM",
+                    name: "No booking",
+                    value: "– $65 lost",
+                  },
+                  {
+                    type: "filled",
+                    time: "Mon 10:00 AM",
+                    name: "Devin W.",
+                    value: "+ $65 earned",
+                  },
+                  {
+                    type: "empty",
+                    time: "Wed 2:00 PM",
+                    name: "No booking",
+                    value: "– $65 lost",
+                  },
+                  {
+                    type: "filled",
+                    time: "Wed 2:00 PM",
+                    name: "Jordan K.",
+                    value: "+ $65 earned",
+                  },
+                ].map((card, idx) => (
+                  <div
+                    key={idx}
+                    className={`p-6 rounded-2xl border ${
+                      card.type === "empty"
+                        ? "border-red-500/20 bg-red-500/5"
+                        : "border-[#D4AF37]/30 bg-[#D4AF37]/5"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <div
+                        className={`h-1.5 w-1.5 rounded-full ${card.type === "empty" ? "bg-red-500" : "bg-[#D4AF37]"}`}
+                      />
+                      <span
+                        className={`text-[10px] font-bold uppercase tracking-wider ${card.type === "empty" ? "text-red-500" : "text-[#D4AF37]"}`}
+                      >
+                        {card.type === "empty" ? "Empty" : "Filled"}
+                      </span>
+                    </div>
+                    <div className="text-lg font-bold text-white [font-family:var(--font-satoshi)]">
+                      {card.time}
+                    </div>
+                    <div className="text-xs text-[#888880] mt-1">
+                      {card.name}
+                    </div>
+                    <div
+                      className={`text-xs font-bold mt-3 ${card.type === "empty" ? "text-red-500" : "text-[#D4AF37]"}`}
+                    >
+                      {card.value}
+                    </div>
+                  </div>
+                ))}
               </div>
             </AnimateIn>
           </div>
@@ -207,46 +222,141 @@ export default function Home() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section id="how-it-works" className="bg-[#D4AF37] py-16 sm:py-20">
+      <section id="how-it-works" className="bg-[#0a0a0a] py-20 sm:py-32">
         <div className="section-inner">
           <AnimateIn>
-            <h2 className="text-center text-4xl font-normal tracking-tight text-white sm:text-5xl [font-family:var(--font-bebas)]">
+            <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4 text-center">
               How it works
+            </div>
+            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
+              Three steps. Then it runs itself.
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-white/90">
-              Connect your client list. Our AI does the rest—reminders, rebooks,
-              and fill-ins via iMessage.
-            </p>
           </AnimateIn>
-          <div className="mt-8 grid gap-5 sm:grid-cols-3">
+          <div className="mt-16 grid gap-2 sm:grid-cols-3 bg-[#222] border border-[#222] rounded-3xl overflow-hidden">
             {[
               {
-                step: "1",
+                step: "01",
                 title: "Add your clients",
                 desc: "Connect your client list or booking system. We sync with your schedule and openings.",
+                icon: <ClipboardList className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
-                step: "2",
+                step: "02",
                 title: "AI texts on iMessage",
                 desc: "Our AI sends reminders, rebooks no-shows, and fills last-minute slots—human-sounding messages that get replies.",
+                icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
-                step: "3",
+                step: "03",
                 title: "Fill your chair",
                 desc: "Fewer empty chairs. More appointments. We handle outreach; you stay behind the chair.",
+                icon: <DollarSign className="w-8 h-8 text-[#D4AF37]" />,
               },
-            ].map(({ step, title, desc }) => (
-              <div
-                key={step}
-                className="rounded-2xl border border-black/20 bg-black/20 p-8 backdrop-blur-sm transition-all hover:bg-black/30"
-              >
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-2xl font-bold text-[#B8962E] [font-family:var(--font-bebas)]">
+            ].map(({ step, title, desc, icon }) => (
+              <div key={step} className="bg-[#111111] p-10 group">
+                <div className="text-6xl font-bold text-[#222] [font-family:var(--font-satoshi)] mb-6 transition-colors group-hover:text-[#D4AF37]/20">
                   {step}
                 </div>
-                <h3 className="text-xl font-bold text-white">{title}</h3>
-                <p className="mt-3 leading-relaxed text-white/90">{desc}</p>
+                <div className="mb-4">{icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+                <p className="leading-relaxed text-[#888880] text-sm">{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── NATURAL AI / iMESSAGE DEMO ── */}
+      <section id="natural" className="bg-[#111111] py-20 sm:py-32">
+        <div className="section-inner">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+            <AnimateIn direction="left">
+              <div className="rounded-3xl border border-[#222] bg-[#161616] overflow-hidden shadow-2xl">
+                <div className="bg-[#111111] px-6 py-4 border-b border-[#222] flex items-center justify-between">
+                  <div className="flex gap-1.5">
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+                  </div>
+                  <div className="text-[10px] font-bold text-[#888880] uppercase tracking-widest [font-family:var(--font-satoshi)]">
+                    iMessage · Marcus & Tyler
+                  </div>
+                  <div className="w-10" />
+                </div>
+                <div className="p-8 flex flex-col gap-4">
+                  <div className="text-[10px] text-[#888880] font-medium uppercase tracking-widest">
+                    ChairFill AI — sounds like Marcus
+                  </div>
+                  <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
+                    Ty! You been good bro? I got a slot open this Friday at 11
+                    if you're tryna pull up 💈
+                  </div>
+                  <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
+                    <Lightbulb className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <p className="text-[11px] text-[#D4AF37] leading-relaxed">
+                      Uses client's nickname, casual tone, no hard sell —
+                      because that's how barbers actually text
+                    </p>
+                  </div>
+                  <div className="self-end max-w-[85%] bg-[#3A3A3C] text-white p-4 rounded-2xl rounded-br-sm text-sm leading-relaxed">
+                    Yeah I been slippin fr. You got me
+                  </div>
+                  <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
+                    Let's get it. I'll lock in Friday 11am. If anything changes
+                    just lmk 🤙
+                  </div>
+                  <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <p className="text-[11px] text-[#D4AF37] leading-relaxed">
+                      Confirms booking naturally, leaves door open — no awkward
+                      "appointment confirmed" robot speak
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimateIn>
+
+            <AnimateIn direction="right" delay={150}>
+              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4">
+                Why it works
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
+                AI that texts like a person, not a software company.
+              </h2>
+              <div className="mt-10 space-y-8">
+                {[
+                  {
+                    icon: <Smartphone className="w-6 h-6 text-[#D4AF37]" />,
+                    title: "Delivered over iMessage",
+                    desc: "iMessage has 98% open rates. Clients see it in the same thread as your real texts — no spam folder, no app to download.",
+                  },
+                  {
+                    icon: <Mic className="w-6 h-6 text-[#D4AF37]" />,
+                    title: "Your tone, not ours",
+                    desc: "We train the AI on how you communicate. The result feels like a text from you — because in every way that matters, it is.",
+                  },
+                  {
+                    icon: <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />,
+                    title: "Annoyance shield built in",
+                    desc: "ChairFill knows when to stop. If a client says they're busy or not interested, it backs off and won't message them again until the right time.",
+                  },
+                ].map(({ icon, title, desc }) => (
+                  <div key={title} className="flex gap-5">
+                    <div className="h-12 w-12 shrink-0 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center">
+                      {icon}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-1 [font-family:var(--font-satoshi)]">
+                        {title}
+                      </h4>
+                      <p className="text-sm text-[#888880] leading-relaxed">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
@@ -258,15 +368,15 @@ export default function Home() {
       <PricingSection />
 
       {/* ── FAQ ── */}
-      <section id="faq" className="py-20 sm:py-24">
+      <section id="faq" className="py-20 sm:py-32 bg-[#0a0a0a]">
         <div className="section-inner">
           <AnimateIn>
-            <h2 className="text-center text-4xl font-normal tracking-tight text-white sm:text-5xl [font-family:var(--font-bebas)]">
-              Frequently asked questions
+            <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4 text-center">
+              FAQ
+            </div>
+            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
+              Straight answers to real questions.
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-[#a3a3a3]">
-              Everything you need to know about ChairFill.
-            </p>
           </AnimateIn>
           <AnimateIn delay={100} className="mt-12">
             <FAQ />
@@ -275,23 +385,31 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section id="cta" className="bg-[#D4AF37] py-20 sm:py-24">
-        <div className="section-inner text-center">
+      <section id="waitlist" className="bg-[#111111] py-20 sm:py-32">
+        <div className="section-inner">
           <AnimateIn>
-            <h2 className="text-4xl font-normal tracking-tight text-white sm:text-5xl [font-family:var(--font-bebas)]">
-              Ready to fill every chair?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-white/95">
-              Join the waitlist. We will notify you at launch—and you will be
-              first in line.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="/waitlist"
-                className="cta-secondary inline-flex justify-center border-black bg-black text-[#D4AF37] hover:bg-black/90 hover:text-[#E8C547]"
-              >
-                Join the waitlist
-              </Link>
+            <div className="max-w-3xl mx-auto rounded-[2.5rem] border border-[#222] bg-[#161616] p-12 sm:p-20 text-center relative overflow-hidden group">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#D4AF37]/5 blur-[100px] pointer-events-none" />
+
+              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-6">
+                Limited spots
+              </div>
+              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl [font-family:var(--font-satoshi)] leading-[1.1] mb-6">
+                Stop leaving money in your phone.
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
+                Join the waitlist now and get early access when we launch — plus
+                locked-in launch pricing before it goes up.
+              </p>
+              <div className="mt-8">
+                <Link
+                  href="/waitlist"
+                  className="cta-secondary inline-flex justify-center border-black bg-black text-[#D4AF37] hover:bg-black/90 hover:text-[#E8C547]"
+                >
+                  Join the waitlist
+                </Link>
+              </div>
             </div>
           </AnimateIn>
         </div>
@@ -301,11 +419,14 @@ export default function Home() {
       <footer className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] py-12">
         <div className="section-inner">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <Link
-              href="#"
-              className="text-xl font-bold tracking-wide text-white"
-            >
-              chairfill
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo-new.png"
+                alt="ChairFill Logo"
+                width={140}
+                height={44}
+                className="h-11 w-auto"
+              />
             </Link>
             <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-white/80">
               <Link

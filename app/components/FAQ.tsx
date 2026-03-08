@@ -4,39 +4,29 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "What is the waitlist?",
+    question: "Will my clients know it's an AI texting them?",
     answer:
-      "ChairFill is coming soon. Join the waitlist with your email and we will notify you as soon as we launch. You will be first in line for early access and launch pricing.",
+      "Nope — and that's intentional. We calibrate the AI to match your tone, your slang, the way you naturally text. The messages come from your number over iMessage. Most clients assume it's you. If they ask, you can tell them, but most won't.",
   },
   {
-    question: "How does ChairFill work?",
+    question: "What if a client says they're not interested?",
     answer:
-      "ChairFill connects to your client list and booking system. Our AI automatically sends reminders before appointments, reaches out to rebook no-shows, and fills last-minute cancellations by texting available clients—all via iMessage.",
+      "ChairFill's Annoyance Shield handles this automatically. If a client responds negatively, opts out, or signals disinterest, the system stops messaging them and flags it for you. We're not here to spam your clients — we're here to re-engage the ones who actually want a cut.",
   },
   {
-    question: "Why iMessage instead of SMS or email?",
+    question: "Do my clients need to download an app?",
     answer:
-      "iMessage has a 98% open rate compared to ~20% for email and ~45% for SMS. Your clients actually see and respond to iMessages. Plus, it feels personal—not spammy.",
+      "Zero. That's one of the biggest advantages of iMessage — it lives in their default texting app. No friction, no app store, no signup. They just reply to a text like they always would.",
   },
   {
-    question: "Will my clients know it's AI?",
+    question: "How do I connect my booking system?",
     answer:
-      "No. Our AI writes messages that sound like you—friendly, professional, and human. Clients reply naturally, and the conversation flows. No robotic scripts or obvious automation.",
+      "We integrate with popular booking tools, and you can also just upload a CSV export of your client list. Setup takes about 5 minutes. Your onboarding call walks through everything.",
   },
   {
-    question: "What if I already use a booking system?",
+    question: "What if I want to take over a conversation manually?",
     answer:
-      "ChairFill integrates with most popular booking systems. We sync your schedule and client list automatically, so there's no double-entry or manual work.",
-  },
-  {
-    question: "How quickly can I get started?",
-    answer:
-      "Most barbers are up and running in under 10 minutes. Connect your client list, set your preferences, and ChairFill starts working immediately.",
-  },
-  {
-    question: "Can I cancel anytime?",
-    answer:
-      "Yes. No contracts, no commitments. Cancel anytime from your dashboard—no questions asked.",
+      "Easy — you can jump in at any point from the dashboard. The AI steps aside when you take over, and you can flag certain clients to be manual-only if you prefer. You're always in control.",
   },
 ];
 
@@ -79,7 +69,9 @@ export default function FAQ() {
             </button>
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openIndex === index ? "mt-3 max-h-96 opacity-100" : "max-h-0 opacity-0"
+                openIndex === index
+                  ? "mt-3 max-h-96 opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
             >
               <p className="leading-relaxed text-[#a3a3a3]">{faq.answer}</p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Bebas_Neue } from "next/font/google";
+import { Geist_Mono, Bebas_Neue, Syne } from "next/font/google";
+
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -71,6 +72,12 @@ const bebasNeue = Bebas_Neue({
   weight: "400",
 });
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+  weight: ["400", "700", "800"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://chairfill.co"),
   title: "ChairFill — Fill Every Chair. For Barbers. AI Outreach via iMessage.",
@@ -83,7 +90,7 @@ export const metadata: Metadata = {
     description:
       "For barbers: join the waitlist. AI that texts your clients on iMessage. Fill your chair, reduce no-shows. Coming soon.",
     images:
-      "/assets/8f845499-d9e9-44f4-9672-25682e2938c4_removalai_preview.png",
+      "/assets/8f845499-d9e9-44f4-9672-25682e2938c4_removalai_preview.jpeg",
   },
 };
 
@@ -95,7 +102,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${satoshi.variable} ${geistMono.variable} ${bebasNeue.variable} font-sans antialiased`}
+        className={`${satoshi.variable} ${geistMono.variable} ${bebasNeue.variable} ${syne.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {children}

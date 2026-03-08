@@ -17,6 +17,7 @@ import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import confetti from "canvas-confetti";
+import { Check } from "lucide-react";
 
 // ─── ChairFill plan data ──────────────────────────────────────────────────────
 const plans = [
@@ -32,7 +33,8 @@ const plans = [
       "Dashboard & analytics",
       "Email support",
     ],
-    description: "Essential automation for the solo barber building their own book.",
+    description:
+      "Essential automation for the solo barber building their own book.",
     buttonText: "Join waitlist for discount",
     href: "/waitlist",
     isPopular: false,
@@ -77,7 +79,13 @@ const plans = [
 ];
 
 // ─── Animated price — key swap triggers motion re-enter ───────────────────────
-function AnimatedPrice({ value, isMonthly }: { value: number | null; isMonthly: boolean }) {
+function AnimatedPrice({
+  value,
+  isMonthly,
+}: {
+  value: number | null;
+  isMonthly: boolean;
+}) {
   if (value === null) {
     return (
       <span className="text-4xl font-bold text-white [font-family:var(--font-satoshi)]">
@@ -130,20 +138,22 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="py-16 sm:py-20">
       <div className="section-inner">
-
         {/* Header */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
             Simple, transparent pricing
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
-            Plans for every barber — solo to shop owner. Join the waitlist for early access and launch pricing.
+            Plans for every barber — solo to shop owner. Join the waitlist for
+            early access and launch pricing.
           </p>
         </div>
 
         {/* Monthly / Annual toggle — custom, no shadcn Switch */}
         <div className="flex items-center justify-center gap-3 mb-10">
-          <span className={`text-sm font-medium transition-colors duration-200 ${isMonthly ? "text-white" : "text-[#a3a3a3]"}`}>
+          <span
+            className={`text-sm font-medium transition-colors duration-200 ${isMonthly ? "text-white" : "text-[#a3a3a3]"}`}
+          >
             Monthly
           </span>
 
@@ -166,7 +176,9 @@ export default function PricingSection() {
             />
           </button>
 
-          <span className={`text-sm font-medium transition-colors duration-200 ${!isMonthly ? "text-white" : "text-[#a3a3a3]"}`}>
+          <span
+            className={`text-sm font-medium transition-colors duration-200 ${!isMonthly ? "text-white" : "text-[#a3a3a3]"}`}
+          >
             Annual{" "}
             <span className="text-[#D4AF37] font-semibold">(Save 20%)</span>
           </span>
@@ -179,9 +191,7 @@ export default function PricingSection() {
               key={plan.name}
               initial={{ y: 50, opacity: 0 }}
               whileInView={
-                plan.isPopular
-                  ? { y: -8, opacity: 1 }
-                  : { y: 0, opacity: 1 }
+                plan.isPopular ? { y: -8, opacity: 1 } : { y: 0, opacity: 1 }
               }
               viewport={{ once: true }}
               transition={{
@@ -216,7 +226,10 @@ export default function PricingSection() {
 
               {/* Animated price */}
               <div className="mt-6 flex items-baseline gap-1">
-                <AnimatedPrice value={isMonthly ? plan.price : plan.yearlyPrice} isMonthly={isMonthly} />
+                <AnimatedPrice
+                  value={isMonthly ? plan.price : plan.yearlyPrice}
+                  isMonthly={isMonthly}
+                />
                 {plan.price !== null && (
                   <span className="text-[#a3a3a3]">/ {plan.period}</span>
                 )}
@@ -231,9 +244,7 @@ export default function PricingSection() {
               <ul className="mt-6 flex-1 space-y-3">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-center gap-3 text-white">
-                    <svg className="h-5 w-5 shrink-0 text-[#D4AF37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <Check className="h-5 w-5 shrink-0 text-[#D4AF37]" />
                     <span className="text-sm font-medium">{f}</span>
                   </li>
                 ))}
@@ -253,7 +264,6 @@ export default function PricingSection() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
