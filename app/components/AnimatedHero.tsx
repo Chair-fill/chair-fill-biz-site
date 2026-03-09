@@ -109,7 +109,7 @@ export default function AnimatedHero() {
 
           {/* Right: Text Content */}
           <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
-            <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-xs font-medium text-[#D4AF37] uppercase tracking-widest">
+            <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-[10px] lg:text-xs font-medium text-[#D4AF37] uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
               Now accepting barbers — launching soon
             </div>

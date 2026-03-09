@@ -32,8 +32,9 @@ const IMG_HAIRCUT = "/assets/obi--sRVfY0f2d8-unsplash.jpg";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
       <Navbar />
+      <div className="pt-5 lg:pt-0"></div>
 
       {/* ── HERO — animated rotating words (replaces static hero) ── */}
       <AnimatedHero />
