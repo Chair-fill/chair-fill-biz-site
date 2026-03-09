@@ -52,7 +52,7 @@ textarea {
 
 /* Modern CTAs */
 .cta-primary {
-  @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold text-black transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+  @apply inline-flex items-center justify-center rounded-full px-8 py-2 text-base font-semibold text-black transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
   background: var(--primary);
   box-shadow: var(--shadow-md);
 }

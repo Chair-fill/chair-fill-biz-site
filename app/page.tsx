@@ -3,6 +3,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import AnimateIn from "./components/AnimateIn";
 import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
 import {
   MessageSquare,
   Bot,
@@ -417,41 +418,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] py-12">
-        <div className="section-inner">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo-new.png"
-                alt="ChairFill Logo"
-                width={140}
-                height={44}
-                className="h-11 w-auto"
-              />
-            </Link>
-            <div className="flex flex-wrap justify-center gap-8 text-sm font-medium text-white/80">
-              <Link
-                href="/waitlist"
-                className="transition-colors hover:text-white"
-              >
-                Join waitlist
-              </Link>
-              <Link href="#" className="transition-colors hover:text-white">
-                Privacy
-              </Link>
-              <Link href="#" className="transition-colors hover:text-white">
-                Terms
-              </Link>
-              <Link href="#" className="transition-colors hover:text-white">
-                Contact
-              </Link>
-            </div>
-          </div>
-          <p className="mt-4 text-center text-sm text-white/50">
-            © {new Date().getFullYear()} ChairFill. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
