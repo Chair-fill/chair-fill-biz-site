@@ -10,23 +10,23 @@ const testimonials = [
     text: "I got like 6 clients I haven't seen in months. If this thing could just bring them back without me having to do anything, that's money I wasn't even thinking about.",
     initials: "DW",
     name: "Darnell W.",
-    role: "Independent barber · Atlanta",
+    role: "Independent barber in Atlanta",
   },
   {
-    text: "I was skeptical about it not sounding robotic. But when they showed me the messages, I was like — bro, I would've sent that exact text. That's what sold me.",
+    text: "I was skeptical about it not sounding robotic. But when they showed me the messages, I was like, &quot;bro, I would&apos;ve sent that exact text.&quot; That&apos;s what sold me.",
     initials: "MT",
     name: "Marcus T.",
-    role: "Booth renter · Houston",
+    role: "Booth renter in Houston",
   },
   {
     text: "Empty slots are literally just lost money. If I can automate chasing people down with a $50/month tool, that's the easiest ROI I've ever seen.",
     initials: "JR",
     name: "Jordan R.",
-    role: "Shop owner · Tampa",
+    role: "Shop owner in Tampa",
   },
 ];
 
-// ─── Single animated column — direct port of TestimonialsColumn ──────────────
+// ─── Single animated column. Direct port of TestimonialsColumn. ──────────────
 function TestimonialsColumn({
   className,
   testimonials: items,
@@ -92,7 +92,7 @@ export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-20 sm:py-24 overflow-hidden">
       <div className="section-inner">
-        {/* Header — matches site section header style */}
+        {/* Header. Matches site section header style */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export default function TestimonialsSection() {
           </h2>
         </motion.div>
 
-        {/* Columns — fade mask matches source demo exactly */}
+        {/* Columns. Fade mask matches source demo exactly */}
         <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
           <TestimonialsColumn testimonials={testimonials} duration={15} />
           <TestimonialsColumn

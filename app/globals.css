@@ -73,7 +73,7 @@ textarea {
   color: black;
 }
 
-/* Modern card — golden border, dark bg */
+/* Modern card. Golden border, dark bg */
 .card-modern {
   @apply rounded-2xl border transition-all duration-300;
   border-color: rgba(212, 175, 55, 0.3);

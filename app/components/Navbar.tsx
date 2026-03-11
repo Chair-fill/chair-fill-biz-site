@@ -60,7 +60,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               </Link>
               <Link
                 href="/waitlist"
-                className="cta-primary rounded-full px-6 py-2.5 text-sm"
+                className="cta-primary rounded-full px-6 py-2 text-sm"
               >
                 Join waitlist
               </Link>

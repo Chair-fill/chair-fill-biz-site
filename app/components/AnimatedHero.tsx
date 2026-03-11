@@ -62,8 +62,8 @@ export default function AnimatedHero() {
               {/* Chat Messages */}
               <div className="flex-1 flex flex-col gap-3 p-1.5 overflow-hidden">
                 <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-3 rounded-[20px] rounded-bl-[4px] text-[13px] leading-relaxed shadow-sm">
-                  Yo Marcus, long time! Had a cancellation open up Saturday at
-                  2pm — you tryna slide through?
+                  Yo Marcus, long time! Had a slot open Saturday at 2pm. You
+                  tryna slide through?
                 </div>
                 <div className="text-[10px] text-[#888880] text-center my-0.5 select-none font-medium">
                   Delivered · 11:42 AM
@@ -77,7 +77,7 @@ export default function AnimatedHero() {
                 </div>
 
                 <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-3 rounded-[20px] rounded-bl-[4px] text-[13px] leading-relaxed shadow-sm">
-                  Done ✓ You're booked. See you Saturday at 2.
+                  Done ✅ You&apos;re booked. See you Saturday at 2.
                 </div>
                 <div className="text-[10px] text-[#888880] text-center mt-1 select-none font-medium">
                   Delivered · 11:44 AM
@@ -111,23 +111,22 @@ export default function AnimatedHero() {
           <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
             <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-[10px] lg:text-xs font-medium text-[#D4AF37] uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-              Now accepting barbers — launching soon
+              Now accepting barbers. Launching soon.
             </div>
 
             <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
-              Your chair
+              Stop letting
               <br />
-              shouldn't sit empty.
-              <span className="block text-[#D4AF37]">It texts now.</span>
+              quiet clients
+              <span className="block text-[#D4AF37]">kill your income.</span>
             </h1>
 
             <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
-              ChairFill is an AI that{" "}
+              They haven&apos;t left. They just went quiet.{" "}
               <strong className="text-white font-medium">
-                texts your old clients on iMessage
+                ChairFill reactivates them on iMessage
               </strong>{" "}
-              — sounds like you, books like you, fills slots you didn't even
-              know you had.
+              automatically while you stay behind the chair.
               <br />
               <br />
               No apps for them to download. No ads to run. Just more bookings.

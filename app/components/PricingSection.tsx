@@ -1,14 +1,14 @@
 "use client";
 
 /**
- * PricingSection — adapted from pricing.tsx prompt
+ * PricingSection. Adapted from pricing.tsx prompt
  *
  * Source uses: framer-motion, shadcn Switch/Label, canvas-confetti, @number-flow/react
  * Adapted to:
  *   - motion/react (already in project via AnimatedHero)
- *   - No shadcn — custom toggle built with Tailwind + motion
- *   - canvas-confetti (new dep — install with: npm install canvas-confetti)
- *   - No @number-flow/react — plain animated number with motion key trick
+ *   - No shadcn. Custom toggle built with Tailwind + motion
+ *   - canvas-confetti (new dep. Install with: npm install canvas-confetti)
+ *   - No @number-flow/react. Plain animated number with motion key trick
  *   - ChairFill gold/dark tokens throughout
  * Import path for devs: app/components/PricingSection.tsx
  */
@@ -78,7 +78,7 @@ const plans = [
   },
 ];
 
-// ─── Animated price — key swap triggers motion re-enter ───────────────────────
+// ─── Animated price. Key swap triggers motion re-enter. ───────────────────────
 function AnimatedPrice({
   value,
   isMonthly,
@@ -115,7 +115,7 @@ export default function PricingSection() {
     const goingAnnual = isMonthly; // we're about to flip to annual
     setIsMonthly(!isMonthly);
 
-    // Confetti only when switching TO annual — celebrate the saving
+    // Confetti only when switching TO annual. Celebrate the saving
     if (goingAnnual && switchRef.current) {
       const rect = switchRef.current.getBoundingClientRect();
       confetti({
@@ -144,12 +144,12 @@ export default function PricingSection() {
             Simple, transparent pricing
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
-            Plans for every barber — solo to shop owner. Join the waitlist for
-            early access and launch pricing.
+            Plans for every barber, from solo to shop owner. Join the waitlist
+            for early access and launch pricing.
           </p>
         </div>
 
-        {/* Monthly / Annual toggle — custom, no shadcn Switch */}
+        {/* Monthly / Annual toggle. Custom, no shadcn Switch */}
         <div className="flex items-center justify-center gap-3 mb-10">
           <span
             className={`text-sm font-medium transition-colors duration-200 ${isMonthly ? "text-white" : "text-[#a3a3a3]"}`}
@@ -184,7 +184,7 @@ export default function PricingSection() {
           </span>
         </div>
 
-        {/* Cards — animation matches source pricing.tsx motion */}
+        {/* Cards. Animation matches source pricing.tsx motion */}
         <div className="grid gap-5 lg:grid-cols-3 lg:items-stretch lg:gap-4">
           {plans.map((plan, index) => (
             <motion.div

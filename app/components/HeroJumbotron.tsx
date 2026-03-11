@@ -33,10 +33,7 @@ export default function HeroJumbotron() {
         aria-hidden
       />
       {/* Coca-Cola style red overlay for bold, iconic look */}
-      <div
-        className="absolute inset-0 bg-[var(--primary)]/75"
-        aria-hidden
-      />
+      <div className="absolute inset-0 bg-[var(--primary)]/75" aria-hidden />
       {/* Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 pt-24 pb-20 text-center sm:px-6 sm:pt-28 lg:px-8">
         <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-white/90">
@@ -51,7 +48,9 @@ export default function HeroJumbotron() {
           <span className="text-white">Recover lost revenue.</span>
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-lg font-medium text-white/95 sm:text-xl">
-          Our AI chatbot reaches your clients on iMessage—reminds them, fills last-minute openings, and rebooks no-shows. So your chair stays full and you stay behind the chair.
+          Our AI chatbot reaches your clients on iMessage. It reminds them,
+          fills last-minute openings, and rebooks no-shows. So your chair stays
+          full and you stay behind the chair.
         </p>
         <div className="mt-12 flex flex-col items-center justify-center gap-4">
           <EmailCapture variant="hero" />

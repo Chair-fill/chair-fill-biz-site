@@ -6,27 +6,22 @@ const faqs = [
   {
     question: "Will my clients know it's an AI texting them?",
     answer:
-      "Nope — and that's intentional. We calibrate the AI to match your tone, your slang, the way you naturally text. The messages come from your number over iMessage. Most clients assume it's you. If they ask, you can tell them, but most won't.",
+      "Nope. And that's intentional. We calibrate the AI to match your general communication style. The messages come from your number over iMessage. Most clients assume it's you and most won't notice a difference. If they ask, you can always tell them, but it's designed to feel personal and human.",
   },
   {
     question: "What if a client says they're not interested?",
     answer:
-      "ChairFill's Annoyance Shield handles this automatically. If a client responds negatively, opts out, or signals disinterest, the system stops messaging them and flags it for you. We're not here to spam your clients — we're here to re-engage the ones who actually want a cut.",
+      "ChairFill's Annoyance Shield handles this automatically. If a client responds negatively, opts out, or signals disinterest, the system stops messaging them and flags it for you. We're not here to spam your clients. We're here to re-engage the ones who actually want a cut.",
   },
   {
     question: "Do my clients need to download an app?",
     answer:
-      "Zero. That's one of the biggest advantages of iMessage — it lives in their default texting app. No friction, no app store, no signup. They just reply to a text like they always would.",
+      "Zero. That's one of the biggest advantages of iMessage. It lives in their default texting app. No friction, no app store, and no signup. They just reply to a text like they always would.",
   },
   {
     question: "How do I connect my booking system?",
     answer:
-      "We integrate with popular booking tools, and you can also just upload a CSV export of your client list. Setup takes about 5 minutes. Your onboarding call walks through everything.",
-  },
-  {
-    question: "What if I want to take over a conversation manually?",
-    answer:
-      "Easy — you can jump in at any point from the dashboard. The AI steps aside when you take over, and you can flag certain clients to be manual-only if you prefer. You're always in control.",
+      "ChairFill does not integrate with external booking tools. You simply upload a CSV export of your client list, and the AI handles the outreach. All actual bookings follow your existing in-house process.",
   },
 ];
 

@@ -80,13 +80,12 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chairfill.co"),
-  title: "ChairFill — Fill Every Chair. For Barbers. AI Outreach via iMessage.",
+  title: "ChairFill. Fill Every Chair. For Barbers. AI Outreach via iMessage.",
   description:
-    "Built for barbers. Join the waitlist for AI-powered client outreach via iMessage—reminders, rebooks, fill-ins. Coming soon.",
+    "Built for barbers. Join the waitlist for AI-powered client outreach via iMessage. Reminders, rebooks, and fill-ins. Coming soon.",
   icons: "/logo.png",
   openGraph: {
-    title:
-      "ChairFill — Join the Waitlist | AI Outreach for Barbers via iMessage",
+    title: "ChairFill. Join the Waitlist. AI Outreach for Barbers via iMessage",
     description:
       "For barbers: join the waitlist. AI that texts your clients on iMessage. Fill your chair, reduce no-shows. Coming soon.",
     images:

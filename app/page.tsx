@@ -37,7 +37,7 @@ export default function Home() {
       <Navbar />
       <div className="pt-5 lg:pt-0"></div>
 
-      {/* ── HERO — animated rotating words (replaces static hero) ── */}
+      {/* ── HERO. Animated rotating words (replaces static hero) ── */}
       <AnimatedHero />
 
       {/* ── PROOF BAR ── */}
@@ -45,10 +45,9 @@ export default function Home() {
         <div className="section-inner">
           <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
             {[
-              { num: "Up to 75%", label: "rebook rate" },
-              { num: "$200+", label: "target monthly lift" },
-              { num: "Under 5 min", label: "to go live" },
-              { num: "Easiest", label: "ROI ever" },
+              { num: "98%", label: "iMessage open rate" },
+              { num: "3x", label: "More recovery vs email" },
+              { num: "150+", label: "Barbers on waitlist" },
             ].map(({ num, label }) => (
               <div key={label} className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-[#D4AF37] [font-family:var(--font-satoshi)]">
@@ -71,20 +70,20 @@ export default function Home() {
               Why barbers choose ChairFill
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-[#a3a3a3]">
-              Built for the chair. AI outreach on iMessage—where your clients
+              Built for the chair. AI outreach on iMessage, where your clients
               actually read and reply.
             </p>
           </AnimateIn>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: "iMessage = real replies",
-                desc: "98% open rate. Your clients read and respond.",
+                title: "iMessage gets real replies",
+                desc: "98% open rate. Your clients actually read and respond.",
                 icon: <MessageSquare className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
-                title: "AI that sounds like you",
-                desc: "Personalized messages, rebooks, fill-ins. No robotic scripts.",
+                title: "AI calibrated to you",
+                desc: "Personalized rebooks and fill-ins. It matches your texting style.",
                 icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
@@ -119,18 +118,18 @@ export default function Home() {
                 The problem
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
-                You have clients who stopped coming. They didn't leave — they
-                just went quiet.
+                You have clients who stopped coming. They didn&apos;t leave.
+                They just went quiet.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[#888880] max-w-xl">
-                The average barber has 40–60 clients who haven't shown up in 60+
-                days. That's thousands of dollars in recurring revenue sitting
-                dormant in your phone.
+                The average barber has 40 to 60 clients who haven&apos;t shown
+                up in 60 in 60 plus days. That&apos;s thousands of dollars in
+                recurring revenue sitting dormant in your phone.
                 <br />
                 <br />
-                The problem isn't that they don't want a cut. It's that nobody
-                reached out. ChairFill does that for you — automatically, and in
-                a way that actually sounds human.
+                The problem isn&apos;t that they don&apos;t want a cut.
+                It&apos;s that nobody reached out. ChairFill does that for you
+                automatically. It connects in a way that feels natural.
               </p>
             </AnimateIn>
 
@@ -141,7 +140,7 @@ export default function Home() {
                     type: "empty",
                     time: "Mon 10:00 AM",
                     name: "No booking",
-                    value: "– $65 lost",
+                    value: "$65 lost",
                   },
                   {
                     type: "filled",
@@ -153,7 +152,7 @@ export default function Home() {
                     type: "empty",
                     time: "Wed 2:00 PM",
                     name: "No booking",
-                    value: "– $65 lost",
+                    value: "$65 lost",
                   },
                   {
                     type: "filled",
@@ -199,30 +198,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS ── */}
-      <section className="bg-[#141414] py-20 sm:py-24">
-        <div className="section-inner">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-4">
-            {[
-              { num: "3x", label: "Higher conversion vs email" },
-              { num: "98%", label: "iMessage open rate" },
-              { num: "$2M+", label: "Revenue recovered" },
-            ].map(({ num, label }, i) => (
-              <AnimateIn key={num} delay={i * 100}>
-                <div className="text-center">
-                  <div className="text-5xl font-bold tabular-nums text-[#D4AF37] sm:text-6xl [font-family:var(--font-bebas)]">
-                    {num}
-                  </div>
-                  <div className="mt-3 text-sm font-medium text-[#a3a3a3]">
-                    {label}
-                  </div>
-                </div>
-              </AnimateIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── HOW IT WORKS ── */}
       <section id="how-it-works" className="bg-[#0a0a0a] py-20 sm:py-32">
         <div className="section-inner">
@@ -245,18 +220,18 @@ export default function Home() {
               {
                 step: "02",
                 title: "AI texts on iMessage",
-                desc: "Our AI sends reminders, rebooks no-shows, and fills last-minute slots—human-sounding messages that get replies.",
+                desc: "Our AI sends reminders and rebooks no-shows. It fills last-minute slots with messages that get replies.",
                 icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
                 step: "03",
                 title: "Fill your chair",
-                desc: "Fewer empty chairs. More appointments. We handle outreach; you stay behind the chair.",
+                desc: "Fewer empty chairs. More appointments. We handle outreach while you stay behind the chair.",
                 icon: <DollarSign className="w-8 h-8 text-[#D4AF37]" />,
               },
             ].map(({ step, title, desc, icon }) => (
               <div key={step} className="bg-[#111111] p-10 group">
-                <div className="text-6xl font-bold text-[#222] [font-family:var(--font-satoshi)] mb-6 transition-colors group-hover:text-[#D4AF37]/20">
+                <div className="text-6xl font-bold text-[#C9A84C] [font-family:var(--font-satoshi)] mb-6 transition-none">
                   {step}
                 </div>
                 <div className="mb-4">{icon}</div>
@@ -281,37 +256,37 @@ export default function Home() {
                     <div className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
                   </div>
                   <div className="text-[10px] font-bold text-[#888880] uppercase tracking-widest [font-family:var(--font-satoshi)]">
-                    iMessage · Marcus & Tyler
+                    iMessage · Marcus and Tyler
                   </div>
                   <div className="w-10" />
                 </div>
                 <div className="p-8 flex flex-col gap-4">
                   <div className="text-[10px] text-[#888880] font-medium uppercase tracking-widest">
-                    ChairFill AI — sounds like Marcus
+                    AI calibrated to Marcus
                   </div>
                   <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
                     Ty! You been good bro? I got a slot open this Friday at 11
-                    if you're tryna pull up 💈
+                    if you&apos;re tryna pull up 💈
                   </div>
                   <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
                     <Lightbulb className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <p className="text-[11px] text-[#D4AF37] leading-relaxed">
-                      Uses client's nickname, casual tone, no hard sell —
-                      because that's how barbers actually text
+                      Uses client&apos;s nickname, casual tone, no hard sell. It
+                      matches the way barbers actually text.
                     </p>
                   </div>
                   <div className="self-end max-w-[85%] bg-[#3A3A3C] text-white p-4 rounded-2xl rounded-br-sm text-sm leading-relaxed">
                     Yeah I been slippin fr. You got me
                   </div>
                   <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
-                    Let's get it. I'll lock in Friday 11am. If anything changes
-                    just lmk 🤙
+                    Let&apos;s get it. I&apos;ll lock in Friday 11am. If
+                    anything changes just lmk 🤙
                   </div>
                   <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
                     <CheckCircle2 className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <p className="text-[11px] text-[#D4AF37] leading-relaxed">
-                      Confirms booking naturally, leaves door open — no awkward
-                      "appointment confirmed" robot speak
+                      Confirms booking naturally, leaves door open. No awkward
+                      robot speak.
                     </p>
                   </div>
                 </div>
@@ -323,24 +298,24 @@ export default function Home() {
                 Why it works
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
-                AI that texts like a person, not a software company.
+                Messages that feel personal, not like a blast.
               </h2>
               <div className="mt-10 space-y-8">
                 {[
                   {
                     icon: <Smartphone className="w-6 h-6 text-[#D4AF37]" />,
                     title: "Delivered over iMessage",
-                    desc: "iMessage has 98% open rates. Clients see it in the same thread as your real texts — no spam folder, no app to download.",
+                    desc: "iMessage has 98% open rates. Clients see it in the same thread as your real texts. No spam folder, no app to download.",
                   },
                   {
                     icon: <Mic className="w-6 h-6 text-[#D4AF37]" />,
-                    title: "Your tone, not ours",
-                    desc: "We train the AI on how you communicate. The result feels like a text from you — because in every way that matters, it is.",
+                    title: "Calibrated to your style",
+                    desc: "We calibrate the AI to match your general communication style. The result feels like a text from you because it matches your tone.",
                   },
                   {
                     icon: <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />,
                     title: "Annoyance shield built in",
-                    desc: "ChairFill knows when to stop. If a client says they're busy or not interested, it backs off and won't message them again until the right time.",
+                    desc: "ChairFill knows when to stop. If a client says they&apos;re busy, it backs off and won&apos;t message them again until the right time.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex gap-5">
@@ -363,10 +338,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS — animated scrolling columns (replaces single quote card) ── */}
+      {/* ── TESTIMONIALS. Animated scrolling columns (replaces single quote card) ── */}
       <TestimonialsSection />
 
-      {/* ── PRICING — monthly/annual toggle with confetti (replaces static grid) ── */}
+      {/* ── PRICING. Monthly/annual toggle with confetti (replaces static grid) ── */}
       <PricingSection />
 
       {/* ── FAQ ── */}
@@ -401,7 +376,7 @@ export default function Home() {
                 Stop leaving money in your phone.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
-                Join the waitlist now and get early access when we launch — plus
+                Join the waitlist now and get early access when we launch, plus
                 locked-in launch pricing before it goes up.
               </p>
               <div className="mt-8">
