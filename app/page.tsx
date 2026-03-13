@@ -122,8 +122,8 @@ export default function Home() {
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[#888880] max-w-xl">
                 The average barber has 40 to 60 clients who haven&apos;t shown
-                up in 60 in 60 plus days. That&apos;s thousands of dollars in
-                recurring revenue sitting dormant in your phone.
+                up in 60+ days. That&apos;s thousands of dollars in recurring
+                revenue sitting dormant in your phone.
                 <br />
                 <br />
                 The problem isn&apos;t that they don&apos;t want a cut.
