@@ -17,10 +17,9 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-// ── Three new components ───────────────────────────────────────────────────────
+// ── New components ───────────────────────────────────────────────────────
 import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
-import TestimonialsSection from "./components/TestimonialsSection"; // replaces single testimonial card
-import PricingSection from "./components/PricingSection"; // replaces static pricing
+import FoundingMemberSection from "./components/FoundingMemberSection";
 
 const IMG_CHAIR =
   "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80";
@@ -338,11 +337,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS. Animated scrolling columns (replaces single quote card) ── */}
-      <TestimonialsSection />
-
-      {/* ── PRICING. Monthly/annual toggle with confetti (replaces static grid) ── */}
-      <PricingSection />
+      {/* ── FOUNDING MEMBER SECTION (replaces testimonials/pricing during beta) ── */}
+      <FoundingMemberSection />
 
       {/* ── FAQ ── */}
       <section id="faq" className="py-20 sm:py-32 bg-[#0a0a0a]">

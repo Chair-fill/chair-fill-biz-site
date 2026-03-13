@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server";
-import { readFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import path from "path";
 
 const WAITLIST_PATH = path.join(process.cwd(), ".data", "waitlist.json");
 
-type WaitlistEntry = { email: string; name: string; createdAt: string; source: string };
+type WaitlistEntry = { 
+  email: string; 
+  name: string; 
+  createdAt: string; 
+  source: string;
+  isAccepted?: boolean;
+  isPaid?: boolean;
+};
 
 function getAuthToken(req: Request): string | null {
   const auth = req.headers.get("authorization");
@@ -100,6 +107,44 @@ export async function GET(req: Request) {
     });
   } catch (err) {
     console.error("admin waitlist GET error:", err);
+    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
+  }
+}
+
+export async function PATCH(req: Request) {
+  if (!isAuthorized(req)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const body = await req.json();
+    const { email, isAccepted, isPaid } = body as { email: string; isAccepted?: boolean; isPaid?: boolean };
+
+    if (!email) {
+      return NextResponse.json({ error: "Email is required" }, { status: 400 });
+    }
+
+    let list: WaitlistEntry[] = [];
+    try {
+      const raw = await readFile(WAITLIST_PATH, "utf-8");
+      list = JSON.parse(raw);
+    } catch {
+      return NextResponse.json({ error: "No waitlist found" }, { status: 404 });
+    }
+
+    const index = list.findIndex((e) => e.email.toLowerCase() === email.toLowerCase());
+    if (index === -1) {
+      return NextResponse.json({ error: "Entry not found" }, { status: 404 });
+    }
+
+    if (isAccepted !== undefined) list[index].isAccepted = isAccepted;
+    if (isPaid !== undefined) list[index].isPaid = isPaid;
+
+    await writeFile(WAITLIST_PATH, JSON.stringify(list, null, 2), "utf-8");
+
+    return NextResponse.json({ message: "Updated successfully", entry: list[index] });
+  } catch (err) {
+    console.error("admin waitlist PATCH error:", err);
     return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
   }
 }

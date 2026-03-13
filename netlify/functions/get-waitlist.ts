@@ -3,7 +3,14 @@ import { getStore } from "@netlify/blobs";
 
 const WAITLIST_STORE = "chairfill-waitlist";
 
-type WaitlistEntry = { email: string; name: string; createdAt: string; source: string };
+type WaitlistEntry = { 
+  email: string; 
+  name: string; 
+  createdAt: string; 
+  source: string;
+  isAccepted?: boolean;
+  isPaid?: boolean;
+};
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",

@@ -35,6 +35,8 @@ export async function POST(req: Request) {
       name,
       createdAt: new Date().toISOString(),
       source: body.source ?? "marketing-site",
+      isAccepted: false,
+      isPaid: false,
     };
 
     try {

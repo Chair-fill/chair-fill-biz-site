@@ -11,3 +11,17 @@
   to = "/.netlify/functions/get-waitlist"
   status = 200
   force = true
+
+# Protected admin: update waitlist status (PATCH)
+[[redirects]]
+  from = "/api/admin/waitlist-update"
+  to = "/.netlify/functions/update-waitlist-status"
+  status = 200
+  force = true
+
+# Public: get spots taken count
+[[redirects]]
+  from = "/api/spots-taken"
+  to = "/.netlify/functions/spots-taken"
+  status = 200
+  force = true

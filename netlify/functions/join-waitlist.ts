@@ -62,6 +62,8 @@ export default async (req: Request, _context: Context): Promise<Response> => {
       name,
       createdAt: new Date().toISOString(),
       source: body.source ?? "marketing-site",
+      isAccepted: false,
+      isPaid: false,
     };
 
     const { modified } = await store.setJSON(key, entry, { onlyIfNew: true });
