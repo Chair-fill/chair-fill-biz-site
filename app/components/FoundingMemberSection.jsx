@@ -430,8 +430,18 @@ export default function FoundingMemberSection() {
         </div>
 
         {/* CTA */}
-        <div className="card" style={{ opacity: 0 }}>
-          <button className="cta-btn">Claim My Founding Member Spot →</button>
+        <div className="card" style={{ opacity: 1 }}>
+          <a 
+            href="https://app.chairfill.co/signup" 
+            className="cta-btn"
+            style={{ 
+              display: "block", 
+              textAlign: "center", 
+              textDecoration: "none" 
+            }}
+          >
+            Claim My Founding Member Spot →
+          </a>
           <p
             style={{
               textAlign: "center",

@@ -109,7 +109,7 @@ export default function AnimatedHero() {
                     </div>
 
                     <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-3 rounded-[20px] rounded-bl-[4px] text-[13px] leading-relaxed shadow-sm">
-                      Done ✅ You&apos;re booked. See you Saturday at 2.
+                      Done ✅ You're booked. See you Saturday at 2.
                     </div>
                     <div className="text-[10px] text-[#888880] text-center mt-1 select-none font-medium">
                       Delivered · 11:44 AM
@@ -156,7 +156,7 @@ export default function AnimatedHero() {
             </h1>
 
             <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
-              They haven&apos;t left. They just went quiet.{" "}
+              They haven't left. They just went quiet.{" "}
               <strong className="text-white font-medium">
                 ChairFill reactivates them on iMessage
               </strong>{" "}

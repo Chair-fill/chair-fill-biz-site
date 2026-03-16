@@ -13,7 +13,7 @@ const testimonials = [
     role: "Independent barber in Atlanta",
   },
   {
-    text: "I was skeptical about it not sounding robotic. But when they showed me the messages, I was like, &quot;bro, I would&apos;ve sent that exact text.&quot; That&apos;s what sold me.",
+    text: "I was skeptical about it not sounding robotic. But when they showed me the messages, I was like, \"bro, I would've sent that exact text.\" That's what sold me.",
     initials: "MT",
     name: "Marcus T.",
     role: "Booth renter in Houston",
@@ -62,7 +62,7 @@ function TestimonialsColumn({
                     ))}
                   </div>
                   <p className="text-sm leading-relaxed text-[#d4d4d4] italic mb-6">
-                    &quot;{text}&quot;
+                    "{text}"
                   </p>
                   <div className="flex items-center gap-3 mt-5">
                     <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#D4AF37]/20 to-[#8B6914]/20 border border-[#D4AF37]/30 flex items-center justify-center text-xs font-bold text-[#D4AF37]">

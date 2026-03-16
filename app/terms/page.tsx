@@ -23,7 +23,7 @@ export default function TermsOfService() {
           </h1>
 
           <div className="text-[#777] text-[0.82rem] tracking-[0.04em] relative z-10">
-            Effective Date: January 1, 2025 &nbsp;·&nbsp; Last Updated: March
+            Effective Date: January 1, 2025  ·  Last Updated: March
             2025
           </div>
         </header>
@@ -172,7 +172,7 @@ export default function TermsOfService() {
           {/* Section 3: Subscription Plans & Billing */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-3">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Subscription Plans &amp; Billing
+              Subscription Plans & Billing
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
@@ -185,7 +185,7 @@ export default function TermsOfService() {
                   <div className="price">
                     $147<span>/mo</span>
                   </div>
-                  <p>Solo barbers &amp; single chairs</p>
+                  <p>Solo barbers & single chairs</p>
                 </div>
                 <div className="plan-card">
                   <h3>Professional</h3>
@@ -222,7 +222,7 @@ export default function TermsOfService() {
           {/* Section 4: Cancellation & Refunds */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-4">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Cancellation &amp; Refunds
+              Cancellation & Refunds
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
@@ -255,7 +255,7 @@ export default function TermsOfService() {
           {/* Section 5: Subscriber Responsibilities & Acceptable Use */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-5">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Subscriber Responsibilities &amp; Acceptable Use
+              Subscriber Responsibilities & Acceptable Use
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
@@ -351,7 +351,7 @@ export default function TermsOfService() {
           {/* Section 8: Disclaimers & Limitation of Liability */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-8">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Disclaimers &amp; Limitation of Liability
+              Disclaimers & Limitation of Liability
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
@@ -409,7 +409,7 @@ export default function TermsOfService() {
           {/* Section 10: Governing Law & Disputes */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-10">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Governing Law &amp; Disputes
+              Governing Law & Disputes
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>

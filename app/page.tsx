@@ -117,17 +117,17 @@ export default function Home() {
                 The problem
               </div>
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
-                You have clients who stopped coming. They didn&apos;t leave.
+                You have clients who stopped coming. They didn't leave.
                 They just went quiet.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-[#888880] max-w-xl">
-                The average barber has 40 to 60 clients who haven&apos;t shown
-                up in 60+ days. That&apos;s thousands of dollars in recurring
+                The average barber has 40 to 60 clients who haven't shown
+                up in 60+ days. That's thousands of dollars in recurring
                 revenue sitting dormant in your phone.
                 <br />
                 <br />
-                The problem isn&apos;t that they don&apos;t want a cut.
-                It&apos;s that nobody reached out. ChairFill does that for you
+                The problem isn't that they don't want a cut.
+                It's that nobody reached out. ChairFill does that for you
                 automatically. It connects in a way that feels natural.
               </p>
             </AnimateIn>
@@ -265,12 +265,12 @@ export default function Home() {
                   </div>
                   <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
                     Ty! You been good bro? I got a slot open this Friday at 11
-                    if you&apos;re tryna pull up 💈
+                    if you're tryna pull up 💈
                   </div>
                   <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
                     <Lightbulb className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                     <p className="text-[11px] text-[#D4AF37] leading-relaxed">
-                      Uses client&apos;s nickname, casual tone, no hard sell. It
+                      Uses client's nickname, casual tone, no hard sell. It
                       matches the way barbers actually text.
                     </p>
                   </div>
@@ -278,7 +278,7 @@ export default function Home() {
                     Yeah I been slippin fr. You got me
                   </div>
                   <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
-                    Let&apos;s get it. I&apos;ll lock in Friday 11am. If
+                    Let's get it. I'll lock in Friday 11am. If
                     anything changes just lmk 🤙
                   </div>
                   <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
@@ -314,7 +314,7 @@ export default function Home() {
                   {
                     icon: <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />,
                     title: "Annoyance shield built in",
-                    desc: "ChairFill knows when to stop. If a client says they&apos;re busy, it backs off and won&apos;t message them again until the right time.",
+                    desc: "ChairFill knows when to stop. If a client says they're busy, it backs off and won't message them again until the right time.",
                   },
                 ].map(({ icon, title, desc }) => (
                   <div key={title} className="flex gap-5">
