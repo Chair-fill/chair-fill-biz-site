@@ -23,8 +23,7 @@ export default function TermsOfService() {
           </h1>
 
           <div className="text-[#777] text-[0.82rem] tracking-[0.04em] relative z-10">
-            Effective Date: January 1, 2025  ·  Last Updated: March
-            2025
+            Effective Date: January 1, 2026 · Last Updated: March 2026
           </div>
         </header>
 
@@ -49,6 +48,8 @@ export default function TermsOfService() {
           .section-9 { animation-delay: 0.45s; }
           .section-10 { animation-delay: 0.5s; }
           .section-11 { animation-delay: 0.55s; }
+          .section-12 { animation-delay: 0.6s; }
+          .section-13 { animation-delay: 0.65s; }
 
           .callout {
             background: rgba(201,168,76,0.12);
@@ -140,18 +141,18 @@ export default function TermsOfService() {
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
-                ChairFill provides an AI-powered iMessage reactivation platform
+                ChairFill provides an AI-powered client communication platform
                 that enables barbershop owners to send automated, personalized
                 messages to their existing client base to drive repeat bookings
                 and increase revenue.
               </p>
               <ul className="space-y-2 mt-4">
                 {[
-                  "Automated iMessage outreach campaigns to client contact lists",
-                  "AI-generated conversational messaging tailored to barbershop businesses",
+                  "Automated outreach campaigns to client contact lists",
+                  "AI-assisted conversational messaging tailored to barbershop businesses",
                   "Client response monitoring and campaign management dashboard",
                   "Opt-out tracking and compliance safeguards",
-                  "Performance analytics and reactivation reporting",
+                  "Performance analytics and reporting",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -185,7 +186,7 @@ export default function TermsOfService() {
                   <div className="price">
                     $147<span>/mo</span>
                   </div>
-                  <p>Solo barbers & single chairs</p>
+                  <p>Solo barbers and single chairs</p>
                 </div>
                 <div className="plan-card">
                   <h3>Professional</h3>
@@ -252,8 +253,110 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          {/* Section 5: Subscriber Responsibilities & Acceptable Use */}
+          {/* Section 5: Subscriber Consent Certification & Messaging Compliance */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-5">
+            <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
+              Subscriber Consent Certification & Messaging Compliance
+            </h2>
+            <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
+              <p>
+                This section governs your obligations as a ChairFill subscriber
+                with respect to client contact data, consent, and compliance
+                with applicable messaging laws. This is a material term of your
+                agreement. Failure to comply may result in immediate account
+                termination and you remaining solely liable for any resulting
+                claims.
+              </p>
+              <p className="font-bold text-white">Consent certification.</p>
+              <p>
+                By importing any contact list into the ChairFill platform, you
+                represent, warrant, and certify that:
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Every contact in that list is an existing client with whom you have a prior established business relationship",
+                  "You have obtained, or have a lawful basis to claim, prior express written consent from each contact to receive automated, AI-assisted communications on behalf of your business",
+                  "Your consent records are accurate, current, and available for production upon request",
+                  "You have not purchased, rented, leased, or otherwise acquired the contact list from a third party without independent verification of consent status",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="relative pl-7 text-[0.95rem] border-b border-white/5 pb-2 last:border-0 before:content-['→'] before:absolute before:left-0 before:text-[#C9A84C] before:text-[0.75rem]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p>
+                <span className="font-bold text-white">
+                  Annual recertification.
+                </span>{" "}
+                You agree to recertify compliance with the above representations
+                on an annual basis, or upon request by ChairFill.
+                Recertification may be required as a condition of continued
+                platform access.
+              </p>
+              <p>
+                <span className="font-bold text-white">
+                  AI disclosure acknowledgment.
+                </span>{" "}
+                You acknowledge that ChairFill uses artificial intelligence to
+                generate messages sent to your clients on your behalf. You
+                understand that certain jurisdictions require disclosure of
+                AI-generated communications to recipients, and you agree that
+                you are solely responsible for ensuring any required disclosures
+                are made to your clients in compliance with the laws of the
+                states and jurisdictions where they reside.
+              </p>
+              <p className="font-bold text-white">Opt-out obligations.</p>
+              <p>You agree to:</p>
+              <ul className="space-y-2">
+                {[
+                  "Honor all opt-out requests immediately and permanently",
+                  "Never re-import a contact who has previously opted out",
+                  "Never direct ChairFill to message a contact after an opt-out has been recorded, whether through the platform or communicated to you directly outside the platform",
+                  "Maintain your own opt-out records independent of the ChairFill platform",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="relative pl-7 text-[0.95rem] border-b border-white/5 pb-2 last:border-0 before:content-['→'] before:absolute before:left-0 before:text-[#C9A84C] before:text-[0.75rem]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p>
+                <span className="font-bold text-white">
+                  TCPA and state law compliance.
+                </span>{" "}
+                You are solely responsible for ensuring your use of the platform
+                complies with the Telephone Consumer Protection Act (TCPA), the
+                CAN-SPAM Act, and all applicable state messaging, telemarketing,
+                and consumer protection laws — including but not limited to laws
+                in Florida, California, Texas, Virginia, and Connecticut.
+                ChairFill provides platform-level safeguards including DNC
+                registry scrubbing and time-zone delivery restrictions, but
+                these safeguards do not constitute legal compliance advice and
+                do not transfer compliance responsibility to ChairFill.
+              </p>
+              <p>
+                <span className="font-bold text-white">Indemnification.</span>{" "}
+                You agree to defend, indemnify, and hold harmless ChairFill LLC,
+                its officers, employees, contractors, and agents from and
+                against any and all claims, damages, fines, penalties, costs,
+                and attorneys' fees arising out of or related to: (i) your
+                failure to obtain proper consent from any contact you import
+                into the platform; (ii) your violation of the TCPA or any
+                applicable state messaging law; (iii) any opt-out you failed to
+                honor; or (iv) any misrepresentation made in your consent
+                certification. This indemnification obligation survives
+                termination of your subscription.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 6: Subscriber Responsibilities & Acceptable Use */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-6">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Subscriber Responsibilities & Acceptable Use
             </h2>
@@ -266,7 +369,7 @@ export default function TermsOfService() {
               <ul className="space-y-2 mt-4">
                 {[
                   "Obtain all legally required consents from contacts before importing them into the platform",
-                  "Use the Services only for lawful barbershop client reactivation purposes",
+                  "Use the Services only for lawful barbershop client outreach purposes",
                   "Maintain accurate account information and keep credentials secure",
                   "Honor all opt-out requests immediately and not re-import opted-out contacts",
                   "Comply with all applicable laws including the TCPA, CAN-SPAM Act, and state messaging regulations",
@@ -281,20 +384,11 @@ export default function TermsOfService() {
                   </li>
                 ))}
               </ul>
-              <div className="warning">
-                <p>
-                  Violation of messaging compliance laws is your responsibility
-                  as the operator. ChairFill does not assume liability for TCPA
-                  violations, fines, or legal claims arising from your use of
-                  the platform. Ensure you have proper consent before messaging
-                  any contact.
-                </p>
-              </div>
             </div>
           </section>
 
-          {/* Section 6: Prohibited Conduct */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-6">
+          {/* Section 7: Prohibited Conduct */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-7">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Prohibited Conduct
             </h2>
@@ -320,8 +414,8 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          {/* Section 7: Intellectual Property */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-7">
+          {/* Section 8: Intellectual Property */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-8">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Intellectual Property
             </h2>
@@ -348,37 +442,77 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          {/* Section 8: Disclaimers & Limitation of Liability */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-8">
+          {/* Section 9: Disclaimers */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-9">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              Disclaimers & Limitation of Liability
+              Disclaimers
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
                 The ChairFill platform is provided "as is" and "as available."
                 We make no guarantees regarding uptime, deliverability rates, or
-                specific business outcomes from use of the platform.
-              </p>
-              <div className="callout">
-                <p>
-                  ChairFill's total cumulative liability to you for any claims
-                  arising under these Terms shall not exceed the total fees paid
-                  by you in the three (3) months preceding the event giving rise
-                  to the claim.
-                </p>
-              </div>
-              <p>
-                To the maximum extent permitted by law, ChairFill shall not be
-                liable for indirect, incidental, special, consequential, or
-                punitive damages, including lost profits, lost data, or business
-                interruption, even if advised of the possibility of such
-                damages.
+                specific business outcomes from use of the platform. Results
+                from use of the Services vary. Individual outcomes depend on
+                client list size, response rates, and other factors outside
+                ChairFill's control. No specific revenue recovery or booking
+                volume is guaranteed.
               </p>
             </div>
           </section>
 
-          {/* Section 9: Termination */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-9">
+          {/* Section 10: Limitation of Liability */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-10">
+            <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
+              Limitation of Liability
+            </h2>
+            <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
+              <p>
+                <span className="font-bold text-white">Liability cap.</span>{" "}
+                ChairFill's total cumulative liability to you for any and all
+                claims arising under or related to these Terms, the Services, or
+                your use of the platform — regardless of the form of action or
+                theory of liability — shall not exceed the total subscription
+                fees actually paid by you to ChairFill in the twelve (12) months
+                immediately preceding the event giving rise to the claim.
+              </p>
+              <p>
+                <span className="font-bold text-white">
+                  Exclusion of consequential damages.
+                </span>{" "}
+                To the maximum extent permitted by applicable law, ChairFill
+                shall not be liable for any indirect, incidental, special,
+                consequential, exemplary, or punitive damages, including without
+                limitation lost profits, lost revenue, lost data, loss of
+                goodwill, business interruption, or cost of substitute services,
+                even if ChairFill has been advised of the possibility of such
+                damages and even if a limited remedy fails of its essential
+                purpose.
+              </p>
+              <p>
+                <span className="font-bold text-white">
+                  No liability for subscriber compliance failures.
+                </span>{" "}
+                ChairFill shall have no liability whatsoever for any fines,
+                penalties, damages, claims, or legal fees arising from your
+                failure to obtain proper consent, your violation of TCPA or any
+                applicable messaging law, or your failure to honor opt-out
+                requests. These risks are solely yours as the operator.
+              </p>
+              <p>
+                <span className="font-bold text-white">
+                  Essential basis of the bargain.
+                </span>{" "}
+                You acknowledge that the limitations of liability set forth in
+                this section reflect a reasonable allocation of risk and are a
+                fundamental element of the basis of the bargain between
+                ChairFill and you. ChairFill would not provide the Services
+                without these limitations.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 11: Termination */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-11">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Termination
             </h2>
@@ -401,13 +535,14 @@ export default function TermsOfService() {
               <p className="mt-4">
                 Upon termination, your right to access the platform ceases
                 immediately. We will retain your data in accordance with our
-                Privacy Policy.
+                Privacy Policy. Your indemnification obligations and the consent
+                certification representations you made survive termination.
               </p>
             </div>
           </section>
 
-          {/* Section 10: Governing Law & Disputes */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-10">
+          {/* Section 12: Governing Law & Disputes */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-12">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Governing Law & Disputes
             </h2>
@@ -437,8 +572,8 @@ export default function TermsOfService() {
             </div>
           </section>
 
-          {/* Section 11: Contact Us */}
-          <section className="animate-fade-up section-11">
+          {/* Section 13: Contact Us */}
+          <section className="animate-fade-up section-13">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Contact Us
             </h2>

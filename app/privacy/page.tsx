@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
           </h1>
 
           <div className="text-[#777] text-[0.82rem] tracking-[0.04em] relative z-10">
-            Effective Date: January 1, 2025 · Last Updated: March 2025
+            Effective Date: January 1, 2026 · Last Updated: March 2026
           </div>
         </header>
 
@@ -47,6 +47,8 @@ export default function PrivacyPolicy() {
           .section-8 { animation-delay: 0.4s; }
           .section-9 { animation-delay: 0.45s; }
           .section-10 { animation-delay: 0.5s; }
+          .section-11 { animation-delay: 0.55s; }
+          .section-12 { animation-delay: 0.6s; }
         `,
           }}
         />
@@ -60,11 +62,10 @@ export default function PrivacyPolicy() {
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
                 ChairFill LLC ("ChairFill," "we," "our," or "us") operates an
-                AI-powered iMessage reactivation platform built specifically for
-                barbers and barbershops. This Privacy Policy explains how we
-                collect, use, disclose, and protect information when you use our
-                platform, website, and related services (collectively, the
-                "Services").
+                AI-powered platform built for independent barbers and
+                barbershops. This Privacy Policy explains how we collect, use,
+                disclose, and protect information when you use our platform,
+                website, and related services (collectively, the "Services").
               </p>
               <p>
                 By using ChairFill, you agree to the practices described in this
@@ -136,7 +137,7 @@ export default function PrivacyPolicy() {
               <ul className="my-4 list-none divide-y divide-white/[0.04]">
                 {[
                   "Client phone numbers and contact lists imported by barbershop subscribers",
-                  "Message content sent through the platform as part of reactivation campaigns",
+                  "Content generated through platform services on behalf of subscribers",
                   "Opt-out and consent status records for client contacts",
                 ].map((item, i) => (
                   <li
@@ -150,24 +151,23 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 3: iMessage Automation & Client Data */}
+          {/* Section 3: Platform Services & Client Data */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-3">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
-              iMessage Automation & Client Data
+              Platform Services & Client Data
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
-                ChairFill's core functionality involves sending automated
-                iMessages to barbershop clients on behalf of our subscribers.
-                Subscribers are responsible for ensuring they have appropriate
-                consent from their clients before importing contact lists into
-                the platform.
+                ChairFill facilitates automated outreach to barbershop clients on
+                behalf of our subscribers. Subscribers are responsible for
+                ensuring they have appropriate consent from their clients before
+                importing contact lists into the platform.
               </p>
               <ul className="my-4 list-none divide-y divide-white/[0.04]">
                 {[
                   "All opt-out requests received through the platform are honored immediately and permanently",
                   "ChairFill enforces hard stops on messaging for any contact that has opted out",
-                  "Client contact data imported by subscribers is used solely to deliver the contracted service",
+                  "Client contact data imported by subscribers is used solely to deliver platform services",
                   "We do not use client contact data for our own marketing purposes",
                 ].map((item, i) => (
                   <li
@@ -190,8 +190,92 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 4: How We Use Your Information */}
+          {/* Section 4: AI-Generated Communications */}
           <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-4">
+            <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
+              AI-Generated Communications
+            </h2>
+            <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
+              <p>
+                ChairFill uses artificial intelligence to assist in generating
+                outbound messages sent to barbershop clients on behalf of our
+                barber subscribers. The following disclosures apply:
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Nature of AI messaging.</span>{" "}
+                Messages delivered through ChairFill are generated or assisted by
+                AI and sent on behalf of the barber subscriber. Recipients may be
+                communicating with an AI system acting on behalf of their barber.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Consent and opt-in.</span>{" "}
+                ChairFill captures affirmative consent before delivering ongoing
+                communications through platform services. Clients who do not
+                consent or who do not respond to an initial outreach will not
+                receive follow-up messages.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Opt-out.</span>{" "}
+                Any client who replies with STOP, UNSUBSCRIBE, NO, or any similar
+                opt-out signal will be immediately and permanently removed from
+                all future messaging for that barber's account. A single
+                confirmation message will be sent, and no further messages will
+                follow. Opt-out status is retained indefinitely, including after
+                account cancellation.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">AI and third-party data processing.</span>{" "}
+                Message content may be processed by third-party AI providers to
+                generate responses. We do not permit these providers to use
+                client contact data or message content to train their models.
+                Contact <a href="mailto:admin@chairfill.co" className="text-[#C9A84C] hover:underline">admin@chairfill.co</a> with questions about
+                third-party AI data practices.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Time-of-day restrictions.</span>{" "}
+                Platform services operate within legally required delivery windows
+                in the recipient's local time zone.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 5: Do Not Call (DNC) Registry Compliance */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-5">
+            <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
+              Do Not Call (DNC) Registry Compliance
+            </h2>
+            <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
+              <p>
+                ChairFill scrubs all client phone numbers against the National Do
+                Not Call Registry and applicable state DNC registries before any
+                outbound message is sent. This process is automatic and occurs as
+                part of our standard message pipeline.
+              </p>
+              <ul className="my-4 list-none divide-y divide-white/[0.04]">
+                {[
+                  "Numbers listed on the National DNC Registry are suppressed from all outbound campaigns",
+                  "Numbers listed on applicable state DNC registries are suppressed where required",
+                  "Barber subscribers may not direct ChairFill to contact numbers flagged through this process",
+                  "DNC scrubbing records are retained as part of our compliance logs",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="relative pl-[28px] py-[10px] before:content-['→'] before:absolute before:left-0 before:text-[#C9A84C] before:text-[0.75rem] before:top-[12px]"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p>
+                Barbershop operators remain responsible for ensuring their client
+                lists comply with all applicable telemarketing and messaging laws
+                in their jurisdiction.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 6: How We Use Your Information */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-6">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               How We Use Your Information
             </h2>
@@ -221,8 +305,8 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 5: Data Sharing & Disclosure */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-5">
+          {/* Section 7: Data Sharing & Disclosure */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-7">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Data Sharing & Disclosure
             </h2>
@@ -231,7 +315,7 @@ export default function PrivacyPolicy() {
                 {[
                   {
                     title: "Service Providers",
-                    text: "Trusted vendors who assist in operating our platform (hosting, payments, analytics), bound by confidentiality obligations",
+                    text: "Trusted vendors who assist in operating our platform (hosting, payments, analytics, AI providers), bound by confidentiality obligations",
                   },
                   {
                     title: "Legal Requirements",
@@ -260,8 +344,8 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 6: Data Retention & Security */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-6">
+          {/* Section 8: Data Retention & Security */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-8">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Data Retention & Security
             </h2>
@@ -272,10 +356,18 @@ export default function PrivacyPolicy() {
                 resolve disputes, and enforce our agreements.
               </p>
               <p>
+                Consent and opt-out records — including client consent status,
+                opt-out history, and DNC scrubbing logs — are retained
+                indefinitely for compliance purposes, even after account
+                termination. These records are stored in an append-only audit log
+                and are not subject to deletion requests where retention is
+                legally required.
+              </p>
+              <p>
                 We implement industry-standard security measures including
                 encrypted data transmission (TLS), access controls, and regular
-                security reviews. However, no method of transmission over the
-                internet is 100% secure.
+                security reviews. No method of transmission over the internet is
+                100% secure.
               </p>
               <p>
                 Upon account termination or written request, we will delete or
@@ -285,8 +377,8 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 7: Your Rights & Choices */}
-          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-7">
+          {/* Section 9: Your Rights & Choices */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-9">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Your Rights & Choices
             </h2>
@@ -320,8 +412,74 @@ export default function PrivacyPolicy() {
             </div>
           </section>
 
-          {/* Section 8: Contact Us */}
-          <section className="animate-fade-up section-8">
+          {/* Section 10: California Residents — CCPA/CPRA Rights */}
+          <section className="mb-[60px] pb-[60px] border-b border-white/5 animate-fade-up section-10">
+            <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
+              California Residents — CCPA/CPRA Rights
+            </h2>
+            <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
+              <p>
+                If you are a California resident, the California Consumer Privacy
+                Act (CCPA) and California Privacy Rights Act (CPRA) provide you
+                with additional rights regarding your personal information.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Right to know.</span>{" "}
+                You may request disclosure of the categories and specific pieces
+                of personal information we have collected about you, the sources
+                from which it was collected, the business purpose for collecting
+                it, and the categories of third parties with whom we share it.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Right to delete.</span>{" "}
+                You may request deletion of personal information we have
+                collected from you, subject to certain exceptions including where
+                retention is required for legal compliance, fraud prevention, or
+                completing a requested transaction.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Right to correct.</span>{" "}
+                You may request correction of inaccurate personal information we
+                maintain about you.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Right to opt out of sharing.</span>{" "}
+                ChairFill does not sell personal information and does not share
+                it for cross-context behavioral advertising. No opt-out action is
+                required, but you may contact us to confirm.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Right to limit use of sensitive personal information.</span>{" "}
+                To the extent we process sensitive personal information as
+                defined under CPRA, you may request that we limit its use to
+                purposes permitted by law.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Automated decision-making.</span>{" "}
+                ChairFill uses AI to deliver platform services on behalf of
+                barber subscribers. If you are a client of a barber using
+                ChairFill, you may request information about how automated
+                processing may affect you and opt out of AI-generated
+                communications at any time by replying STOP to any message or
+                contacting us at{" "}
+                <a href="mailto:admin@chairfill.co" className="text-[#C9A84C] hover:underline">admin@chairfill.co</a>.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">Non-discrimination.</span>{" "}
+                We will not discriminate against you for exercising any
+                CCPA/CPRA rights.
+              </p>
+              <p>
+                <span className="text-[#E5DFD5] font-bold">How to submit a request.</span>{" "}
+                Contact <a href="mailto:admin@chairfill.co" className="text-[#C9A84C] hover:underline">admin@chairfill.co</a>. We will respond within 45
+                days and may need to verify your identity before processing your
+                request.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 11: Contact Us */}
+          <section className="animate-fade-up section-11">
             <h2 className="flex items-center gap-[14px] text-[#E8C96A] text-[1.15rem] font-bold tracking-[0.02em] mb-5 before:content-[''] before:block before:w-[24px] before:h-[2px] before:bg-[#C9A84C] before:rounded-[2px] before:shrink-0">
               Contact Us
             </h2>

@@ -39,7 +39,6 @@ export default function Home() {
       {/* ── HERO. Animated rotating words (replaces static hero) ── */}
       <AnimatedHero />
 
-      {/* ── PROOF BAR ── */}
       <div className="border-y border-[#222] bg-[#141414]/50 py-6 sm:py-8">
         <div className="section-inner">
           <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
@@ -57,6 +56,10 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="mt-8 text-center text-[11px] text-[#888880] [font-family:var(--font-satoshi)] max-w-2xl mx-auto leading-relaxed uppercase tracking-wider">
+            Results vary. Individual outcomes depend on client list size, response
+            rates, and other factors. Recovery figures are not guaranteed.
           </div>
         </div>
       </div>
@@ -82,7 +85,7 @@ export default function Home() {
               },
               {
                 title: "AI calibrated to you",
-                desc: "Personalized rebooks and fill-ins. It matches your texting style.",
+                desc: "Personalized outreach sent in your voice. It learns how you communicate and matches it.",
                 icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
@@ -218,8 +221,8 @@ export default function Home() {
               },
               {
                 step: "02",
-                title: "AI texts on iMessage",
-                desc: "Our AI sends reminders and rebooks no-shows. It fills last-minute slots with messages that get replies.",
+                title: "AI reaches out for you",
+                desc: "Our AI sends reminders and rebooks no-shows. It fills last-minute slots with messages that actually get replies.",
                 icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
               },
               {
@@ -303,13 +306,13 @@ export default function Home() {
                 {[
                   {
                     icon: <Smartphone className="w-6 h-6 text-[#D4AF37]" />,
-                    title: "Delivered over iMessage",
-                    desc: "iMessage has 98% open rates. Clients see it in the same thread as your real texts. No spam folder, no app to download.",
+                    title: "Delivered where clients actually read",
+                    desc: "Open rates that blow email out of the water. Clients see it in the same place as your real messages. No spam folder, no app to download.",
                   },
                   {
                     icon: <Mic className="w-6 h-6 text-[#D4AF37]" />,
                     title: "Calibrated to your style",
-                    desc: "We calibrate the AI to match your general communication style. The result feels like a text from you because it matches your tone.",
+                    desc: "We calibrate the AI to match your communication style. The result feels like it came from you — because it sounds like you.",
                   },
                   {
                     icon: <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />,

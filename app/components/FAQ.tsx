@@ -4,9 +4,9 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "Will my clients know it's an AI texting them?",
+    question: "Will my clients know it's an AI?",
     answer:
-      "Nope. And that's intentional. We calibrate the AI to match your general communication style. The messages come from your number over iMessage. Most clients assume it's you and most won't notice a difference. If they ask, you can always tell them, but it's designed to feel personal and human.",
+      "The messages are AI-assisted but calibrated to your communication style, so they feel personal — not like a generic blast. If a client ever asks directly, you can let them know. ChairFill is designed to feel like you, not like a bot.",
   },
   {
     question: "What if a client says they're not interested?",

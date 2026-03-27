@@ -156,13 +156,8 @@ export default function AnimatedHero() {
             </h1>
 
             <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
-              They haven't left. They just went quiet.{" "}
-              <strong className="text-white font-medium">
-                ChairFill reactivates them on iMessage
-              </strong>{" "}
-              automatically while you stay behind the chair.
-              <br />
-              <br />
+              They haven't left. They just went quiet. ChairFill reaches back out
+              automatically — so you stay behind the chair, not behind a phone.
               No apps for them to download. No ads to run. Just more bookings.
             </p>
 
