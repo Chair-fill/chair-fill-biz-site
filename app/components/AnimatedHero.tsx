@@ -149,10 +149,10 @@ export default function AnimatedHero() {
             </div>
 
             <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
-              Stop letting
+              Your old clients
               <br />
-              quiet clients
-              <span className="block text-[#D4AF37]">kill your income.</span>
+              aren't gone.
+              <span className="block text-[#D4AF37]">They just need a text.</span>
             </h1>
 
             <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
