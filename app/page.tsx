@@ -20,6 +20,9 @@ import {
 // ── New components ───────────────────────────────────────────────────────
 import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
 import FoundingMemberSection from "./components/FoundingMemberSection";
+import ObjectionsSection from "./components/ObjectionsSection";
+import BundleSection from "./components/BundleSection";
+import GuaranteeSection from "./components/GuaranteeSection";
 
 const IMG_CHAIR =
   "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80";
@@ -56,10 +59,6 @@ export default function Home() {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="mt-8 text-center text-[11px] text-[#888880] [font-family:var(--font-satoshi)] max-w-2xl mx-auto leading-relaxed uppercase tracking-wider">
-            Results vary. Individual outcomes depend on client list size, response
-            rates, and other factors. Recovery figures are not guaranteed.
           </div>
         </div>
       </div>
@@ -339,6 +338,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── OBJECTIONS ── */}
+      <ObjectionsSection />
+
+      {/* ── BUNDLE / FULL CHAIR SYSTEM ── */}
+      <BundleSection />
+
+      {/* ── GUARANTEE ── */}
+      <GuaranteeSection />
 
       {/* ── FOUNDING MEMBER SECTION (replaces testimonials/pricing during beta) ── */}
       <FoundingMemberSection />
