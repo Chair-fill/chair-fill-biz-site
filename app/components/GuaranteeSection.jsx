@@ -9,7 +9,7 @@ export default function GuaranteeSection() {
           border-top: 1px solid #242424;
           border-bottom: 1px solid #242424;
           color: #F0EDE6;
-          font-family: 'DM Sans', 'Satoshi', sans-serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
         }
         .guarantee-scope *, .guarantee-scope *::before, .guarantee-scope *::after {
           box-sizing: border-box;
@@ -32,9 +32,11 @@ export default function GuaranteeSection() {
           margin-bottom: 28px;
         }
         .guarantee-scope .section-title {
-          font-family: 'DM Serif Display', Georgia, serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
           font-size: clamp(30px, 4.5vw, 50px);
           line-height: 1.1;
+          letter-spacing: -0.01em;
           margin: 0 0 16px;
           color: #F0EDE6;
         }
@@ -72,7 +74,8 @@ export default function GuaranteeSection() {
           padding: 24px;
         }
         .guarantee-scope .badge-number {
-          font-family: 'DM Serif Display', Georgia, serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
           font-size: 68px;
           color: #C9A84C;
           line-height: 1;
@@ -148,8 +151,10 @@ export default function GuaranteeSection() {
           margin-top: 2px;
         }
         .guarantee-scope .guarantee-name {
-          font-family: 'DM Serif Display', Georgia, serif;
-          font-size: 19px;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 17px;
+          letter-spacing: 0.01em;
           color: #C9A84C;
           border-bottom: 1px solid #6B5520;
           padding-bottom: 4px;

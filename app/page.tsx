@@ -67,7 +67,7 @@ export default function Home() {
       <section id="benefits" className="py-20 sm:py-24">
         <div className="section-inner">
           <AnimateIn>
-            <h2 className="text-center text-4xl font-normal tracking-tight text-white sm:text-5xl [font-family:var(--font-bebas)]">
+            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
               Why barbers choose ChairFill
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-[#a3a3a3]">
@@ -100,7 +100,7 @@ export default function Home() {
             ].map(({ title, desc, icon }) => (
               <div key={title} className="card-modern p-8">
                 <div className="mb-4">{icon}</div>
-                <h3 className="mt-4 text-lg font-bold text-white">{title}</h3>
+                <h3 className="mt-4 text-lg font-bold text-white [font-family:var(--font-satoshi)]">{title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#a3a3a3]">
                   {desc}
                 </p>
@@ -236,7 +236,7 @@ export default function Home() {
                   {step}
                 </div>
                 <div className="mb-4">{icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
+                <h3 className="text-xl font-bold text-white mb-3 [font-family:var(--font-satoshi)]">{title}</h3>
                 <p className="leading-relaxed text-[#888880] text-sm">{desc}</p>
               </div>
             ))}

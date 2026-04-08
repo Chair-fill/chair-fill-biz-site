@@ -82,7 +82,7 @@ export default function AnimatedHero() {
                       CF
                     </div>
                     <div>
-                      <div className="text-[14px] font-bold text-white [font-family:var(--font-syne)] leading-none mb-0.5">
+                      <div className="text-[14px] font-bold text-white [font-family:var(--font-satoshi)] leading-none mb-0.5">
                         Marcus (your AI)
                       </div>
                       <div className="text-[10px] text-[#888880] font-medium tracking-wide">
@@ -148,7 +148,7 @@ export default function AnimatedHero() {
               Now accepting barbers. Launching soon.
             </div>
 
-            <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-syne)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
+            <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-satoshi)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
               Your old clients
               <br />
               aren't gone.

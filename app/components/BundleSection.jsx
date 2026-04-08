@@ -80,7 +80,7 @@ export default function BundleSection() {
           background: #0a0a0a;
           border-top: 1px solid #242424;
           color: #F0EDE6;
-          font-family: 'DM Sans', 'Satoshi', sans-serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
         }
         .bundle-scope *, .bundle-scope *::before, .bundle-scope *::after {
           box-sizing: border-box;
@@ -103,9 +103,11 @@ export default function BundleSection() {
           margin-bottom: 28px;
         }
         .bundle-scope .section-title {
-          font-family: 'DM Serif Display', Georgia, serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
           font-size: clamp(30px, 4.5vw, 50px);
           line-height: 1.1;
+          letter-spacing: -0.01em;
           margin: 0 0 16px;
           color: #F0EDE6;
         }
@@ -143,7 +145,8 @@ export default function BundleSection() {
         }
         .bundle-scope .bundle-card:hover::after { opacity: 1; }
         .bundle-scope .bundle-num {
-          font-family: 'DM Serif Display', Georgia, serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
           font-size: 11px;
           color: #6B5520;
           letter-spacing: 0.2em;
@@ -163,11 +166,12 @@ export default function BundleSection() {
           color: #C9A84C;
         }
         .bundle-scope .bundle-name {
-          font-family: 'DM Serif Display', Georgia, serif;
-          font-size: 19px;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 18px;
           color: #F0EDE6;
           margin: 0 0 6px;
-          line-height: 1.2;
+          line-height: 1.25;
         }
         .bundle-scope .bundle-tagline {
           font-size: 12px;

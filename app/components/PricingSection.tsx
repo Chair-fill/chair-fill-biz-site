@@ -221,7 +221,7 @@ export default function PricingSection() {
                 </span>
               )}
 
-              <h3 className="text-xl font-bold text-white">{plan.name}</h3>
+              <h3 className="text-xl font-bold text-white [font-family:var(--font-satoshi)]">{plan.name}</h3>
               <p className="mt-2 text-sm text-[#a3a3a3]">{plan.description}</p>
 
               {/* Animated price */}

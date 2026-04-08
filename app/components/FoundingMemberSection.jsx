@@ -36,7 +36,7 @@ export default function FoundingMemberSection() {
     <div
       className="founding-member-scope"
       style={{
-        fontFamily: "'Satoshi', 'DM Sans', sans-serif",
+        fontFamily: "var(--font-satoshi), system-ui, sans-serif",
         background: "#0a0a0a",
         minHeight: "100vh",
         display: "flex",
@@ -46,8 +46,6 @@ export default function FoundingMemberSection() {
       }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
-
         .founding-member-scope {
           box-sizing: border-box;
         }
@@ -220,11 +218,12 @@ export default function FoundingMemberSection() {
           <h2
             style={{
               fontSize: "clamp(1.7rem, 5vw, 2.4rem)",
-              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontFamily: "var(--font-satoshi), system-ui, sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-0.01em",
               color: "#fff",
               lineHeight: 1.2,
               marginBottom: 14,
-              fontStyle: "italic",
             }}
           >
             Only <span className="gold">{spotsLeft} Spots</span> Remaining

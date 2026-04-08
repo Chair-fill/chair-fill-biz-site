@@ -78,7 +78,7 @@ export default function ObjectionsSection() {
           border-top: 1px solid #242424;
           border-bottom: 1px solid #242424;
           color: #F0EDE6;
-          font-family: 'DM Sans', 'Satoshi', sans-serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
         }
         .objections-scope *, .objections-scope *::before, .objections-scope *::after {
           box-sizing: border-box;
@@ -101,9 +101,11 @@ export default function ObjectionsSection() {
           margin-bottom: 28px;
         }
         .objections-scope .section-title {
-          font-family: 'DM Serif Display', Georgia, serif;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
           font-size: clamp(30px, 4.5vw, 50px);
           line-height: 1.1;
+          letter-spacing: -0.01em;
           margin: 0 0 16px;
           color: #F0EDE6;
         }

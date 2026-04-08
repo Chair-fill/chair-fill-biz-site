@@ -18,7 +18,7 @@ export default function TermsOfService() {
           </div>
 
           {/* Header */}
-          <h1 className="text-[clamp(2.4rem,5vw,3.8rem)] font-bold leading-[1.1] text-white mb-5 tracking-[-0.02em] relative z-10">
+          <h1 className="text-[clamp(2.4rem,5vw,3.8rem)] font-bold leading-[1.1] text-white mb-5 tracking-[-0.02em] relative z-10 [font-family:var(--font-satoshi)]">
             Terms of <span className="text-[#C9A84C]">Service</span>
           </h1>
 
