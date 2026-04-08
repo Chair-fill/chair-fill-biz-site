@@ -156,9 +156,8 @@ export default function AnimatedHero() {
             </h1>
 
             <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
-              They haven't left. They just went quiet. ChairFill reaches back out
-              automatically — so you stay behind the chair, not behind a phone.
-              No apps for them to download. No ads to run. Just more bookings.
+              Your booking software is a waiting room. ChairFill is a revenue recovery machine. 
+              There are clients in your phone right now who haven't booked in months — ChairFill goes and gets them back, automatically.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
