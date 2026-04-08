@@ -215,7 +215,7 @@ export default function FoundingMemberSection() {
         <div className="card" style={{ textAlign: "center", marginBottom: 32 }}>
           <div className="badge">
             <span className="pulse-dot" />
-            Founding Member Program
+            ChairFill Founding Member 30-Day Revenue Recovery Program
           </div>
           <h2
             style={{
@@ -238,7 +238,7 @@ export default function FoundingMemberSection() {
               margin: "0 auto",
             }}
           >
-            We're officially rolling out our new system. To ensure we get
+            One reactivated client per week = $200–$400/month in recovered revenue. ChairFill costs $123. The math works on week one. To ensure we get
             perfect case studies, we're strictly capping this initial launch at{" "}
             <strong style={{ color: "rgba(255,255,255,0.85)" }}>
               10 barbers
