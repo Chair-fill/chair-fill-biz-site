@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npx tsc:*)",
       "Bash(npx next:*)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(curl -s http://localhost:3099)",
+      "Read(//c/Users/user/Desktop/chairfill/chair-fill-biz-site/**)"
     ]
   }
 }

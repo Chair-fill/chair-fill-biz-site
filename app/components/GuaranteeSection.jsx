@@ -1,5 +1,7 @@
 "use client";
 
+import AnimateIn from "./AnimateIn";
+
 export default function GuaranteeSection() {
   return (
     <div className="guarantee-scope">
@@ -174,70 +176,78 @@ export default function GuaranteeSection() {
 
       <section className="g-section">
         <div className="guarantee-wrap">
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div className="badge-ring">
-              <div className="badge-inner">
-                <span className="badge-number">30</span>
-                <span className="badge-unit">Day Guarantee</span>
-                <p className="badge-sub">
-                  One client back.
-                  <br />
-                  Or every dollar refunded.
-                </p>
+          <AnimateIn direction="left">
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div className="badge-ring">
+                <div className="badge-inner">
+                  <span className="badge-number">30</span>
+                  <span className="badge-unit">Day Guarantee</span>
+                  <p className="badge-sub">
+                    One client back.
+                    <br />
+                    Or every dollar refunded.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimateIn>
           <div>
-            <div className="label">Zero Risk</div>
-            <h2 className="section-title">
-              Try it for 30 days.
-              <br />
-              If it doesn&apos;t work,
-              <br />
-              you don&apos;t pay.
-            </h2>
-            <div className="guarantee-promise">
-              <p>
-                <strong>
-                  If ChairFill doesn&apos;t bring back at least one lapsed
-                  client in your first 30 days
-                </strong>{" "}
-                — after you&apos;ve completed onboarding and run your first
-                campaign — we refund every dollar. Same day you ask. No forms.
-                No conversation about it.
+            <AnimateIn direction="right">
+              <div className="label">Zero Risk</div>
+              <h2 className="section-title">
+                Try it for 30 days.
+                <br />
+                If it doesn&apos;t work,
+                <br />
+                you don&apos;t pay.
+              </h2>
+            </AnimateIn>
+            <AnimateIn direction="up" delay={100}>
+              <div className="guarantee-promise">
+                <p>
+                  <strong>
+                    If ChairFill doesn&apos;t bring back at least one lapsed
+                    client in your first 30 days
+                  </strong>{" "}
+                  — after you&apos;ve completed onboarding and run your first
+                  campaign — we refund every dollar. Same day you ask. No forms.
+                  No conversation about it.
+                </p>
+              </div>
+            </AnimateIn>
+            <AnimateIn direction="up" delay={200}>
+              <p className="g-body-text">
+                We make this offer because we know what happens when barbers
+                actually launch. Within the first few days, replies start coming
+                in — clients who went quiet months ago, responding like no time
+                passed. The system works when you use it. So we guarantee the
+                first result and let the outcome speak for itself.
               </p>
-            </div>
-            <p className="g-body-text">
-              We make this offer because we know what happens when barbers
-              actually launch. Within the first few days, replies start coming
-              in — clients who went quiet months ago, responding like no time
-              passed. The system works when you use it. So we guarantee the
-              first result and let the outcome speak for itself.
-            </p>
-            <ul className="guarantee-steps">
-              <li>
-                <span className="step-num">1</span>Complete your done-for-you
-                onboarding — we handle the heavy lifting
-              </li>
-              <li>
-                <span className="step-num">2</span>Run your first reactivation
-                campaign to your existing client list
-              </li>
-              <li>
-                <span className="step-num">3</span>If zero clients come back in
-                30 days — full refund, no questions
-              </li>
-              <li>
-                <span className="step-num">4</span>You keep every campaign we
-                built for you regardless
-              </li>
-            </ul>
-            <p className="g-body-text">
-              The only barbers who don&apos;t win are the ones who never launch. We
-              made launching take less than 48 hours. Then we put our money
-              behind the rest.
-            </p>
-            <span className="guarantee-name">The First Chair Guarantee™</span>
+              <ul className="guarantee-steps">
+                <li>
+                  <span className="step-num">1</span>Complete your done-for-you
+                  onboarding — we handle the heavy lifting
+                </li>
+                <li>
+                  <span className="step-num">2</span>Run your first reactivation
+                  campaign to your existing client list
+                </li>
+                <li>
+                  <span className="step-num">3</span>If zero clients come back in
+                  30 days — full refund, no questions
+                </li>
+                <li>
+                  <span className="step-num">4</span>You keep every campaign we
+                  built for you regardless
+                </li>
+              </ul>
+              <p className="g-body-text">
+                The only barbers who don&apos;t win are the ones who never launch. We
+                made launching take less than 48 hours. Then we put our money
+                behind the rest.
+              </p>
+              <span className="guarantee-name">The First Chair Guarantee™</span>
+            </AnimateIn>
           </div>
         </div>
       </section>

@@ -8,6 +8,7 @@ import {
   BarChart3,
   Wrench,
 } from "lucide-react";
+import AnimateIn from "./AnimateIn";
 
 const CARDS = [
   {
@@ -126,12 +127,18 @@ export default function BundleSection() {
           grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
           gap: 2px;
         }
+        .bundle-scope .bundle-grid > div {
+          height: 100%;
+        }
         .bundle-scope .bundle-card {
           background: #111111;
           padding: 34px 30px;
           position: relative;
           overflow: hidden;
           transition: background 0.25s;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
         }
         .bundle-scope .bundle-card:hover { background: #161616; }
         .bundle-scope .bundle-card::after {
@@ -185,6 +192,7 @@ export default function BundleSection() {
           color: #888880;
           line-height: 1.8;
           margin: 0 0 16px;
+          flex: 1;
         }
         .bundle-scope .bundle-result {
           background: #0a0a0a;
@@ -216,37 +224,41 @@ export default function BundleSection() {
       `}</style>
 
       <section className="b-section">
-        <div className="bundle-header">
-          <div className="label">The Founding Member Stack</div>
-          <h2 className="section-title">
-            Everything inside
-            <br />
-            <span className="gold">The Full Chair System.</span>
-          </h2>
-          <p className="section-sub">
-            Not a subscription to features. A complete system — six named
-            components, each doing a specific job, all working together to keep
-            your chair full without you chasing anyone.
-          </p>
-        </div>
+        <AnimateIn direction="up">
+          <div className="bundle-header">
+            <div className="label">The Founding Member Stack</div>
+            <h2 className="section-title">
+              Everything inside
+              <br />
+              <span className="gold">The Full Chair System.</span>
+            </h2>
+            <p className="section-sub">
+              Not a subscription to features. A complete system — six named
+              components, each doing a specific job, all working together to keep
+              your chair full without you chasing anyone.
+            </p>
+          </div>
+        </AnimateIn>
         <div className="bundle-grid">
-          {CARDS.map(({ num, Icon, name, tagline, desc, result, value }) => (
-            <div className="bundle-card" key={num}>
-              <div className="bundle-num">{num}</div>
-              <div className="bundle-icon">
-                <Icon size={20} />
+          {CARDS.map(({ num, Icon, name, tagline, desc, result, value }, i) => (
+            <AnimateIn key={num} direction="up" delay={i * 100}>
+              <div className="bundle-card">
+                <div className="bundle-num">{num}</div>
+                <div className="bundle-icon">
+                  <Icon size={20} />
+                </div>
+                <h3 className="bundle-name">{name}</h3>
+                <div className="bundle-tagline">{tagline}</div>
+                <p className="bundle-desc">{desc}</p>
+                <div className="bundle-result">
+                  <strong>The result:</strong> {result}
+                </div>
+                <div className="bundle-value">
+                  <span className="bundle-value-label">Value</span>
+                  <span className="bundle-value-price">{value}</span>
+                </div>
               </div>
-              <h3 className="bundle-name">{name}</h3>
-              <div className="bundle-tagline">{tagline}</div>
-              <p className="bundle-desc">{desc}</p>
-              <div className="bundle-result">
-                <strong>The result:</strong> {result}
-              </div>
-              <div className="bundle-value">
-                <span className="bundle-value-label">Value</span>
-                <span className="bundle-value-price">{value}</span>
-              </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       </section>

@@ -1,5 +1,7 @@
 "use client";
 
+import AnimateIn from "./AnimateIn";
+
 const ROWS = [
   {
     problem:
@@ -210,49 +212,53 @@ export default function ObjectionsSection() {
       `}</style>
 
       <section className="obj-section">
-        <div className="obj-header">
-          <div className="label">Every Objection. Killed.</div>
-          <h2 className="section-title">
-            We already know
-            <br />
-            what&apos;s holding you back.
-          </h2>
-          <p className="section-sub">
-            These are the exact reasons barbers don&apos;t reactivate their
-            client list — and what ChairFill does about each one.
-          </p>
-        </div>
+        <AnimateIn direction="up">
+          <div className="obj-header">
+            <div className="label">Every Objection. Killed.</div>
+            <h2 className="section-title">
+              We already know
+              <br />
+              what&apos;s holding you back.
+            </h2>
+            <p className="section-sub">
+              These are the exact reasons barbers don&apos;t reactivate their
+              client list — and what ChairFill does about each one.
+            </p>
+          </div>
+        </AnimateIn>
         <div className="obj-col-labels">
           <div className="obj-col-label p">⚠ What barbers think</div>
           <div className="obj-col-label s">✓ What actually happens</div>
         </div>
         <div className="obj-grid">
           {ROWS.map((row, i) => (
-            <div className="obj-row" key={i}>
-              <div className="obj-cell problem">
-                <div className="obj-tag t-problem">The Fear</div>
-                <p className="obj-text">
-                  {row.problem}
-                  <em>{row.problemEm}</em>
-                </p>
+            <AnimateIn key={i} direction="up" delay={i * 80}>
+              <div className="obj-row">
+                <div className="obj-cell problem">
+                  <div className="obj-tag t-problem">The Fear</div>
+                  <p className="obj-text">
+                    {row.problem}
+                    <em>{row.problemEm}</em>
+                  </p>
+                </div>
+                <div className="obj-cell solution">
+                  <div className="obj-tag t-solution">What Happens</div>
+                  <p className="obj-text">
+                    {row.solution}
+                    <em>{row.solutionEm}</em>
+                  </p>
+                  {row.bubbles && (
+                    <div className="mini-bubble-wrap">
+                      {row.bubbles.map((b, bi) => (
+                        <div key={bi} className={`mini-bubble ${b.dir}`}>
+                          {b.text}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="obj-cell solution">
-                <div className="obj-tag t-solution">What Happens</div>
-                <p className="obj-text">
-                  {row.solution}
-                  <em>{row.solutionEm}</em>
-                </p>
-                {row.bubbles && (
-                  <div className="mini-bubble-wrap">
-                    {row.bubbles.map((b, bi) => (
-                      <div key={bi} className={`mini-bubble ${b.dir}`}>
-                        {b.text}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
+            </AnimateIn>
           ))}
         </div>
       </section>
