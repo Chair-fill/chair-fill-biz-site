@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 
-const TOTAL_SPOTS = 10;
+const TOTAL_SPOTS = 5;
 const ANCHOR_PRICE = 247;
-const OFFER_PRICE = 123;
+const OFFER_PRICE = 0;
 export default function FoundingMemberSection() {
-  const [spotsTaken, setSpotsTaken] = useState(7); // Fallback to 7 while loading
+  const [spotsTaken, setSpotsTaken] = useState(0); // Fallback to 0 while loading
   const [totalSpots] = useState(TOTAL_SPOTS);
-  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS - 7);
+  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS - 0);
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
@@ -226,7 +226,7 @@ export default function FoundingMemberSection() {
               marginBottom: 14,
             }}
           >
-            Only <span className="gold">{spotsLeft} Spots</span> Remaining
+            <span className="gold">{spotsLeft} Free Spots</span> Left
           </h2>
           <p
             style={{
@@ -237,13 +237,10 @@ export default function FoundingMemberSection() {
               margin: "0 auto",
             }}
           >
-            One reactivated client per week ={" "}
-            <strong style={{ color: "rgba(255,255,255,0.85)" }}>
-              $200–$400/month
-            </strong>{" "}
-            in recovered revenue. ChairFill costs{" "}
-            <strong style={{ color: "rgba(255,255,255,0.85)" }}>$123</strong>.
-            The math works on week one.
+            First month is completely free. No card required. We set everything
+            up for you. If ChairFill brings back even one client — you stay at{" "}
+            <strong style={{ color: "rgba(255,255,255,0.85)" }}>$147/mo</strong>{" "}
+            locked in for life. If it doesn't, walk away. Nothing owed.
           </p>
         </div>
 
@@ -315,7 +312,7 @@ export default function FoundingMemberSection() {
                 letterSpacing: "0.1em",
               }}
             >
-              Public price (after launch)
+              Standard price after launch
             </span>
             <span
               className="strikethrough"
@@ -344,7 +341,7 @@ export default function FoundingMemberSection() {
                   marginBottom: 4,
                 }}
               >
-                Founding Member price
+                Your price — locked forever
               </div>
               <div
                 style={{
@@ -377,7 +374,7 @@ export default function FoundingMemberSection() {
                 fontWeight: 600,
               }}
             >
-              50% OFF
+              {OFFER_PRICE === 0 ? "FREE" : "50% OFF"}
             </div>
           </div>
           <p
@@ -388,8 +385,9 @@ export default function FoundingMemberSection() {
               lineHeight: 1.5,
             }}
           >
-            In exchange for your honest feedback. Once these 10 spots are gone,
-            the doors close and the price doubles.
+            First month free. No card, no commitment. After your free month, you
+            pay $147/mo — locked in for life. Only 5 barbers get this. Once these
+            spots are gone, this offer disappears permanently.
           </p>
         </div>
 
@@ -405,11 +403,12 @@ export default function FoundingMemberSection() {
           }}
         >
           {[
-            "Full AI reactivation system running on iMessage",
-            "Personalized follow-ups sent in your voice — not generic blasts",
-            "Direct access to the founding team for feedback & tweaks",
-            "Locked-in rate for life — price never increases for you",
-            "Founding Member badge on your profile forever",
+            "First month completely free — no card required",
+            "We handle your full setup and onboarding for you",
+            "AI outreach via iMessage — calibrated to sound like you",
+            "$147/mo locked in for life after your free month — price never increases",
+            "Direct line to the founding team — your feedback shapes the product",
+            "Founding Member status on your profile forever",
           ].map((f, i) => (
             <div key={i} className="feature-row">
               <span className="check">✓</span>
@@ -423,9 +422,9 @@ export default function FoundingMemberSection() {
           <span className="pulse-dot" style={{ width: 6, height: 6 }} />
           <span>
             <strong style={{ color: "#ef9999" }}>
-              {spotsLeft} spots left.
+              {spotsLeft} of {TOTAL_SPOTS} free spots remaining.
             </strong>{" "}
-            When they're gone, this offer is gone permanently.
+            When they're gone, this offer is gone — no exceptions.
           </span>
         </div>
 
