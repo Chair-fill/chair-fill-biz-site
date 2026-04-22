@@ -4,6 +4,11 @@ import { useState } from "react";
 
 const faqs = [
   {
+    question: "Do I need a credit card to start?",
+    answer:
+      "No. Your first 30 days are completely free. We don't collect any payment information until after your free month ends. If you don't see results, cancel before day 30 and you owe nothing — ever.",
+  },
+  {
     question: "Will my clients know it's an AI?",
     answer:
       "The messages are AI-assisted but calibrated to your communication style, so they feel personal — not like a generic blast. If a client ever asks directly, you can let them know. ChairFill is designed to feel like you, not like a bot.",

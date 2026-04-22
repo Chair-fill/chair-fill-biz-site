@@ -213,7 +213,7 @@ export default function FoundingMemberSection() {
         <div className="card" style={{ textAlign: "center", marginBottom: 32 }}>
           <div className="badge">
             <span className="pulse-dot" />
-            ChairFill Founding Member 30-Day Revenue Recovery Program
+            ChairFill Founding Member — {TOTAL_SPOTS} Spots Only
           </div>
           <h2
             style={{
@@ -439,7 +439,7 @@ export default function FoundingMemberSection() {
               textDecoration: "none" 
             }}
           >
-            Claim My Founding Member Spot →
+            Start Free — No Card Required →
           </a>
           <p
             style={{
@@ -449,7 +449,8 @@ export default function FoundingMemberSection() {
               color: "rgba(255,255,255,0.3)",
             }}
           >
-            No contracts. Cancel anytime. Only {spotsLeft} spots available.
+            Free for 30 days. Then $147/mo locked in for life. Cancel before day
+            30 and you owe nothing.
           </p>
         </div>
       </div>

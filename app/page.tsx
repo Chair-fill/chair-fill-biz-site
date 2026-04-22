@@ -383,15 +383,16 @@ export default function Home() {
                 Stop leaving money in your phone.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
-                Join the waitlist now and get early access when we launch, plus
-                locked-in launch pricing before it goes up.
+                5 barbers get their first month completely free. No card. We set
+                it up for you. If you get a client back, you stay at $147/mo —
+                locked in for life. If you don't, walk away. Nothing owed.
               </p>
               <div className="mt-8">
                 <Link
                   href="/waitlist"
                   className="cta-secondary inline-flex justify-center border-black bg-black text-[#D4AF37] hover:bg-black/90 hover:text-[#E8C547]"
                 >
-                  Join the waitlist
+                  Claim a Free Spot →
                 </Link>
               </div>
             </div>

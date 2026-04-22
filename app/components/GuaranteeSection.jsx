@@ -185,7 +185,7 @@ export default function GuaranteeSection() {
                   <p className="badge-sub">
                     One client back.
                     <br />
-                    Or every dollar refunded.
+                    Or walk away — free.
                   </p>
                 </div>
               </div>
@@ -210,35 +210,32 @@ export default function GuaranteeSection() {
                     client in your first 30 days
                   </strong>{" "}
                   — after you&apos;ve completed onboarding and run your first
-                  campaign — we refund every dollar. Same day you ask. No forms.
-                  No conversation about it.
+                  campaign — you pay nothing. Cancel before day 30 and your card
+                  is never charged. No forms. No conversation. Just gone.
                 </p>
               </div>
             </AnimateIn>
             <AnimateIn direction="up" delay={200}>
               <p className="g-body-text">
-                We make this offer because we know what happens when barbers
-                actually launch. Within the first few days, replies start coming
-                in — clients who went quiet months ago, responding like no time
-                passed. The system works when you use it. So we guarantee the
-                first result and let the outcome speak for itself.
+                We make this offer because we&apos;ve seen what happens when
+                barbers actually run their first campaign. Within days, replies
+                come in from clients who went quiet months ago — responding like
+                no time passed. The system works when you use it. We&apos;re so
+                certain of that, we&apos;re letting you run it for free and only
+                asking you to pay once you&apos;ve seen it work yourself.
               </p>
               <ul className="guarantee-steps">
                 <li>
-                  <span className="step-num">1</span>Complete your done-for-you
-                  onboarding — we handle the heavy lifting
+                  <span className="step-num">1</span>We handle your full onboarding — setup is done for you within 48 hours
                 </li>
                 <li>
-                  <span className="step-num">2</span>Run your first reactivation
-                  campaign to your existing client list
+                  <span className="step-num">2</span>Your first reactivation campaign goes out to your existing client list
                 </li>
                 <li>
-                  <span className="step-num">3</span>If zero clients come back in
-                  30 days — full refund, no questions
+                  <span className="step-num">3</span>Clients who went quiet start replying — usually within the first few days
                 </li>
                 <li>
-                  <span className="step-num">4</span>You keep every campaign we
-                  built for you regardless
+                  <span className="step-num">4</span>If zero clients come back in 30 days, cancel before you&apos;re ever charged
                 </li>
               </ul>
               <p className="g-body-text">
