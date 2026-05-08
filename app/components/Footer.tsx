@@ -28,6 +28,12 @@ export default function Footer() {
             Join waitlist
           </Link>
           <Link
+            href="/blog"
+            className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
             href="/privacy"
             className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
           >

@@ -1,9 +1,31 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import AnimateIn from "./components/AnimateIn";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import { faqs } from "@/lib/faq";
+import {
+  SITE,
+  softwareApplicationJsonLd,
+  faqPageJsonLd,
+} from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "ChairFill | AI Client Reactivation for Independent Barbers",
+  description:
+    "Stop losing revenue to quiet clients. ChairFill identifies every lapsed client and brings them back to your chair automatically — through iMessage, in your voice. Built for independent barbers.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "ChairFill | AI Client Reactivation for Independent Barbers",
+    description:
+      "ChairFill identifies every lapsed client and brings them back to your chair automatically — through iMessage, in your voice.",
+    url: SITE.url,
+    type: "website",
+    images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
+  },
+};
 import {
   MessageSquare,
   Bot,
@@ -36,6 +58,18 @@ const IMG_HAIRCUT = "/assets/obi--sRVfY0f2d8-unsplash.jpg";
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(softwareApplicationJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqPageJsonLd(faqs)),
+        }}
+      />
       <Navbar />
       <div className="pt-5 lg:pt-0"></div>
 

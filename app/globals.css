@@ -110,3 +110,157 @@ html {
     transform: translateY(-10px);
   }
 }
+
+/* Blog markdown content styling */
+.prose-blog {
+  color: #d4d0c5;
+  font-size: 17px;
+  line-height: 1.8;
+}
+.prose-blog > * + * {
+  margin-top: 1.5em;
+}
+.prose-blog h2 {
+  font-family: var(--font-satoshi), system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.01em;
+}
+.prose-blog h3 {
+  font-family: var(--font-satoshi), system-ui, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  letter-spacing: -0.005em;
+}
+.prose-blog h4 {
+  font-family: var(--font-satoshi), system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #C9A84C;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+}
+.prose-blog p {
+  color: #d4d0c5;
+  margin: 0;
+}
+.prose-blog strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+.prose-blog em {
+  color: #C9A84C;
+  font-style: italic;
+}
+.prose-blog a {
+  color: #C9A84C;
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 168, 76, 0.4);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+.prose-blog a:hover {
+  text-decoration-color: #C9A84C;
+}
+.prose-blog blockquote {
+  border-left: 3px solid #C9A84C;
+  background: rgba(201, 168, 76, 0.04);
+  padding: 1em 1.4em;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: #f0ece3;
+  border-radius: 0 6px 6px 0;
+}
+.prose-blog blockquote p {
+  color: #f0ece3;
+}
+.prose-blog ul,
+.prose-blog ol {
+  padding-left: 1.5em;
+  color: #d4d0c5;
+}
+.prose-blog ul {
+  list-style: none;
+}
+.prose-blog ul li {
+  position: relative;
+  padding-left: 1.4em;
+  margin: 0.5em 0;
+}
+.prose-blog ul li::before {
+  content: "→";
+  color: #C9A84C;
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+.prose-blog ol {
+  list-style: decimal;
+}
+.prose-blog ol li {
+  margin: 0.5em 0;
+  padding-left: 0.5em;
+}
+.prose-blog ol li::marker {
+  color: #C9A84C;
+  font-weight: 700;
+}
+.prose-blog hr {
+  border: none;
+  border-top: 1px solid #1e1e1e;
+  margin: 2.5em 0;
+}
+.prose-blog code {
+  background: #161616;
+  border: 1px solid #1e1e1e;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.9em;
+  color: #C9A84C;
+}
+.prose-blog pre {
+  background: #0f0f0f;
+  border: 1px solid #1e1e1e;
+  padding: 1em 1.2em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+.prose-blog pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #d4d0c5;
+}
+.prose-blog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+.prose-blog th {
+  text-align: left;
+  padding: 0.8em 1em;
+  background: #161616;
+  color: #C9A84C;
+  font-weight: 700;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid #1e1e1e;
+}
+.prose-blog td {
+  padding: 0.8em 1em;
+  border-bottom: 1px solid #1e1e1e;
+  color: #d4d0c5;
+}
+.prose-blog tr:last-child td {
+  border-bottom: none;
+}

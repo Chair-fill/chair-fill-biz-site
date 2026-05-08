@@ -124,8 +124,14 @@ export default function BundleSection() {
         .bundle-scope .bundle-header { text-align: center; margin-bottom: 64px; }
         .bundle-scope .bundle-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+          grid-template-columns: repeat(3, 1fr);
           gap: 2px;
+        }
+        @media (max-width: 900px) {
+          .bundle-scope .bundle-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .bundle-scope .bundle-grid { grid-template-columns: 1fr; }
         }
         .bundle-scope .bundle-grid > div {
           height: 100%;

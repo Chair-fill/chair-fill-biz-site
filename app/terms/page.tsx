@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Terms of Service for ChairFill — the AI-powered client reactivation platform for independent barbers and barbershops.",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "ChairFill Terms of Service",
+    description:
+      "Terms of Service for ChairFill — the AI-powered client reactivation platform for independent barbers.",
+    url: "https://chairfill.co/terms",
+    type: "article",
+  },
+};
 
 export default function TermsOfService() {
   return (

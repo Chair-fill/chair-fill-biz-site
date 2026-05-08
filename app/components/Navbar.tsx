@@ -29,34 +29,40 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
           <>
             <div className="hidden items-center gap-8 md:flex">
               <Link
-                href="#benefits"
+                href="/#benefits"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Benefits
               </Link>
               <Link
-                href="#testimonials"
+                href="/#testimonials"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Testimonials
               </Link>
               <Link
-                href="#how-it-works"
+                href="/#how-it-works"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 How it works
               </Link>
               <Link
-                href="#pricing"
+                href="/#pricing"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Pricing
               </Link>
               <Link
-                href="#faq"
+                href="/#faq"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 FAQ
+              </Link>
+              <Link
+                href="/blog"
+                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+              >
+                Blog
               </Link>
               <Link
                 href="/waitlist"
@@ -103,39 +109,46 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
         <div className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-2">
             <Link
-              href="#how-it-works"
+              href="/#how-it-works"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
               How it works
             </Link>
             <Link
-              href="#testimonials"
+              href="/#testimonials"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
               Testimonials
             </Link>
             <Link
-              href="#benefits"
+              href="/#benefits"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
               Benefits
             </Link>
             <Link
-              href="#pricing"
+              href="/#pricing"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
               Pricing
             </Link>
             <Link
-              href="#faq"
+              href="/#faq"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
               FAQ
+            </Link>
+            <Link
+              href="/blog"
+              className="py-2 text-sm font-medium text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              Blog
             </Link>
             <Link
               href="/waitlist"

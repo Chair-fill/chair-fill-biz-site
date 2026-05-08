@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How ChairFill collects, uses, and protects information across our AI-powered client reactivation platform for independent barbers.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "ChairFill Privacy Policy",
+    description:
+      "How ChairFill collects, uses, and protects information across our AI-powered client reactivation platform for independent barbers.",
+    url: "https://chairfill.co/privacy",
+    type: "article",
+  },
+};
 
 export default function PrivacyPolicy() {
   return (

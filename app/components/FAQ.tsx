@@ -1,34 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const faqs = [
-  {
-    question: "Do I need a credit card to start?",
-    answer:
-      "No. Your first 30 days are completely free. We don't collect any payment information until after your free month ends. If you don't see results, cancel before day 30 and you owe nothing — ever.",
-  },
-  {
-    question: "Will my clients know it's an AI?",
-    answer:
-      "The messages are AI-assisted but calibrated to your communication style, so they feel personal — not like a generic blast. If a client ever asks directly, you can let them know. ChairFill is designed to feel like you, not like a bot.",
-  },
-  {
-    question: "What if a client says they're not interested?",
-    answer:
-      "ChairFill's Annoyance Shield handles this automatically. If a client responds negatively, opts out, or signals disinterest, the system stops messaging them and flags it for you. We're not here to spam your clients. We're here to re-engage the ones who actually want a cut.",
-  },
-  {
-    question: "Do my clients need to download an app?",
-    answer:
-      "Zero. That's one of the biggest advantages of iMessage. It lives in their default texting app. No friction, no app store, and no signup. They just reply to a text like they always would.",
-  },
-  {
-    question: "How do I connect my booking system?",
-    answer:
-      "ChairFill does not integrate with external booking tools. You simply upload a CSV export of your client list, and the AI handles the outreach. All actual bookings follow your existing in-house process.",
-  },
-];
+import { faqs } from "@/lib/faq";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
