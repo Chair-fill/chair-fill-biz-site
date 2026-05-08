@@ -35,10 +35,10 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 Benefits
               </Link>
               <Link
-                href="/#testimonials"
+                href="/#problem"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
-                Testimonials
+                Problem
               </Link>
               <Link
                 href="/#how-it-works"
@@ -47,10 +47,10 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 How it works
               </Link>
               <Link
-                href="/#pricing"
+                href="/#natural"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
-                Pricing
+                Why it works
               </Link>
               <Link
                 href="/#faq"
@@ -109,20 +109,6 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
         <div className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-2">
             <Link
-              href="/#how-it-works"
-              className="py-2 text-sm font-medium text-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              How it works
-            </Link>
-            <Link
-              href="/#testimonials"
-              className="py-2 text-sm font-medium text-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              Testimonials
-            </Link>
-            <Link
               href="/#benefits"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
@@ -130,11 +116,25 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               Benefits
             </Link>
             <Link
-              href="/#pricing"
+              href="/#problem"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
-              Pricing
+              Problem
+            </Link>
+            <Link
+              href="/#how-it-works"
+              className="py-2 text-sm font-medium text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              How it works
+            </Link>
+            <Link
+              href="/#natural"
+              className="py-2 text-sm font-medium text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              Why it works
             </Link>
             <Link
               href="/#faq"
