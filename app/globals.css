@@ -22,6 +22,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
   --font-sans: var(--font-satoshi), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-bebas);
