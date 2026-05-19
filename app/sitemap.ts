@@ -3,6 +3,15 @@ import { getAllPosts } from "@/lib/posts";
 
 const SITE = "https://chairfill.co";
 
+/**
+ * Sitemap. Marketplace routes (/barber-booth-rental, /shops, /claim,
+ * /barbers/looking) are intentionally OMITTED until real shops exist +
+ * backend wiring is in place. All marketplace pages also export
+ * `metadata: { robots: { index: false } }` so even if a crawler finds
+ * them they will not be indexed.
+ *
+ * When the backend ships, re-enable by adding cityPages + shopPages back.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
