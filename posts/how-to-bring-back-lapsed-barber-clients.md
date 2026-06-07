@@ -5,35 +5,10 @@ excerpt: A step-by-step playbook for independent barbers to reactivate clients w
 date: '2026-06-06'
 category: Client Recovery
 featured: false
-seoTitle: How to Bring Back Lapsed Barber Clients | ChairFill
+seoTitle: How to Bring Back Lapsed Barber Clients
 seoDescription: A step-by-step playbook for independent barbers to reactivate clients who stopped coming.
   What to text, when to send, and what to avoid.
 ---
-
-<!--
-SEO BOOKKEEPING (not rendered) — keep in sync with rank_log targets in play4_gsc.py
-slug: how-to-bring-back-lapsed-barber-clients
-target_keyword: how to bring back lapsed barber clients
-secondary_keywords:
-- how to win back barber clients
-- barber client retention tips
-- what to text lapsed barber clients
-- barber win back text
-- reactivate barber clients
-canonical: https://chairfill.co/blog/how-to-bring-back-lapsed-barber-clients
-featured_image: /assets/chairfill_hero1.png
-featured_image_alt: An independent Black barber giving a fresh fade to a returning client in a real neighborhood
-  barbershop
-internal_links:
-- target: /blog/barber-client-reactivation-software
-  anchor: barber client reactivation software
-- target: /blog/imessage-marketing-for-barbers
-  anchor: iMessage marketing for barbers
-- target: /blog/booksy-alternative-for-barbers
-  anchor: Booksy alternative for barbers
--->
-
-# How to Bring Back Lapsed Barber Clients (Without Looking Desperate)
 
 You don't need new clients. You need the ones you used to have.
 
