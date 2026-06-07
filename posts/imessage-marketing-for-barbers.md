@@ -5,35 +5,10 @@ excerpt: iMessage marketing reaches barbers' existing clients at 98% open rates.
 date: '2026-06-06'
 category: Growth
 featured: false
-seoTitle: iMessage Marketing for Barbers | ChairFill
+seoTitle: iMessage Marketing for Barbers
 seoDescription: iMessage marketing reaches barbers' existing clients at 98% open rates. Here's how independent
   barbers use it to bring back lapsed clients without spending on ads.
 ---
-
-<!--
-SEO BOOKKEEPING (not rendered) — keep in sync with rank_log targets in play4_gsc.py
-slug: imessage-marketing-for-barbers
-target_keyword: imessage marketing for barbers
-secondary_keywords:
-- sms marketing for barbershops
-- text marketing barbers
-- text marketing for barbers
-- how barbers should text clients
-- barber sms marketing
-canonical: https://chairfill.co/blog/imessage-marketing-for-barbers
-featured_image: /assets/chairfill_hero1.png
-featured_image_alt: An independent Black barber texting a lapsed client from his iPhone while standing
-  in front of his shop chair
-internal_links:
-- target: /blog/barber-client-reactivation-software
-  anchor: barber client reactivation software
-- target: /blog/how-to-bring-back-lapsed-barber-clients
-  anchor: how to bring back lapsed barber clients
-- target: /blog/booksy-alternative-for-barbers
-  anchor: Booksy alternative for barbers
--->
-
-# iMessage Marketing for Barbers: The Quiet Channel That Outperforms Email and Ads
 
 Most barbers think marketing means Instagram reels and Facebook ads. The barbers actually growing right now are doing something quieter, and a lot more effective. They're texting.
 
