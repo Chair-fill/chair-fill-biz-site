@@ -60,7 +60,7 @@ No. And the reason matters.
 
 Booking software is a passive system. It waits for a client to take action. Reactivation software is the opposite — it acts when the client *doesn't*.
 
-The two layers are complementary. You need both. Booking apps keep your calendar clean. Reactivation software keeps your chair full.
+ChairFill is the platform that does both. Booking, calendar, payments, AND the reactivation engine. One tool. No fee stacking. Booksy can keep being a calendar. ChairFill keeps your business.
 
 ## What to look for in a barber reactivation tool
 
@@ -70,7 +70,7 @@ Not all tools that claim to do reactivation actually do it well. Things that mat
 
 **2. Sends from your number, not a shortcode.** Reactivation only works if the client recognizes the sender. A text from "55512" gets ignored. A text from your actual barber number gets read.
 
-**3. Integration with your existing booking system.** You shouldn't have to migrate. Good tools sit on top of Booksy, Squire, theCut, Acuity, Schedulicity, GlossGenius — or even your own notebook.
+**3. All in one platform.** Don't stitch together a separate booking app, payments processor, and reactivation tool. ChairFill is the full platform — booking, payments, contacts, and reactivation in one place. Migrating in takes under thirty minutes.
 
 **4. Honest dormancy logic.** "Lapsed" isn't a single number. A weekly client who skips two weeks isn't lapsed. A monthly client who skips two months might be. The tool should adapt to each client's natural cadence.
 
@@ -115,15 +115,15 @@ A smartphone is enough. The software does the work in the background; you just s
 
 **How long does it take to set up?**
 
-For most barbers, connecting an existing booking system and importing a client list takes under 30 minutes. The first reactivation cycle starts within a day.
+For most barbers, migrating your booking, contacts, and availability into ChairFill takes under thirty minutes. The first reactivation cycle starts within a day.
 
 **What if I don't have a booking system at all?**
 
-If your clients are in your phone contacts, that's enough to start. The software can work from a contact list and you can add booking later.
+ChairFill IS your booking system. Sign up, import your contacts, set your availability, share your booking link. That is the whole setup.
 
-**How is this different from ChairFill?**
+**How is this different from Booksy or Squire?**
 
-ChairFill is the barber-specific implementation of client reactivation software. It's built specifically for independent barbers — not chain salons, not spas. The dormancy logic, message style, and integrations are tuned to how barber clientele actually behaves.
+ChairFill is the full platform — booking, calendar, payments, contacts — built specifically for independent Black barbers. Same booking and calendar features as Booksy and Squire, no marketplace fees, plus the reactivation engine that brings back the clients you are losing. Built for solo barbers, booth renters, and suite owners. Not for chain salons.
 
 ## What to do next
 
