@@ -3,9 +3,19 @@ import { writeFile, readFile, mkdir } from "fs/promises";
 import path from "path";
 
 // Email-only lead capture for the marketing promo popup ("Get 30 Days Free").
-// Kept separate from the named-waitlist flow so the popup can capture an email
-// without requiring a full name.
-const PROMO_LEADS_PATH = path.join(process.cwd(), ".data", "promo-leads.json");
+// Writes into the SAME store the named-waitlist flow uses (.data/waitlist.json)
+// so promo leads show up in the existing /api/admin/waitlist view. The popup
+// only collects an email, so the name is derived from the email local-part.
+const WAITLIST_PATH = path.join(process.cwd(), ".data", "waitlist.json");
+
+type WaitlistEntry = {
+  email: string;
+  name: string;
+  createdAt: string;
+  source: string;
+  isAccepted?: boolean;
+  isPaid?: boolean;
+};
 
 function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
@@ -34,17 +44,20 @@ export async function POST(req: Request) {
       );
     }
 
-    const entry = {
+    const entry: WaitlistEntry = {
       email,
+      name: email.split("@")[0],
       createdAt: new Date().toISOString(),
       source: body.source ?? "promo-popup",
+      isAccepted: false,
+      isPaid: false,
     };
 
     try {
-      await mkdir(path.dirname(PROMO_LEADS_PATH), { recursive: true });
-      let list: { email: string; createdAt: string; source: string }[] = [];
+      await mkdir(path.dirname(WAITLIST_PATH), { recursive: true });
+      let list: WaitlistEntry[] = [];
       try {
-        const raw = await readFile(PROMO_LEADS_PATH, "utf-8");
+        const raw = await readFile(WAITLIST_PATH, "utf-8");
         list = JSON.parse(raw);
       } catch {
         // file missing or invalid
@@ -52,7 +65,7 @@ export async function POST(req: Request) {
       const exists = list.some((e) => e.email.toLowerCase() === email);
       if (!exists) {
         list.push(entry);
-        await writeFile(PROMO_LEADS_PATH, JSON.stringify(list, null, 2), "utf-8");
+        await writeFile(WAITLIST_PATH, JSON.stringify(list, null, 2), "utf-8");
       }
     } catch (fsErr) {
       console.error("Promo lead write error:", fsErr);
