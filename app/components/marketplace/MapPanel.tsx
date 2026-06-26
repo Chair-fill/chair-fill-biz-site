@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useMemo } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Circle,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
@@ -9,11 +16,15 @@ import type { Shop } from "@/lib/marketplace/data";
 
 interface MapPanelProps {
   shops: Shop[];
-  citySlug: string;
+  citySlug?: string;
   /** Currently highlighted shop (from list hover / selection). */
   selectedSlug?: string | null;
   /** Notify parent when a marker is clicked (for list<->map sync, task #12). */
   onSelect?: (slug: string) => void;
+  /** When set, center the map here (location search) instead of fitting to shops. */
+  center?: { lat: number; lng: number } | null;
+  /** Radius circle (miles) drawn around `center`. */
+  radiusMiles?: number;
 }
 
 function priceLabel(shop: Shop): string {
@@ -57,26 +68,45 @@ function FitBounds({ shops }: { shops: Shop[] }) {
   return null;
 }
 
+/** Recenter the map on the searched location + frame the radius. */
+function CenterView({
+  center,
+  radiusMiles,
+}: {
+  center: { lat: number; lng: number };
+  radiusMiles: number;
+}) {
+  const map = useMap();
+  useEffect(() => {
+    const meters = radiusMiles * 1609.34;
+    const b = L.latLng(center.lat, center.lng).toBounds(meters * 2);
+    map.fitBounds(b, { padding: [24, 24] });
+  }, [center.lat, center.lng, radiusMiles, map]);
+  return null;
+}
+
 export default function MapPanel({
   shops,
-  citySlug,
   selectedSlug,
   onSelect,
+  center,
+  radiusMiles = 50,
 }: MapPanelProps) {
   const located = useMemo(
     () => shops.filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lng)),
     [shops],
   );
 
-  const center = useMemo<[number, number]>(() => {
+  const initialCenter = useMemo<[number, number]>(() => {
+    if (center) return [center.lat, center.lng];
     if (located.length > 0) return [located[0].lat, located[0].lng];
     return [39.8283, -98.5795]; // US center fallback
-  }, [located]);
+  }, [center, located]);
 
   return (
     <MapContainer
-      center={center}
-      zoom={12}
+      center={initialCenter}
+      zoom={center ? 11 : 4}
       scrollWheelZoom
       style={{ height: "100%", width: "100%", background: "#0a0a0a" }}
     >
@@ -84,7 +114,23 @@ export default function MapPanel({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
-      <FitBounds shops={located} />
+      {center ? (
+        <>
+          <CenterView center={center} radiusMiles={radiusMiles} />
+          <Circle
+            center={[center.lat, center.lng]}
+            radius={radiusMiles * 1609.34}
+            pathOptions={{
+              color: "#16a34a",
+              fillColor: "#16a34a",
+              fillOpacity: 0.06,
+              weight: 1,
+            }}
+          />
+        </>
+      ) : (
+        <FitBounds shops={located} />
+      )}
       {located.map((shop) => (
         <Marker
           key={shop.slug}
@@ -106,7 +152,7 @@ export default function MapPanel({
                     : ""}
               </p>
               <Link
-                href={`/shops/${citySlug}/${shop.slug}`}
+                href={`/shops/${shop.city}/${shop.slug}`}
                 style={{ fontSize: 13, fontWeight: 600, color: "#16a34a" }}
               >
                 View shop →

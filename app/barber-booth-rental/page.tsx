@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CITIES } from "@/lib/marketplace/data";
+import { CITIES, getAllShops, getCityCentroids } from "@/lib/marketplace/data";
 import MarketplaceNav from "@/app/components/marketplace/MarketplaceNav";
 import MarketplaceFooter from "@/app/components/marketplace/MarketplaceFooter";
+import MarketplaceSearch from "@/app/components/marketplace/MarketplaceSearch";
+import { marketplaceMapEnabled } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "Barber Booth Rental — Find Available Chairs Near You | ChairFill",
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default function BoothRentalDirectoryPage() {
+  const mapEnabled = marketplaceMapEnabled();
+  const allShops = getAllShops();
+  const cityCentroids = getCityCentroids();
   return (
     <>
       <MarketplaceNav />
@@ -40,6 +45,13 @@ export default function BoothRentalDirectoryPage() {
             I&apos;m looking for a chair →
           </Link>
         </section>
+
+        {/* Location + radius search (map + list) */}
+        {mapEnabled && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+            <MarketplaceSearch allShops={allShops} cityCentroids={cityCentroids} />
+          </section>
+        )}
 
         {/* City grid */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">

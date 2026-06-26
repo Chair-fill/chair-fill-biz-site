@@ -259,6 +259,29 @@ export function getShopsByCity(citySlug: string): Shop[] {
   return SHOPS.filter((s) => s.city === citySlug);
 }
 
+/** All shops across every city (for the location + radius search). */
+export function getAllShops(): Shop[] {
+  return SHOPS;
+}
+
+/**
+ * Approx centroid per known city (lat/lng of its first shop), used for
+ * offline city-name geocoding in the location search.
+ */
+export function getCityCentroids(): {
+  name: string;
+  state: string;
+  lat: number;
+  lng: number;
+}[] {
+  return CITIES.map((c) => {
+    const shop = SHOPS.find((s) => s.city === c.slug);
+    return shop
+      ? { name: c.name, state: c.state, lat: shop.lat, lng: shop.lng }
+      : null;
+  }).filter((x): x is { name: string; state: string; lat: number; lng: number } => x !== null);
+}
+
 export function countLookingBarbersForCity(_citySlug: string): number | null {
   // TODO: replace with GET /marketplace/barbers/looking?city=citySlug count
   // Returns null until the backend exists. Callers should fall back to an
