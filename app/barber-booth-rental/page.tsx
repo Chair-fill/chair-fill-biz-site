@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CITIES } from "@/lib/marketplace/data";
+import { CITIES, getAllShops, getCityCentroids } from "@/lib/marketplace/data";
 import MarketplaceNav from "@/app/components/marketplace/MarketplaceNav";
 import MarketplaceFooter from "@/app/components/marketplace/MarketplaceFooter";
+import MarketplaceSearch from "@/app/components/marketplace/MarketplaceSearch";
+import { marketplaceMapEnabled } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "Barber Booth Rental — Find Available Chairs Near You | ChairFill",
@@ -17,6 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default function BoothRentalDirectoryPage() {
+  const mapEnabled = marketplaceMapEnabled();
+  const allShops = getAllShops();
+  const cityCentroids = getCityCentroids();
   return (
     <>
       <MarketplaceNav />
@@ -41,33 +46,43 @@ export default function BoothRentalDirectoryPage() {
           </Link>
         </section>
 
-        {/* City grid */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
-          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-5">
-            Browse by city
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {CITIES.map((city) => (
-              <Link
-                key={city.slug}
-                href={`/barber-booth-rental/${city.slug}`}
-                className="group bg-card border border-border rounded-xl p-5 hover:border-primary/40 transition-all"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-bold text-[16px] text-foreground group-hover:text-primary transition-colors">
-                      {city.name}, {city.state}
-                    </p>
-                    <p className="text-[13px] text-foreground/50 mt-1">
-                      Barber booth rentals available
-                    </p>
+        {/* Location + radius search (map + list) */}
+        {mapEnabled && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+            <MarketplaceSearch allShops={allShops} cityCentroids={cityCentroids} />
+          </section>
+        )}
+
+        {/* City grid — full grid only when the search/map is off (fallback) */}
+        {!mapEnabled && (
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-5">
+              Browse by city
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {CITIES.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/barber-booth-rental/${city.slug}`}
+                  className="group bg-card border border-border rounded-xl p-5 hover:border-primary/40 transition-all"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-bold text-[16px] text-foreground group-hover:text-primary transition-colors">
+                        {city.name}, {city.state}
+                      </p>
+                      <p className="text-[13px] text-foreground/50 mt-1">
+                        Barber booth rentals available
+                      </p>
+                    </div>
+                    <span className="text-foreground/30 group-hover:text-primary transition-colors text-lg">→</span>
                   </div>
-                  <span className="text-foreground/30 group-hover:text-primary transition-colors text-lg">→</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
 
         {/* Own a shop CTA */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">

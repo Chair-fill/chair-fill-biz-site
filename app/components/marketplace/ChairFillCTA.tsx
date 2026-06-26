@@ -15,7 +15,7 @@ export default function ChairFillCTA({ variant = "default", className = "" }: Ch
           Manage your bookings, availability, and payments all in one place.
         </p>
         <Link
-          href="/onboarding"
+          href="https://app.chairfill.co/login"
           className="inline-flex items-center px-5 py-2.5 rounded-xl bg-primary text-black font-bold text-[13px] hover:brightness-110 transition-all"
         >
           Get started for free →
@@ -46,7 +46,7 @@ export default function ChairFillCTA({ variant = "default", className = "" }: Ch
             Claim your shop free
           </Link>
           <Link
-            href="/about"
+            href="/"
             className="px-6 py-3 rounded-xl border border-border text-[14px] font-semibold hover:border-primary/40 hover:text-primary transition-all"
           >
             How it works
