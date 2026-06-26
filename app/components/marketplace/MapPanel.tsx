@@ -1,19 +1,24 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   MapContainer,
   TileLayer,
-  Marker,
-  Popup,
   Circle,
   useMap,
   useMapEvents,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Link from "next/link";
+import "leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
 import type { Shop } from "@/lib/marketplace/data";
+
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string,
+  );
+}
 
 interface MapPanelProps {
   shops: Shop[];
@@ -99,6 +104,74 @@ function CenterView({
   return null;
 }
 
+/** Clustered price-pill markers (leaflet.markercluster). */
+function ClusterLayer({
+  shops,
+  selectedSlug,
+  onSelect,
+}: {
+  shops: Shop[];
+  selectedSlug?: string | null;
+  onSelect?: (slug: string) => void;
+}) {
+  const map = useMap();
+  const markersRef = useRef<globalThis.Map<string, L.Marker>>(new globalThis.Map());
+
+  useEffect(() => {
+    const group = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 50,
+      iconCreateFunction: (cluster) =>
+        L.divIcon({
+          className: "cf-cluster",
+          html: `<div style="
+            background:#111111;color:#D4AF37;border:1px solid #D4AF37;
+            width:40px;height:40px;border-radius:9999px;display:flex;
+            align-items:center;justify-content:center;font:700 13px/1 ui-sans-serif,system-ui,sans-serif;
+            box-shadow:0 2px 8px rgba(0,0,0,0.45);">${cluster.getChildCount()}</div>`,
+          iconSize: L.point(40, 40),
+        }),
+    });
+    const markers = new globalThis.Map<string, L.Marker>();
+    shops.forEach((shop) => {
+      const m = L.marker([shop.lat, shop.lng], {
+        icon: priceIcon(shop, shop.slug === selectedSlug),
+      });
+      const price = shop.hidePricing
+        ? "Contact for pricing"
+        : shop.boothPlans[0]
+          ? `$${shop.boothPlans[0].price}/${shop.boothPlans[0].period}`
+          : "";
+      m.bindPopup(
+        `<div style="min-width:180px">
+          <p style="font-weight:700;margin:0 0 2px">${escapeHtml(shop.name)}</p>
+          <p style="font-size:12px;color:#555;margin:0 0 6px">${escapeHtml(shop.address)}</p>
+          <p style="font-size:13px;margin:0 0 8px">${price}</p>
+          <a href="/shops/${shop.city}/${shop.slug}" style="font-size:13px;font-weight:600;color:#16a34a">View shop &rarr;</a>
+        </div>`,
+      );
+      m.on("click", () => onSelect?.(shop.slug));
+      markers.set(shop.slug, m);
+      group.addLayer(m);
+    });
+    map.addLayer(group);
+    markersRef.current = markers;
+    return () => {
+      map.removeLayer(group);
+    };
+  }, [shops, map, onSelect, selectedSlug]);
+
+  // Update highlight without rebuilding the cluster group.
+  useEffect(() => {
+    markersRef.current.forEach((m, slug) => {
+      const shop = shops.find((s) => s.slug === slug);
+      if (shop) m.setIcon(priceIcon(shop, slug === selectedSlug));
+    });
+  }, [selectedSlug, shops]);
+
+  return null;
+}
+
 export default function MapPanel({
   shops,
   selectedSlug,
@@ -147,36 +220,7 @@ export default function MapPanel({
       ) : (
         <FitBounds shops={located} />
       )}
-      {located.map((shop) => (
-        <Marker
-          key={shop.slug}
-          position={[shop.lat, shop.lng]}
-          icon={priceIcon(shop, selectedSlug === shop.slug)}
-          eventHandlers={{ click: () => onSelect?.(shop.slug) }}
-        >
-          <Popup>
-            <div style={{ minWidth: 180 }}>
-              <p style={{ fontWeight: 700, margin: "0 0 2px" }}>{shop.name}</p>
-              <p style={{ fontSize: 12, color: "#555", margin: "0 0 6px" }}>
-                {shop.address}
-              </p>
-              <p style={{ fontSize: 13, margin: "0 0 8px" }}>
-                {shop.hidePricing
-                  ? "Contact for pricing"
-                  : shop.boothPlans[0]
-                    ? `$${shop.boothPlans[0].price}/${shop.boothPlans[0].period}`
-                    : ""}
-              </p>
-              <Link
-                href={`/shops/${shop.city}/${shop.slug}`}
-                style={{ fontSize: 13, fontWeight: 600, color: "#16a34a" }}
-              >
-                View shop →
-              </Link>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
+      <ClusterLayer shops={located} selectedSlug={selectedSlug} onSelect={onSelect} />
     </MapContainer>
   );
 }
