@@ -83,25 +83,6 @@ export default function BoothRentalDirectoryPage() {
           </section>
         )}
 
-        {/* Crawlable city links for SEO (kept even when the grid is consolidated) */}
-        {mapEnabled && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
-            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-3">
-              Barber booth rentals by city
-            </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
-              {CITIES.map((city) => (
-                <Link
-                  key={city.slug}
-                  href={`/barber-booth-rental/${city.slug}`}
-                  className="text-foreground/55 hover:text-primary transition-colors"
-                >
-                  {city.name}, {city.state}
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* Own a shop CTA */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">

@@ -156,6 +156,7 @@ export default function MarketplaceSearch({
   const submitQuery = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    if (!query.trim()) return; // empty submit = no-op
     const result = await geocodeLocation(query, cityCentroids);
     if (result) {
       setCenter(result);
@@ -245,31 +246,6 @@ export default function MarketplaceSearch({
           )}
         </div>
         {error && <p className="mt-2 text-[13px] text-red-500">{error}</p>}
-
-        {/* Browse by city (consolidated) */}
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          <span className="text-[12px] text-foreground/40 mr-1">Browse by city:</span>
-          {cityCentroids.map((c) => {
-            const on = center?.label === `${c.name}, ${c.state}`;
-            return (
-              <button
-                key={`${c.name}-${c.state}`}
-                type="button"
-                onClick={() => {
-                  setCenter({ lat: c.lat, lng: c.lng, label: `${c.name}, ${c.state}` });
-                  setQuery("");
-                }}
-                className={`text-[12px] px-2.5 py-1 rounded-full border transition-all ${
-                  on
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-border text-foreground/60 hover:border-primary/40 hover:text-foreground"
-                }`}
-              >
-                {c.name}
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       {/* Filters + sort */}
@@ -384,7 +360,9 @@ export default function MarketplaceSearch({
           {shops.length === 0 ? (
             <div className="bg-card border border-border rounded-xl p-8 text-center">
               <p className="text-foreground/50 text-[14px]">
-                No shops within {radius} mi. Try a wider radius or another location.
+                {center
+                  ? `No shops within ${radius} mi. Try a wider radius or another location.`
+                  : "No shops match these filters. Try clearing some."}
               </p>
             </div>
           ) : (
