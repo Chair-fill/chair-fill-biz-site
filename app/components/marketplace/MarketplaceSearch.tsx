@@ -98,13 +98,40 @@ export default function MarketplaceSearch({
     ? shops.find((s) => s.slug === selectedSlug)
     : undefined;
 
+  // Approximate location from IP (free, no key) — fallback when GPS is denied/unavailable.
+  const ipFallback = async (): Promise<boolean> => {
+    try {
+      const res = await fetch("https://ipapi.co/json/");
+      if (res.ok) {
+        const d = await res.json();
+        if (d.latitude && d.longitude) {
+          setCenter({
+            lat: d.latitude,
+            lng: d.longitude,
+            label: d.city ? `Near ${d.city}` : "Near you (approx)",
+          });
+          return true;
+        }
+      }
+    } catch {
+      /* ignore */
+    }
+    return false;
+  };
+
   const useMyLocation = () => {
     setError("");
+    setGeoLoading(true);
+    const fallback = async (msg: string) => {
+      const ok = await ipFallback();
+      if (!ok) setError(msg);
+      setGeoLoading(false);
+    };
+
     if (!navigator.geolocation) {
-      setError("Location isn't available in this browser. Enter a ZIP instead.");
+      fallback("Location isn't available. Enter a ZIP or city instead.");
       return;
     }
-    setGeoLoading(true);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setCenter({
@@ -114,11 +141,15 @@ export default function MarketplaceSearch({
         });
         setGeoLoading(false);
       },
-      () => {
-        setError("Couldn't get your location. Enter a ZIP or city instead.");
-        setGeoLoading(false);
+      (err) => {
+        // Permission denied or timeout -> try IP, then ask for manual entry.
+        const msg =
+          err.code === err.PERMISSION_DENIED
+            ? "Location permission was blocked. Showing your approximate area — or enter a ZIP/city."
+            : "Couldn't pin your exact location. Showing your approximate area — or enter a ZIP/city.";
+        fallback(msg);
       },
-      { timeout: 8000 },
+      { timeout: 8000, maximumAge: 600000 },
     );
   };
 
@@ -214,6 +245,31 @@ export default function MarketplaceSearch({
           )}
         </div>
         {error && <p className="mt-2 text-[13px] text-red-500">{error}</p>}
+
+        {/* Browse by city (consolidated) */}
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="text-[12px] text-foreground/40 mr-1">Browse by city:</span>
+          {cityCentroids.map((c) => {
+            const on = center?.label === `${c.name}, ${c.state}`;
+            return (
+              <button
+                key={`${c.name}-${c.state}`}
+                type="button"
+                onClick={() => {
+                  setCenter({ lat: c.lat, lng: c.lng, label: `${c.name}, ${c.state}` });
+                  setQuery("");
+                }}
+                className={`text-[12px] px-2.5 py-1 rounded-full border transition-all ${
+                  on
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-border text-foreground/60 hover:border-primary/40 hover:text-foreground"
+                }`}
+              >
+                {c.name}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Filters + sort */}

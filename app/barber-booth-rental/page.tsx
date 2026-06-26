@@ -53,33 +53,55 @@ export default function BoothRentalDirectoryPage() {
           </section>
         )}
 
-        {/* City grid */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
-          <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-5">
-            Browse by city
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {CITIES.map((city) => (
-              <Link
-                key={city.slug}
-                href={`/barber-booth-rental/${city.slug}`}
-                className="group bg-card border border-border rounded-xl p-5 hover:border-primary/40 transition-all"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-bold text-[16px] text-foreground group-hover:text-primary transition-colors">
-                      {city.name}, {city.state}
-                    </p>
-                    <p className="text-[13px] text-foreground/50 mt-1">
-                      Barber booth rentals available
-                    </p>
+        {/* City grid — full grid only when the search/map is off (fallback) */}
+        {!mapEnabled && (
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-5">
+              Browse by city
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {CITIES.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/barber-booth-rental/${city.slug}`}
+                  className="group bg-card border border-border rounded-xl p-5 hover:border-primary/40 transition-all"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-bold text-[16px] text-foreground group-hover:text-primary transition-colors">
+                        {city.name}, {city.state}
+                      </p>
+                      <p className="text-[13px] text-foreground/50 mt-1">
+                        Barber booth rentals available
+                      </p>
+                    </div>
+                    <span className="text-foreground/30 group-hover:text-primary transition-colors text-lg">→</span>
                   </div>
-                  <span className="text-foreground/30 group-hover:text-primary transition-colors text-lg">→</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Crawlable city links for SEO (kept even when the grid is consolidated) */}
+        {mapEnabled && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+            <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-3">
+              Barber booth rentals by city
+            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
+              {CITIES.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={`/barber-booth-rental/${city.slug}`}
+                  className="text-foreground/55 hover:text-primary transition-colors"
+                >
+                  {city.name}, {city.state}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Own a shop CTA */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
