@@ -94,36 +94,31 @@ export default async function CityPage({ params }: Props) {
                 cityName={city.name}
               />
 
-              {/* Supporting cards (demand signal / claim / CTA) */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+              {/* Supporting cards (demand signal + shop-owner CTA) */}
+              <div className="grid sm:grid-cols-2 gap-4 mt-10">
                 <div className="bg-card border border-border rounded-xl p-5">
                   <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-2">
                     Demand signal
                   </p>
-                  <p className="font-black text-[32px] text-green-500 leading-none mb-1">
-                    {lookingCount}
-                  </p>
-                  <p className="text-[13px] text-foreground/60">
-                    barbers actively looking for a chair in {city.name}
-                  </p>
+                  {lookingCount != null ? (
+                    <>
+                      <p className="font-black text-[32px] text-green-500 leading-none mb-1">
+                        {lookingCount}
+                      </p>
+                      <p className="text-[13px] text-foreground/60">
+                        barbers actively looking for a chair in {city.name}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-[13px] text-foreground/60">
+                      No barbers signed up yet in {city.name} — be the first.
+                    </p>
+                  )}
                   <Link
                     href="/barbers/looking"
                     className="mt-3 block text-[12px] text-primary hover:underline"
                   >
                     Add your name →
-                  </Link>
-                </div>
-
-                <div className="bg-card border border-border rounded-xl p-5">
-                  <p className="font-bold text-[14px] mb-2">Own a shop in {city.name}?</p>
-                  <p className="text-[13px] text-foreground/60 mb-3">
-                    Claim your listing and start receiving inquiries from barbers for free.
-                  </p>
-                  <Link
-                    href="/claim"
-                    className="block text-center px-4 py-2.5 rounded-lg bg-primary text-black font-semibold text-[13px] hover:brightness-110 transition-all"
-                  >
-                    Claim free →
                   </Link>
                 </div>
 

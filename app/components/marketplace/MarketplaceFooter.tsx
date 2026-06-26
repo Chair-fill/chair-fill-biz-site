@@ -47,7 +47,6 @@ export default function MarketplaceFooter() {
             </p>
             <ul className="space-y-1.5">
               {[
-                ["Browse booths", "/barber-booth-rental"],
                 ["I'm looking for a chair", "/barbers/looking"],
                 ["My inquiries", "https://app.chairfill.co"],
               ].map(([label, href]) => (
