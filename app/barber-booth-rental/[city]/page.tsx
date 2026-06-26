@@ -10,6 +10,8 @@ import {
 import MarketplaceNav from "@/app/components/marketplace/MarketplaceNav";
 import MarketplaceFooter from "@/app/components/marketplace/MarketplaceFooter";
 import ChairFillCTA from "@/app/components/marketplace/ChairFillCTA";
+import MarketplaceExplorer from "@/app/components/marketplace/MarketplaceExplorer";
+import { marketplaceMapEnabled } from "@/lib/flags";
 
 interface Props {
   params: Promise<{ city: string }>;
@@ -40,6 +42,7 @@ export default async function CityPage({ params }: Props) {
 
   const shops = getShopsByCity(citySlug);
   const lookingCount = countLookingBarbersForCity(citySlug);
+  const mapEnabled = marketplaceMapEnabled();
 
   // JSON-LD breadcrumb
   const breadcrumbJsonLd = {
@@ -59,7 +62,7 @@ export default async function CityPage({ params }: Props) {
       />
       <MarketplaceNav />
       <main className="min-h-screen bg-background text-foreground">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-20">
+        <div className={`${mapEnabled ? "max-w-7xl" : "max-w-5xl"} mx-auto px-4 sm:px-6 pt-10 pb-20`}>
 
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-[12px] text-foreground/40 mb-8 font-mono">
@@ -82,6 +85,52 @@ export default async function CityPage({ params }: Props) {
             </div>
           </div>
 
+          {mapEnabled ? (
+            <>
+              {/* Interactive map + list explorer */}
+              <MarketplaceExplorer
+                shops={shops}
+                citySlug={citySlug}
+                cityName={city.name}
+              />
+
+              {/* Supporting cards (demand signal / claim / CTA) */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+                <div className="bg-card border border-border rounded-xl p-5">
+                  <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-foreground/40 mb-2">
+                    Demand signal
+                  </p>
+                  <p className="font-black text-[32px] text-green-500 leading-none mb-1">
+                    {lookingCount}
+                  </p>
+                  <p className="text-[13px] text-foreground/60">
+                    barbers actively looking for a chair in {city.name}
+                  </p>
+                  <Link
+                    href="/barbers/looking"
+                    className="mt-3 block text-[12px] text-primary hover:underline"
+                  >
+                    Add your name →
+                  </Link>
+                </div>
+
+                <div className="bg-card border border-border rounded-xl p-5">
+                  <p className="font-bold text-[14px] mb-2">Own a shop in {city.name}?</p>
+                  <p className="text-[13px] text-foreground/60 mb-3">
+                    Claim your listing and start receiving inquiries from barbers for free.
+                  </p>
+                  <Link
+                    href="/claim"
+                    className="block text-center px-4 py-2.5 rounded-lg bg-primary text-black font-semibold text-[13px] hover:brightness-110 transition-all"
+                  >
+                    Claim free →
+                  </Link>
+                </div>
+
+                <ChairFillCTA variant="banner" />
+              </div>
+            </>
+          ) : (
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Shop list */}
             <div className="flex-1 space-y-4">
@@ -183,6 +232,7 @@ export default async function CityPage({ params }: Props) {
               <ChairFillCTA variant="banner" />
             </aside>
           </div>
+          )}
         </div>
       </main>
       <MarketplaceFooter />
