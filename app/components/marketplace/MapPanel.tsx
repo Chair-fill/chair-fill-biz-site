@@ -8,6 +8,7 @@ import {
   Popup,
   Circle,
   useMap,
+  useMapEvents,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -25,6 +26,19 @@ interface MapPanelProps {
   center?: { lat: number; lng: number } | null;
   /** Radius circle (miles) drawn around `center`. */
   radiusMiles?: number;
+  /** Fires on user pan/zoom end with the new map center (for "search this area"). */
+  onMapMove?: (c: { lat: number; lng: number }) => void;
+}
+
+/** Reports map center after the user pans/zooms. */
+function MoveWatcher({ onMapMove }: { onMapMove: (c: { lat: number; lng: number }) => void }) {
+  useMapEvents({
+    moveend: (e) => {
+      const c = e.target.getCenter();
+      onMapMove({ lat: c.lat, lng: c.lng });
+    },
+  });
+  return null;
 }
 
 function priceLabel(shop: Shop): string {
@@ -91,6 +105,7 @@ export default function MapPanel({
   onSelect,
   center,
   radiusMiles = 50,
+  onMapMove,
 }: MapPanelProps) {
   const located = useMemo(
     () => shops.filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lng)),
@@ -114,6 +129,7 @@ export default function MapPanel({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
+      {onMapMove && <MoveWatcher onMapMove={onMapMove} />}
       {center ? (
         <>
           <CenterView center={center} radiusMiles={radiusMiles} />
