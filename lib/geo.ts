@@ -55,7 +55,7 @@ export async function geocodeLocation(
     }
   }
 
-  // City-name path (offline, against known cities)
+  // City-name path 1: offline match against our known cities (instant, no network)
   const lower = q.toLowerCase();
   const match =
     knownCities.find((c) => `${c.name}, ${c.state}`.toLowerCase() === lower) ||
@@ -64,5 +64,23 @@ export async function geocodeLocation(
   if (match) {
     return { lat: match.lat, lng: match.lng, label: `${match.name}, ${match.state}` };
   }
+
+  // City-name path 2: any US city/place via OpenStreetMap Nominatim (free, no key).
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q=${encodeURIComponent(q)}`;
+    const res = await fetch(url, { headers: { Accept: "application/json" } });
+    if (res.ok) {
+      const arr = await res.json();
+      const hit = Array.isArray(arr) ? arr[0] : null;
+      if (hit?.lat && hit?.lon) {
+        // Short label: first 2 comma-parts (e.g. "Seattle, Washington")
+        const label = String(hit.display_name || q).split(",").slice(0, 2).join(",").trim();
+        return { lat: parseFloat(hit.lat), lng: parseFloat(hit.lon), label };
+      }
+    }
+  } catch {
+    // network/geocoder failure -> not found
+  }
+
   return null;
 }
