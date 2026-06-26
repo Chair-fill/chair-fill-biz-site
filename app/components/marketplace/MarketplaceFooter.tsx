@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CITIES } from "@/lib/marketplace/data";
 
 export default function MarketplaceFooter() {
@@ -48,7 +49,7 @@ export default function MarketplaceFooter() {
               {[
                 ["Browse booths", "/barber-booth-rental"],
                 ["I'm looking for a chair", "/barbers/looking"],
-                ["My inquiries", "/inquiries"],
+                ["My inquiries", "https://app.chairfill.co"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href} className="text-[13px] text-foreground/60 hover:text-primary transition-colors">
@@ -65,7 +66,7 @@ export default function MarketplaceFooter() {
             <ul className="space-y-1.5">
               {[
                 ["Claim your shop", "/claim"],
-                ["Sign up free", "/signup?source=marketplace"],
+                ["Sign in", "https://app.chairfill.co/login"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href} className="text-[13px] text-foreground/60 hover:text-primary transition-colors">
@@ -77,8 +78,14 @@ export default function MarketplaceFooter() {
           </div>
         </div>
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <Link href="/" className="font-mono text-[13px] text-primary tracking-widest">
-            💈 ChairFill
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-new.png"
+              alt="ChairFill"
+              width={110}
+              height={34}
+              className="h-7 w-auto"
+            />
           </Link>
           <p className="text-[12px] text-foreground/30">
             © {new Date().getFullYear()} ChairFill. All rights reserved.
