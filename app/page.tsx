@@ -45,6 +45,7 @@ import FoundingMemberSection from "./components/FoundingMemberSection";
 import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import GuaranteeSection from "./components/GuaranteeSection";
+import EmailCapturePopup from "./components/EmailCapturePopup";
 
 const IMG_CHAIR =
   "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80";
@@ -436,6 +437,9 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <Footer />
+
+      {/* Marketing promo popup ("Get 30 Days Free") — shown after a short delay */}
+      <EmailCapturePopup />
     </div>
   );
 }
