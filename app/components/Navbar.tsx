@@ -29,10 +29,10 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
           <>
             <div className="hidden items-center gap-8 md:flex">
               <Link
-                href="/#benefits"
+                href="/#map"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
-                Benefits
+                Find a Shop
               </Link>
               <Link
                 href="/#problem"
@@ -109,11 +109,11 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
         <div className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-2">
             <Link
-              href="/#benefits"
+              href="/#map"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
             >
-              Benefits
+              Find a Shop
             </Link>
             <Link
               href="/#problem"
