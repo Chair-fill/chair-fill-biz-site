@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import AnimateIn from "./components/AnimateIn";
 import FAQ from "./components/FAQ";
@@ -27,10 +26,8 @@ export const metadata: Metadata = {
   },
 };
 import {
-  MessageSquare,
   Bot,
   DollarSign,
-  Zap,
   ClipboardList,
   Lightbulb,
   CheckCircle2,
@@ -46,15 +43,8 @@ import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import GuaranteeSection from "./components/GuaranteeSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
+import HomeMapSection from "./components/HomeMapSection";
 
-const IMG_CHAIR =
-  "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80";
-const IMG_BARBER =
-  "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80";
-const IMG_BARBER_2 =
-  "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=600&q=80";
-const IMG_BARBER_1 = "/assets/nate-johnston-tgPrIYnW3g4-unsplash.jpg";
-const IMG_HAIRCUT = "/assets/obi--sRVfY0f2d8-unsplash.jpg";
 
 export default function Home() {
   return (
@@ -97,53 +87,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* ── BENEFITS ── */}
-      <section id="benefits" className="py-20 sm:py-24">
-        <div className="section-inner">
-          <AnimateIn>
-            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
-              Why barbers choose ChairFill
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-[#a3a3a3]">
-              Built for the chair. AI outreach on iMessage, where your clients
-              actually read and reply.
-            </p>
-          </AnimateIn>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                title: "iMessage gets real replies",
-                desc: "98% open rate. Your clients actually read and respond.",
-                icon: <MessageSquare className="w-8 h-8 text-[#D4AF37]" />,
-              },
-              {
-                title: "AI calibrated to you",
-                desc: "Personalized outreach sent in your voice. It learns how you communicate and matches it.",
-                icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
-              },
-              {
-                title: "Fill your chair",
-                desc: "Fewer no-shows. Last-minute openings get filled.",
-                icon: <DollarSign className="w-8 h-8 text-[#D4AF37]" />,
-              },
-              {
-                title: "Set it and forget it",
-                desc: "Reminders and rebooking on autopilot.",
-                icon: <Zap className="w-8 h-8 text-[#D4AF37]" />,
-              },
-            ].map(({ title, desc, icon }) => (
-              <div key={title} className="card-modern p-8">
-                <div className="mb-4">{icon}</div>
-                <h3 className="mt-4 text-lg font-bold text-white [font-family:var(--font-satoshi)]">{title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-[#a3a3a3]">
-                  {desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── THE PROBLEM ── */}
       <section id="problem" className="bg-[#111111] py-20 sm:py-32">
@@ -373,6 +316,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── FIND A SHOP / MAP ── */}
+      <HomeMapSection />
 
       {/* ── OBJECTIONS ── */}
       <ObjectionsSection />

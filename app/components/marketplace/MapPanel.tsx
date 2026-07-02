@@ -33,6 +33,12 @@ interface MapPanelProps {
   radiusMiles?: number;
   /** Fires on user pan/zoom end with the new map center (for "search this area"). */
   onMapMove?: (c: { lat: number; lng: number }) => void;
+  /**
+   * Render a "View shop" link in marker popups. Default true (marketplace).
+   * The homepage embed passes false because the shop detail pages are gated
+   * off in production.
+   */
+  linkShops?: boolean;
 }
 
 /** Reports map center after the user pans/zooms. */
@@ -109,10 +115,12 @@ function ClusterLayer({
   shops,
   selectedSlug,
   onSelect,
+  linkShops = true,
 }: {
   shops: Shop[];
   selectedSlug?: string | null;
   onSelect?: (slug: string) => void;
+  linkShops?: boolean;
 }) {
   const map = useMap();
   const markersRef = useRef<globalThis.Map<string, L.Marker>>(new globalThis.Map());
@@ -147,7 +155,7 @@ function ClusterLayer({
           <p style="font-weight:700;margin:0 0 2px">${escapeHtml(shop.name)}</p>
           <p style="font-size:12px;color:#555;margin:0 0 6px">${escapeHtml(shop.address)}</p>
           <p style="font-size:13px;margin:0 0 8px">${price}</p>
-          <a href="/shops/${shop.city}/${shop.slug}" style="font-size:13px;font-weight:600;color:#16a34a">View shop &rarr;</a>
+          ${linkShops ? `<a href="/shops/${shop.city}/${shop.slug}" style="font-size:13px;font-weight:600;color:#16a34a">View shop &rarr;</a>` : ""}
         </div>`,
       );
       m.on("click", () => onSelect?.(shop.slug));
@@ -159,7 +167,7 @@ function ClusterLayer({
     return () => {
       map.removeLayer(group);
     };
-  }, [shops, map, onSelect, selectedSlug]);
+  }, [shops, map, onSelect, selectedSlug, linkShops]);
 
   // Update highlight without rebuilding the cluster group.
   useEffect(() => {
@@ -179,6 +187,7 @@ export default function MapPanel({
   center,
   radiusMiles = 50,
   onMapMove,
+  linkShops = true,
 }: MapPanelProps) {
   const located = useMemo(
     () => shops.filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lng)),
@@ -220,7 +229,7 @@ export default function MapPanel({
       ) : (
         <FitBounds shops={located} />
       )}
-      <ClusterLayer shops={located} selectedSlug={selectedSlug} onSelect={onSelect} />
+      <ClusterLayer shops={located} selectedSlug={selectedSlug} onSelect={onSelect} linkShops={linkShops} />
     </MapContainer>
   );
 }
