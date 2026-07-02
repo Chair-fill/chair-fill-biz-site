@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { marketplaceEnabled } from "@/lib/flags";
 
 /**
  * Marketplace section layout — sets noindex for all /barber-booth-rental/*
@@ -7,8 +9,12 @@ import type { Metadata } from "next";
  * from this layout so all marketplace pages get noindex without us having
  * to repeat it on every page export.
  *
- * Remove `robots` from this metadata block when the marketplace ships
- * for real.
+ * The whole section is also gated to staging-only via marketplaceEnabled():
+ * it renders in development/staging and 404s in production until the
+ * marketplace ships for real.
+ *
+ * Remove `robots` from this metadata block (and the marketplaceEnabled gate
+ * below) when the marketplace ships for real.
  */
 export const metadata: Metadata = {
   robots: {
@@ -22,5 +28,6 @@ export default function BoothRentalLayout({
 }: {
   children: React.ReactNode;
 }) {
+  if (!marketplaceEnabled()) notFound();
   return <>{children}</>;
 }
