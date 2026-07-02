@@ -28,11 +28,10 @@ export function marketplaceMapEnabled(): boolean {
  * NEXT_PUBLIC_MARKETPLACE=true|false to force on/off in any environment.
  */
 export function marketplaceEnabled(): boolean {
+  // Live in production since 2026-07-02 (the /find-a-shop launch) — the full
+  // booth-rental experience (search + map + shop pages) is public. Set
+  // NEXT_PUBLIC_MARKETPLACE=false to kill-switch it in any environment.
   const override = process.env.NEXT_PUBLIC_MARKETPLACE;
-  if (override === "true") return true;
   if (override === "false") return false;
-
-  const env =
-    process.env.NEXT_PUBLIC_APP_ENV || process.env.NODE_ENV || "development";
-  return env !== "production";
+  return true;
 }
