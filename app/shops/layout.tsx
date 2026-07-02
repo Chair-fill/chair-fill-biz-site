@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { marketplaceEnabled } from "@/lib/flags";
 
 /**
- * /shops/* layout — noindex until the marketplace ships for real, and gated
- * to staging-only via marketplaceEnabled() (renders in development/staging,
- * 404s in production). Remove both when real shops exist.
+ * /shops/* layout — the marketplace is live, so these pages are indexable
+ * (no robots override here; shop pages set their own title/description).
+ * marketplaceEnabled() stays as the kill-switch: 404s the section if
+ * NEXT_PUBLIC_MARKETPLACE=false.
  */
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: true,
-  },
-};
-
 export default function ShopsLayout({
   children,
 }: {

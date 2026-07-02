@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import MarketplaceNav from "../components/marketplace/MarketplaceNav";
+import MarketplaceFooter from "../components/marketplace/MarketplaceFooter";
 import AnimateIn from "../components/AnimateIn";
 import MarketplaceSearch from "../components/marketplace/MarketplaceSearch";
 import { SHOPS, CITIES, getAllShops, getCityCentroids } from "@/lib/marketplace/data";
 
 export const metadata: Metadata = {
-  title: "Find a Shop | ChairFill",
+  title: "Find a Shop",
   description:
     "Explore the ChairFill barbershop network — 100+ real shops across Tampa, Miami, Orlando, and Atlanta. Search by location, compare booth plans, and inquire directly.",
   alternates: { canonical: "/find-a-shop" },
@@ -26,8 +26,7 @@ export default function FindAShopPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
-      <Navbar />
-      <div className="pt-16 lg:pt-14" />
+      <MarketplaceNav />
 
       {/* Hero — copy approved by TMac (from the original homepage map section) */}
       <section className="pt-12 pb-10 sm:pt-16">
@@ -70,7 +69,7 @@ export default function FindAShopPage() {
         </div>
       </section>
 
-      <Footer />
+      <MarketplaceFooter />
     </div>
   );
 }
