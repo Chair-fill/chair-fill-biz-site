@@ -43,7 +43,6 @@ import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import GuaranteeSection from "./components/GuaranteeSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
-import HomeMapSection from "./components/HomeMapSection";
 
 
 export default function Home() {
@@ -316,9 +315,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── FIND A SHOP / MAP ── */}
-      <HomeMapSection />
 
       {/* ── OBJECTIONS ── */}
       <ObjectionsSection />

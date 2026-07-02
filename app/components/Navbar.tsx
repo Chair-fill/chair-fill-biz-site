@@ -29,12 +29,6 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
           <>
             <div className="hidden items-center gap-8 md:flex">
               <Link
-                href="/#map"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
-              >
-                Find a Shop
-              </Link>
-              <Link
                 href="/#problem"
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
@@ -63,6 +57,12 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Blog
+              </Link>
+              <Link
+                href="/find-a-shop"
+                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+              >
+                Find a Shop
               </Link>
               <Link
                 href="/waitlist"
@@ -109,13 +109,6 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
         <div className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-2">
             <Link
-              href="/#map"
-              className="py-2 text-sm font-medium text-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              Find a Shop
-            </Link>
-            <Link
               href="/#problem"
               className="py-2 text-sm font-medium text-white"
               onClick={() => setMobileOpen(false)}
@@ -149,6 +142,13 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               onClick={() => setMobileOpen(false)}
             >
               Blog
+            </Link>
+            <Link
+              href="/find-a-shop"
+              className="py-2 text-sm font-medium text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              Find a Shop
             </Link>
             <Link
               href="/waitlist"
