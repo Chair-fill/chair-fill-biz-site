@@ -42,6 +42,7 @@ import FoundingMemberSection from "./components/FoundingMemberSection";
 import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
+import ProductShowcase from "./components/ProductShowcase";
 
 
 export default function Home() {
@@ -320,6 +321,9 @@ export default function Home() {
 
       {/* ── BUNDLE / FULL CHAIR SYSTEM ── */}
       <BundleSection />
+
+      {/* ── PRODUCT SHOWCASE (dashboard preview with sample data) ── */}
+      <ProductShowcase />
 
       {/* GuaranteeSection removed while the founding free-for-life offer runs —
           its "pay after 30 days" risk-reversal contradicts a free offer.
