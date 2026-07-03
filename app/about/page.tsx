@@ -459,8 +459,9 @@ export default function AboutPage() {
               <Gold>in your phone.</Gold>
             </h2>
             <p className="text-[16px] text-foreground/50 max-w-[460px] mx-auto mb-9 leading-[1.7]">
-              5 barbers get their first month completely free. No card. We set everything up. If
-              ChairFill brings back even one client — you stay at $147/mo locked in for life.
+              5 founding spots. One is already claimed. Free for life, no card.
+              We set it up for you. If it doesn't bring clients back, walk away.
+              Nothing owed.
             </p>
             <Link
               href="/waitlist"
