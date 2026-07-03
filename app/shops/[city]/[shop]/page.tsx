@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SHOPS, getShop, getCity } from "@/lib/marketplace/data";
+import { getShopReviewSummary } from "@/lib/marketplace/reviews";
 import ShopPageClient from "./ShopPageClient";
 
 interface Props {
@@ -37,12 +38,19 @@ export default async function ShopPage({ params }: Props) {
 
   if (!shop || !city) notFound();
 
+  // Live rating for claimed shops with a linked barber; null otherwise so
+  // the page (and its JSON-LD) never shows a fabricated rating.
+  const reviewSummary = shop.barberId
+    ? await getShopReviewSummary(shop.barberId)
+    : null;
+
   return (
-    <ShopPageClient 
-      shop={shop} 
-      city={city} 
-      citySlug={citySlug} 
-      shopSlug={shopSlug} 
+    <ShopPageClient
+      shop={shop}
+      city={city}
+      citySlug={citySlug}
+      shopSlug={shopSlug}
+      reviewSummary={reviewSummary}
     />
   );
 }

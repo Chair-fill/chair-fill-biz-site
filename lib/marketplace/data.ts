@@ -30,6 +30,12 @@ export interface Shop {
   lat: number;
   lng: number;
   website?: string | null;
+  /**
+   * app.chairfill.co technician id for the barber who claimed this shop.
+   * When set, marketplace pages show live star ratings pulled from the
+   * ChairFill reviews API. Absent for unclaimed OSM-ingested shops.
+   */
+  barberId?: string | null;
 }
 
 export interface City {

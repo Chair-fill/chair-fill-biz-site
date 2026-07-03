@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Map as MapIcon, List as ListIcon } from "lucide-react";
 import type { Shop } from "@/lib/marketplace/data";
+import ShopStars from "./ShopStars";
 
 // Leaflet touches `window`, so the map is client-only (no SSR).
 const MapPanel = dynamic(() => import("./MapPanel"), {
@@ -60,6 +61,7 @@ function ShopCard({
               </span>
             )}
           </div>
+          <ShopStars barberId={shop.barberId} />
           <p className="text-[13px] text-foreground/50 mb-3">{shop.address}</p>
           <p className="text-[13px] text-foreground/70 line-clamp-2">
             {shop.description}
