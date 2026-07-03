@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { MapPin, Crosshair, Loader2, Search, List as ListIcon, Map as MapIcon, SlidersHorizontal } from "lucide-react";
@@ -30,6 +30,9 @@ interface MarketplaceSearchProps {
 
 const RADIUS_OPTIONS = [25, 50, 100];
 
+/** Shop cards shown in the list before "Show more" (map always shows all pins). */
+const LIST_PAGE_SIZE = 12;
+
 export default function MarketplaceSearch({
   allShops,
   cityCentroids,
@@ -46,6 +49,8 @@ export default function MarketplaceSearch({
   const [claimedOnly, setClaimedOnly] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number } | null>(null);
+  // List pagination — keeps the page short on mobile (the map shows all pins).
+  const [visibleCount, setVisibleCount] = useState(LIST_PAGE_SIZE);
 
   // Show "Search this area" once the user pans the map away from the active center.
   const showSearchArea =
@@ -88,6 +93,11 @@ export default function MarketplaceSearch({
       (x) => ({ ...x.shop, _dist: x.dist ?? undefined }) as Shop & { _dist?: number },
     );
   }, [center, radius, allShops, claimedOnly, pickedAmenities, sort]);
+
+  // New search/filter/sort -> start the list back at the first page.
+  useEffect(() => {
+    setVisibleCount(LIST_PAGE_SIZE);
+  }, [center, radius, claimedOnly, pickedAmenities, sort]);
 
   const toggleAmenity = (a: string) =>
     setPickedAmenities((prev) =>
@@ -366,7 +376,7 @@ export default function MarketplaceSearch({
               </p>
             </div>
           ) : (
-            shops.map((shop) => {
+            shops.slice(0, visibleCount).map((shop) => {
               const dist = (shop as Shop & { _dist?: number })._dist;
               return (
                 <Link
@@ -414,6 +424,15 @@ export default function MarketplaceSearch({
                 </Link>
               );
             })
+          )}
+          {shops.length > visibleCount && (
+            <button
+              type="button"
+              onClick={() => setVisibleCount((c) => c + LIST_PAGE_SIZE)}
+              className="w-full bg-card border border-border rounded-xl py-3.5 text-[13px] font-semibold text-foreground/70 hover:border-primary/40 hover:text-primary transition-all"
+            >
+              Show more shops ({shops.length - visibleCount} left)
+            </button>
           )}
         </div>
 
