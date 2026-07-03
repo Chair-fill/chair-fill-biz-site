@@ -7,12 +7,13 @@ import MarketplaceSearch from "@/app/components/marketplace/MarketplaceSearch";
 import { marketplaceMapEnabled } from "@/lib/flags";
 
 export const metadata: Metadata = {
-  title: "Barber Booth Rental — Find Available Chairs Near You | ChairFill",
+  // Root layout template appends "| ChairFill" — don't repeat it here.
+  title: "Barber Booth Rental | Find Available Chairs Near You",
   description:
-    "Browse barber booth rentals in Tampa, Miami, Atlanta, Houston, New York, and more. Find your next chair from shops with available booths today.",
+    "Browse barber booth rentals in Tampa, Miami, Orlando, and Atlanta. Find your next chair from shops with available booths today.",
   alternates: { canonical: "https://chairfill.co/barber-booth-rental" },
   openGraph: {
-    title: "Barber Booth Rental — ChairFill",
+    title: "Barber Booth Rental | ChairFill",
     description: "Find available barber booths and chairs for rent near you.",
     type: "website",
   },
