@@ -7,7 +7,7 @@ export default function MarketplaceNav() {
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between gap-4">
-        <Link href="/barber-booth-rental" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo-new.png"
             alt="ChairFill"
