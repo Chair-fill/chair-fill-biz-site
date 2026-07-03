@@ -2,18 +2,21 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Star } from "lucide-react";
 import MarketplaceNav from "@/app/components/marketplace/MarketplaceNav";
 import MarketplaceFooter from "@/app/components/marketplace/MarketplaceFooter";
 import ChairFillCTA from "@/app/components/marketplace/ChairFillCTA";
+import type { ShopReviewSummary } from "@/lib/marketplace/reviews";
 
 interface ShopPageClientProps {
   shop: any;
   city: any;
   citySlug: string;
   shopSlug: string;
+  reviewSummary?: ShopReviewSummary | null;
 }
 
-export default function ShopPageClient({ shop, city, citySlug, shopSlug }: ShopPageClientProps) {
+export default function ShopPageClient({ shop, city, citySlug, shopSlug, reviewSummary }: ShopPageClientProps) {
   const [inquirySent, setInquirySent] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
 
@@ -31,6 +34,19 @@ export default function ShopPageClient({ shop, city, citySlug, shopSlug }: ShopP
     telephone: shop.phone ?? undefined,
     geo: { "@type": "GeoCoordinates", latitude: shop.lat, longitude: shop.lng },
     url: `https://chairfill.co/shops/${citySlug}/${shopSlug}`,
+    // Only real review data ever reaches the schema — Google penalizes
+    // fabricated AggregateRating markup.
+    ...(reviewSummary && reviewSummary.count > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: reviewSummary.average,
+            reviewCount: reviewSummary.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
   };
 
   function handleInquiry(e: React.FormEvent) {
@@ -73,6 +89,29 @@ export default function ShopPageClient({ shop, city, citySlug, shopSlug }: ShopP
                     <span className="text-[11px] font-mono tracking-wider px-2.5 py-1 rounded-full bg-border text-foreground/40">Unclaimed</span>
                   )}
                 </div>
+                {reviewSummary && reviewSummary.count > 0 && (
+                  <span
+                    className="inline-flex items-center gap-1 mb-1"
+                    aria-label={`Rated ${reviewSummary.average} out of 5 from ${reviewSummary.count} reviews`}
+                  >
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <Star
+                        key={n}
+                        className={`w-3.5 h-3.5 ${
+                          n <= Math.round(reviewSummary.average)
+                            ? "fill-[#D4AF37] text-[#D4AF37]"
+                            : "text-foreground/20"
+                        }`}
+                      />
+                    ))}
+                    <span className="text-[12px] font-semibold text-foreground/70">
+                      {reviewSummary.average.toFixed(1)}
+                    </span>
+                    <span className="text-[12px] text-foreground/40">
+                      ({reviewSummary.count} {reviewSummary.count === 1 ? "review" : "reviews"})
+                    </span>
+                  </span>
+                )}
                 <p className="text-[14px] text-foreground/50">{shop.address}</p>
               </div>
 

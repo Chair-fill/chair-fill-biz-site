@@ -6,6 +6,7 @@ import Link from "next/link";
 import { MapPin, Crosshair, Loader2, Search, List as ListIcon, Map as MapIcon, SlidersHorizontal } from "lucide-react";
 import type { Shop } from "@/lib/marketplace/data";
 import { milesBetween, geocodeLocation } from "@/lib/geo";
+import ShopStars from "./ShopStars";
 
 const MapPanel = dynamic(() => import("./MapPanel"), {
   ssr: false,
@@ -404,6 +405,7 @@ export default function MarketplaceSearch({
                           </span>
                         )}
                       </div>
+                      <ShopStars barberId={shop.barberId} />
                       <p className="text-[13px] text-foreground/50 mb-1">{shop.address}</p>
                       {dist != null && (
                         <p className="text-[12px] text-primary mb-2">{dist.toFixed(1)} mi away</p>
