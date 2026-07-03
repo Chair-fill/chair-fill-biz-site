@@ -25,7 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city: citySlug } = await params;
   const city = getCity(citySlug);
   if (!city) return {};
-  const title = `Barber Booth Rental in ${city.name}, ${city.state} | ChairFill`;
+  // Root layout template appends "| ChairFill" — don't repeat it here.
+  const title = `Barber Booth Rental in ${city.name}, ${city.state}`;
   const description = `Find available barber booths and chairs for rent in ${city.name}, ${city.state}. Compare plans, amenities, and inquire directly with shop owners.`;
   return {
     title,
