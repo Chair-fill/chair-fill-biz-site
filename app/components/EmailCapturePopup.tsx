@@ -90,17 +90,17 @@ export default function EmailCapturePopup() {
             </div>
 
             <h2 className="text-[22px] font-black text-white leading-snug mb-2">
-              Get <span className="text-[#d4af37]">30 Days Free</span> on ChairFill Pro
+              Get <span className="text-[#d4af37]">ChairFill Free for Life</span>
             </h2>
             <p className="text-sm text-white/55 leading-relaxed mb-6">
-              Join barbers using AI to reactivate dormant clients and fill empty chairs — automatically. No cold calls. No awkward texts.
+              One of 5 founding spots. AI that reactivates your dormant clients and fills empty chairs. No cold calls. No awkward texts.
             </p>
 
             {status === "success" ? (
               <div className="flex flex-col items-center gap-3 py-4">
                 <CheckCircle2 className="w-10 h-10 text-[#d4af37]" />
                 <p className="text-sm font-bold text-white">You&apos;re in! Check your inbox.</p>
-                <p className="text-xs text-white/50 text-center">We&apos;ll send your free trial details shortly.</p>
+                <p className="text-xs text-white/50 text-center">We&apos;ll send your founding spot details shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
@@ -122,7 +122,7 @@ export default function EmailCapturePopup() {
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#d4af37] text-black text-sm font-black tracking-tight hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-60 shadow-lg shadow-[#d4af37]/20"
                 >
                   {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
-                  {status === "loading" ? "Claiming..." : "Claim My Free Month"}
+                  {status === "loading" ? "Claiming..." : "Claim My Free Spot"}
                 </button>
                 <p className="text-center text-[11px] text-white/30">
                   No credit card required · Cancel anytime

@@ -41,7 +41,6 @@ import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
 import FoundingMemberSection from "./components/FoundingMemberSection";
 import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
-import GuaranteeSection from "./components/GuaranteeSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
 
 
@@ -322,8 +321,9 @@ export default function Home() {
       {/* ── BUNDLE / FULL CHAIR SYSTEM ── */}
       <BundleSection />
 
-      {/* ── GUARANTEE ── */}
-      <GuaranteeSection />
+      {/* GuaranteeSection removed while the founding free-for-life offer runs —
+          its "pay after 30 days" risk-reversal contradicts a free offer.
+          Bring it back when paid plans launch. */}
 
       {/* ── FOUNDING MEMBER SECTION (replaces testimonials/pricing during beta) ── */}
       <FoundingMemberSection />
@@ -360,9 +360,9 @@ export default function Home() {
                 Stop leaving money in your phone.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
-                5 barbers get their first month completely free. No card. We set
-                it up for you. If you get a client back, you stay at $147/mo —
-                locked in for life. If you don't, walk away. Nothing owed.
+                5 founding spots. One is already claimed. Free for life, no
+                card. We set it up for you. If it doesn't bring clients back,
+                walk away. Nothing owed.
               </p>
               <div className="mt-8">
                 <Link
@@ -380,7 +380,7 @@ export default function Home() {
       {/* ── FOOTER ── */}
       <Footer />
 
-      {/* Marketing promo popup ("Get 30 Days Free") — shown after a short delay */}
+      {/* Marketing promo popup (founding free-for-life offer) — shown after a short delay */}
       <EmailCapturePopup />
     </div>
   );
