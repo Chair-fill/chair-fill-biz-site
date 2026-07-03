@@ -3,12 +3,12 @@
 import { useState, useEffect } from "react";
 
 const TOTAL_SPOTS = 5;
-const ANCHOR_PRICE = 247;
-const OFFER_PRICE = 0;
+// One founding barber is already in — the API adds live signups on top.
+const BASE_SPOTS_TAKEN = 1;
 export default function FoundingMemberSection() {
-  const [spotsTaken, setSpotsTaken] = useState(0); // Fallback to 0 while loading
+  const [spotsTaken, setSpotsTaken] = useState(BASE_SPOTS_TAKEN);
   const [totalSpots] = useState(TOTAL_SPOTS);
-  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS - 0);
+  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS - BASE_SPOTS_TAKEN);
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,9 @@ export default function FoundingMemberSection() {
       .then((res) => res.json())
       .then((data) => {
         if (data.spotsTaken !== undefined) {
-          setSpotsTaken(data.spotsTaken);
-          setSpotsLeft(TOTAL_SPOTS - data.spotsTaken);
+          const taken = Math.max(BASE_SPOTS_TAKEN, data.spotsTaken);
+          setSpotsTaken(taken);
+          setSpotsLeft(TOTAL_SPOTS - taken);
         }
       })
       .catch((err) => console.error("Error fetching spots:", err));
@@ -237,10 +238,8 @@ export default function FoundingMemberSection() {
               margin: "0 auto",
             }}
           >
-            First month is completely free. No card required. We set everything
-            up for you. If ChairFill brings back even one client — you stay at{" "}
-            <strong style={{ color: "rgba(255,255,255,0.85)" }}>$147/mo</strong>{" "}
-            locked in for life. If it doesn't, walk away. Nothing owed.
+            Free for life. No card required. We set everything up for you. If
+            it doesn't bring clients back, walk away. Nothing owed.
           </p>
         </div>
 
@@ -294,103 +293,6 @@ export default function FoundingMemberSection() {
           </div>
         </div>
 
-        {/* Price */}
-        <div className="card price-box" style={{ marginBottom: 16 }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 8,
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.78rem",
-                color: "rgba(255,255,255,0.4)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Standard price after launch
-            </span>
-            <span
-              className="strikethrough"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-            >
-              ${ANCHOR_PRICE}/mo
-            </span>
-          </div>
-          <div style={{ divider: true }}>
-            <div className="divider" />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-end",
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontSize: "0.78rem",
-                  color: "rgba(255,255,255,0.4)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  marginBottom: 4,
-                }}
-              >
-                Your price — locked forever
-              </div>
-              <div
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: 700,
-                  color: "#D4AF37",
-                  lineHeight: 1,
-                }}
-              >
-                ${OFFER_PRICE}
-                <span
-                  style={{
-                    fontSize: "0.9rem",
-                    fontWeight: 400,
-                    color: "rgba(212,175,55,0.7)",
-                  }}
-                >
-                  /mo
-                </span>
-              </div>
-            </div>
-            <div
-              style={{
-                background: "rgba(212,175,55,0.12)",
-                border: "1px solid rgba(212,175,55,0.25)",
-                borderRadius: 4,
-                padding: "4px 10px",
-                fontSize: "0.78rem",
-                color: "#D4AF37",
-                fontWeight: 600,
-              }}
-            >
-              {OFFER_PRICE === 0 ? "FREE" : "50% OFF"}
-            </div>
-          </div>
-          <p
-            style={{
-              fontSize: "0.78rem",
-              color: "rgba(255,255,255,0.4)",
-              marginTop: 10,
-              lineHeight: 1.5,
-            }}
-          >
-            First month free. No card, no commitment. After your free month, you
-            pay $147/mo — locked in for life. Only 5 barbers get this. Once these
-            spots are gone, this offer disappears permanently.
-          </p>
-        </div>
-
         {/* Features */}
         <div
           className="card"
@@ -403,10 +305,9 @@ export default function FoundingMemberSection() {
           }}
         >
           {[
-            "First month completely free — no card required",
+            "Free for life — no card required",
             "We handle your full setup and onboarding for you",
             "AI outreach via iMessage — calibrated to sound like you",
-            "$147/mo locked in for life after your free month — price never increases",
             "Direct line to the founding team — your feedback shapes the product",
             "Founding Member status on your profile forever",
           ].map((f, i) => (
@@ -449,8 +350,8 @@ export default function FoundingMemberSection() {
               color: "rgba(255,255,255,0.3)",
             }}
           >
-            Free for 30 days. Then $147/mo locked in for life. Cancel before day
-            30 and you owe nothing.
+            Free for life for the first {TOTAL_SPOTS} barbers. No card required.
+            Walk away anytime and you owe nothing.
           </p>
         </div>
       </div>
