@@ -39,7 +39,7 @@ export default function TermsOfService() {
           </h1>
 
           <div className="text-[#777] text-[0.82rem] tracking-[0.04em] relative z-10">
-            Effective Date: January 1, 2026 · Last Updated: March 2026
+            Effective Date: January 1, 2026 · Last Updated: July 2026
           </div>
         </header>
 
@@ -193,37 +193,18 @@ export default function TermsOfService() {
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
-                ChairFill offers the following subscription tiers for barbershop
-                operators:
+                ChairFill is currently in its founding phase. The first 5
+                founding barber accounts receive ChairFill free for life. No
+                payment method is required and no charges apply to founding
+                accounts.
               </p>
-              <div className="plan-grid">
-                <div className="plan-card">
-                  <h3>Independent</h3>
-                  <div className="price">
-                    $147<span>/mo</span>
-                  </div>
-                  <p>Solo barbers and single chairs</p>
-                </div>
-                <div className="plan-card">
-                  <h3>Professional</h3>
-                  <div className="price">
-                    $247<span>/mo</span>
-                  </div>
-                  <p>Multi-chair operators</p>
-                </div>
-                <div className="plan-card">
-                  <h3>Shop Owner</h3>
-                  <div className="price">TBD</div>
-                  <p>Full shop management</p>
-                </div>
-              </div>
               <ul className="space-y-2 mt-4">
                 {[
-                  "All subscriptions are billed monthly in advance",
-                  "Subscriptions auto-renew unless cancelled before the next billing cycle",
-                  "Price changes will be communicated with at least 30 days' notice",
-                  "All payments are processed securely via our third-party payment processor",
-                  "Taxes may apply depending on your jurisdiction",
+                  "Founding member accounts are free for life and are never billed",
+                  "Founding status is limited to the first 5 barber accounts and is confirmed at signup",
+                  "Paid subscription tiers may be introduced for new customers in the future",
+                  "Future paid plans will not change the free-for-life terms of founding accounts",
+                  "If paid plans launch, pricing and billing terms will be published in this section with at least 30 days' notice",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -243,14 +224,14 @@ export default function TermsOfService() {
             </h2>
             <div className="space-y-[14px] text-[#BEB8AE] leading-[1.8] font-normal text-[0.95rem]">
               <p>
-                You may cancel your ChairFill subscription at any time through
-                your account dashboard or by contacting our support team.
+                You may cancel your ChairFill account at any time through your
+                account dashboard or by contacting our support team.
               </p>
               <ul className="space-y-2 mt-4">
                 {[
-                  "Cancellations take effect at the end of the current billing period",
-                  "No partial refunds are issued for unused time within a billing cycle",
-                  "All outstanding balances must be settled prior to account closure",
+                  "Cancellations take effect immediately upon confirmation",
+                  "Founding accounts carry no charges, so no balances or refunds apply",
+                  "Cancelling a founding account forfeits its founding member status",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -261,10 +242,9 @@ export default function TermsOfService() {
                 ))}
               </ul>
               <p className="mt-4">
-                ChairFill may issue refunds at its sole discretion in cases of
-                documented technical failure attributable solely to our
-                platform. Refund requests must be submitted within 7 days of the
-                billing date in question.
+                Because founding accounts are not billed, refund provisions do
+                not currently apply. If paid plans are introduced, refund terms
+                will be published in this section.
               </p>
             </div>
           </section>
