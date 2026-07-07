@@ -41,7 +41,7 @@ declare global {
 function previewMsgs(name: string) {
   const who = name.trim() || "fam";
   return [
-    { t: "them", x: `yo ${who}, this is McArthur from ChairFill 👋` },
+    { t: "them", x: `yo ${who}, this is McArthur from ChairFill 👋🏾` },
     {
       t: "them",
       x: "this text you just got? that's the whole thing. i take the place of the booking app you're fighting with and text your clients back the second they reach out, even when you're mid fade.",
