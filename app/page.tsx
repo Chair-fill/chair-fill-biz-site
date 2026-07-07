@@ -39,6 +39,7 @@ import {
 // ── New components ───────────────────────────────────────────────────────
 import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
 import FoundingMemberSection from "./components/FoundingMemberSection";
+import TextDemoSection from "./components/TextDemoSection";
 import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
@@ -329,8 +330,13 @@ export default function Home() {
           its "pay after 30 days" risk-reversal contradicts a free offer.
           Bring it back when paid plans launch. */}
 
+      {/* ── TEXT YOURSELF THE DEMO (interactive: barber texts their own phone) ── */}
+      <TextDemoSection />
+
       {/* ── FOUNDING MEMBER SECTION (replaces testimonials/pricing during beta) ── */}
-      <FoundingMemberSection />
+      <div id="founding">
+        <FoundingMemberSection />
+      </div>
 
       {/* ── FAQ ── */}
       <section id="faq" className="py-20 sm:py-32 bg-[#0a0a0a]">
