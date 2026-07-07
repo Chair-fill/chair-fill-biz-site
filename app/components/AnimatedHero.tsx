@@ -3,11 +3,13 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowUp, Camera, Mic, LayoutGrid, ArrowRight } from "lucide-react";
+import { useSpotsLeft } from "./SpotsLeft";
 
 const IMG_HERO_ILLUSTRATION =
   "/assets/8f845499-d9e9-44f4-9672-25682e2938c4_removalai_preview.png";
 
 export default function AnimatedHero() {
+  const spotsLeft = useSpotsLeft();
   return (
     <section
       id="waitlist"
@@ -145,7 +147,7 @@ export default function AnimatedHero() {
           <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
             <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-[10px] lg:text-xs font-medium text-[#D4AF37] uppercase tracking-widest">
               <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-              Now accepting barbers. Launching soon.
+              Now accepting barbers · {spotsLeft} of 5 free spots left
             </div>
 
             <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-satoshi)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
@@ -164,10 +166,10 @@ export default function AnimatedHero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link
-                href="/waitlist"
+                href="/founding-member"
                 className="cta-primary inline-flex justify-center group"
               >
-                Join the waitlist
+                Claim your free spot
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
@@ -191,7 +193,7 @@ export default function AnimatedHero() {
                 </div>
               </div>
               <span className="uppercase tracking-widest font-medium">
-                150+ barbers on the waitlist. Be first in line.
+                Founding class open · {spotsLeft} of 5 spots left, free for life
               </span>
             </div>
           </div>

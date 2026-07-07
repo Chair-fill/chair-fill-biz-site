@@ -22,10 +22,10 @@ export default function Footer() {
 
         <nav className="flex items-center gap-[28px]">
           <Link
-            href="/waitlist"
+            href="/founding-member"
             className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
           >
-            Join waitlist
+            Claim free spot
           </Link>
           <Link
             href="/blog"

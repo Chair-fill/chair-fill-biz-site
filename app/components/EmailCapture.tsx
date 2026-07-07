@@ -30,7 +30,7 @@ export default function EmailCapture({ variant = "hero" }: { variant?: "hero" | 
 
   const isHero = variant === "hero";
   const isFooter = variant === "footer";
-  const joinLabel = status === "loading" ? "Joining…" : status === "success" ? "You're on the list!" : "Join waitlist";
+  const joinLabel = status === "loading" ? "Joining…" : status === "success" ? "You're in — we'll reach out!" : "Claim my free spot";
 
   return (
     <form onSubmit={handleSubmit} className={isHero ? "w-full max-w-md" : ""}>
@@ -61,7 +61,7 @@ export default function EmailCapture({ variant = "hero" }: { variant?: "hero" | 
           disabled={status === "loading"}
           className="cta-primary shrink-0 whitespace-nowrap disabled:opacity-70"
         >
-          {status === "loading" ? "Joining…" : status === "success" ? "You’re on the list!" : "Join waitlist"}
+          {status === "loading" ? "Joining…" : status === "success" ? "You’re in — we’ll reach out!" : "Claim my free spot"}
         </button>
       </div>
       {status === "success" && (
