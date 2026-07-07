@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSpotsLeft } from "../components/SpotsLeft";
 
 const TOTAL_SPOTS = 5;
-const SPOTS_REMAINING_DEFAULT = 3; // Hardcoded for now; swap to /api/spots-taken later
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function FoundingMemberPage() {
+  const spotsLeft = useSpotsLeft();
   const [firstName, setFirstName] = useState("");
   const [shop, setShop] = useState("");
   const [phone, setPhone] = useState("");
@@ -101,7 +102,7 @@ export default function FoundingMemberPage() {
         <div className="mx-auto max-w-md">
           <div className="text-center">
             <p className="text-xs uppercase tracking-[0.22em] text-[#D4AF37] [font-family:var(--font-geist-mono)]">
-              Founding Member · {SPOTS_REMAINING_DEFAULT} of {TOTAL_SPOTS}
+              Founding Member · {spotsLeft} of {TOTAL_SPOTS}
             </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Claim your <span className="text-[#D4AF37]">chair</span>.
@@ -111,7 +112,7 @@ export default function FoundingMemberPage() {
             </p>
             <div className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-[#D4AF37]/40 bg-[#141414] px-4 py-2 text-xs uppercase tracking-[0.16em] text-[#D4AF37] [font-family:var(--font-geist-mono)]">
               <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[#3ddc84] shadow-[0_0_8px_#3ddc84]" />
-              {SPOTS_REMAINING_DEFAULT} of {TOTAL_SPOTS} spots remaining
+              {spotsLeft} of {TOTAL_SPOTS} spots remaining
             </div>
           </div>
 

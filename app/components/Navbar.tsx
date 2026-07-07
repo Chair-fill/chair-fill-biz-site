@@ -65,10 +65,10 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 Find a Shop
               </Link>
               <Link
-                href="/waitlist"
+                href="/founding-member"
                 className="cta-primary rounded-full px-6 py-2 text-sm"
               >
-                Join waitlist
+                Claim free spot
               </Link>
             </div>
 
@@ -151,11 +151,11 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               Find a Shop
             </Link>
             <Link
-              href="/waitlist"
+              href="/founding-member"
               className="cta-primary mt-2 text-center py-1 text-sm"
               onClick={() => setMobileOpen(false)}
             >
-              Join waitlist
+              Claim free spot
             </Link>
           </div>
         </div>

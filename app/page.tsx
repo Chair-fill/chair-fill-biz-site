@@ -40,6 +40,7 @@ import {
 import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
 import FoundingMemberSection from "./components/FoundingMemberSection";
 import TextDemoSection from "./components/TextDemoSection";
+import { SpotsStat } from "./components/SpotsLeft";
 import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
@@ -73,7 +74,6 @@ export default function Home() {
             {[
               { num: "98%", label: "iMessage open rate" },
               { num: "3x", label: "More recovery vs email" },
-              { num: "150+", label: "Barbers on waitlist" },
             ].map(({ num, label }) => (
               <div key={label} className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-[#D4AF37] [font-family:var(--font-satoshi)]">
@@ -84,6 +84,8 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            {/* Live founding-spots counter (client, /api/spots-taken) */}
+            <SpotsStat />
           </div>
         </div>
       </div>
@@ -370,13 +372,13 @@ export default function Home() {
                 Stop leaving money in your phone.
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
-                5 founding spots. One is already claimed. Free for life, no
-                card. We set it up for you. If it doesn't bring clients back,
-                walk away. Nothing owed.
+                We're accepting barbers now. The first 5 in stay free for life,
+                no card. We set it up for you. If it doesn't bring clients
+                back, walk away. Nothing owed.
               </p>
               <div className="mt-8">
                 <Link
-                  href="/waitlist"
+                  href="/founding-member"
                   className="cta-secondary inline-flex justify-center border-black bg-black text-[#D4AF37] hover:bg-black/90 hover:text-[#E8C547]"
                 >
                   Claim a Free Spot →
