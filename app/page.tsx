@@ -45,6 +45,13 @@ import ObjectionsSection from "./components/ObjectionsSection";
 import BundleSection from "./components/BundleSection";
 import EmailCapturePopup from "./components/EmailCapturePopup";
 import ProductShowcase from "./components/ProductShowcase";
+import StatusSection from "./components/StatusSection";
+
+// Founding-pricing deadline (Edit 2 / book p.41: pair scarcity with real urgency).
+// NON-resetting on purpose. Set this to a date you will actually hold, or remove
+// the line in the final CTA below. A fake/resetting countdown is the move the book
+// warns against — only keep this if it is real.
+const FOUNDING_DEADLINE = "September 30, 2026";
 
 
 export default function Home() {
@@ -319,6 +326,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── STATUS / "WHO" (book p.140: how a full chair raises the barber's standing) ── */}
+      <StatusSection />
+
       {/* ── OBJECTIONS ── */}
       <ObjectionsSection />
 
@@ -375,6 +385,9 @@ export default function Home() {
                 We're accepting barbers now. The first 5 in stay free for life,
                 no card. We set it up for you. If it doesn't bring clients
                 back, walk away. Nothing owed.
+              </p>
+              <p className="mx-auto max-w-xl text-sm font-semibold text-[#D4AF37] mb-10 [font-family:var(--font-satoshi)]">
+                Founding pricing ends {FOUNDING_DEADLINE}.
               </p>
               <div className="mt-8">
                 <Link
