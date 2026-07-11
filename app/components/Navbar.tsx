@@ -12,7 +12,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-[100] h-[72px] border-b border-[#C9A84C]/18 bg-[#080808]/92 backdrop-blur-[20px] px-[48px] flex items-center justify-between">
+    <header className="sticky top-0 z-[100] h-[72px] border-b border-[#C9A84C]/18 bg-[#080808]/92 backdrop-blur-[20px] px-4 md:px-8 lg:px-12 flex items-center justify-between">
       <nav className="w-full flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
@@ -27,46 +27,46 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
 
         {showLinks && (
           <>
-            <div className="hidden items-center gap-8 md:flex">
+            <div className="hidden items-center gap-6 lg:flex">
               <Link
                 href="/#problem"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Problem
               </Link>
               <Link
                 href="/#how-it-works"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 How it works
               </Link>
               <Link
                 href="/#natural"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Why it works
               </Link>
               <Link
                 href="/#faq"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 FAQ
               </Link>
               <Link
                 href="/blog"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Blog
               </Link>
               <Link
                 href="/find-a-shop"
-                className="text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
               >
                 Find a Shop
               </Link>
               <Link
                 href="/founding-member"
-                className="cta-primary rounded-full px-6 py-2 text-sm"
+                className="cta-primary whitespace-nowrap px-5 py-2 text-sm"
               >
                 Claim free spot
               </Link>
@@ -74,7 +74,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
 
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-white hover:bg-white/10 md:hidden"
+              className="inline-flex items-center justify-center rounded-lg p-2 text-white hover:bg-white/10 lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -106,7 +106,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
       </nav>
 
       {showLinks && mobileOpen && (
-        <div className="border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 md:hidden">
+        <div className="absolute left-0 right-0 top-[72px] border-t border-[#D4AF37]/20 bg-[#0a0a0a] px-4 py-4 lg:hidden">
           <div className="flex flex-col gap-2">
             <Link
               href="/#problem"
