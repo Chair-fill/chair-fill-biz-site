@@ -45,12 +45,12 @@ export default function Footer() {
           >
             Terms
           </Link>
-          <Link
-            href="#"
+          <a
+            href="mailto:admin@chairfill.co"
             className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
           >
             Contact
-          </Link>
+          </a>
         </nav>
       </div>
     </footer>

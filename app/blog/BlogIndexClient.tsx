@@ -13,6 +13,10 @@ function formatDate(d: string): string {
     year: "numeric",
     month: "long",
     day: "numeric",
+    // Pin to UTC so server and client render the same calendar day (a date-only
+    // string parses as UTC midnight; without this the local tz can shift it a
+    // day and trip a hydration mismatch).
+    timeZone: "UTC",
   });
 }
 
