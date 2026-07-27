@@ -227,6 +227,55 @@ export default function BundleSection() {
           font-weight: 700;
           color: #C9A84C;
         }
+        .bundle-scope .bundle-total {
+          margin-top: 40px;
+          background: #111111;
+          border: 1px solid rgba(201,168,76,0.22);
+          border-radius: 14px;
+          padding: 40px 32px;
+          text-align: center;
+        }
+        .bundle-scope .bundle-total-label {
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #888880;
+          margin-bottom: 12px;
+        }
+        .bundle-scope .bundle-total-value {
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
+          font-size: clamp(26px, 4vw, 40px);
+          line-height: 1.15;
+          color: #F0EDE6;
+          margin: 0 0 6px;
+        }
+        .bundle-scope .bundle-total-value .strike {
+          color: #666;
+          text-decoration: line-through;
+          text-decoration-thickness: 2px;
+        }
+        .bundle-scope .bundle-total-sub {
+          font-size: 14px;
+          color: #888880;
+          line-height: 1.7;
+          max-width: 460px;
+          margin: 14px auto 0;
+        }
+        .bundle-scope .bundle-total-price {
+          display: inline-block;
+          margin-top: 22px;
+          font-family: var(--font-satoshi), system-ui, sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: #C9A84C;
+          border: 1px solid rgba(201,168,76,0.35);
+          border-radius: 100px;
+          padding: 10px 22px;
+        }
       `}</style>
 
       <section className="b-section">
@@ -267,6 +316,20 @@ export default function BundleSection() {
             </AnimateIn>
           ))}
         </div>
+
+        <AnimateIn direction="up" delay={200}>
+          <div className="bundle-total">
+            <div className="bundle-total-label">Everything above, added up</div>
+            <p className="bundle-total-value">
+              <span className="strike">$650/mo</span> + <span className="strike">$300 setup</span> in value
+            </p>
+            <p className="bundle-total-sub">
+              Six components that keep your chair full — built and run for you.
+              As a founding member, you don&apos;t pay for any of it.
+            </p>
+            <span className="bundle-total-price">Your founding price: $0 — free for life</span>
+          </div>
+        </AnimateIn>
       </section>
     </div>
   );

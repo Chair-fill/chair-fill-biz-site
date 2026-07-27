@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: "Do I need a credit card to start?",
     answer:
-      "No. Your first 30 days are completely free. We don't collect any payment information until after your free month ends. If you don't see results, cancel before day 30 and you owe nothing — ever.",
+      "No card, ever, for founding members. The first 5 barbers get ChairFill free for life — we don't collect any payment information at all. We set everything up for you. If it doesn't bring clients back, walk away and you owe nothing.",
   },
   {
     question: "Will my clients know it's an AI?",
