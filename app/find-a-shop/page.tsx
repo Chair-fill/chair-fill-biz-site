@@ -64,7 +64,7 @@ export default function FindAShopPage() {
             href="/waitlist"
             className="cta-primary inline-flex justify-center rounded-full px-8 py-3 text-sm"
           >
-            Join the waitlist →
+            Claim your free spot →
           </Link>
         </div>
       </section>

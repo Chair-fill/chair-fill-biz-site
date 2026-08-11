@@ -142,7 +142,7 @@ export default async function BlogPostPage({
               href="/waitlist"
               className="cta-primary inline-flex items-center gap-2"
             >
-              Join the waitlist
+              Claim your free spot
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

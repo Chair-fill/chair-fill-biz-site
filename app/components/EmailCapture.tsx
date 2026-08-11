@@ -66,7 +66,7 @@ export default function EmailCapture({ variant = "hero" }: { variant?: "hero" | 
       </div>
       {status === "success" && (
         <p className={`mt-2 text-sm font-medium ${variant === "inline" ? "text-white" : "text-[#D4AF37]"}`}>
-          You're on the list. We'll notify you when we launch.
+          You're in. We'll reach out about your free founding spot. No spam, ever.
         </p>
       )}
       {status === "error" && (
