@@ -35,7 +35,7 @@ const plans = [
     ],
     description:
       "Essential automation for the solo barber building their own book.",
-    buttonText: "Join waitlist for discount",
+    buttonText: "Claim your founding spot",
     href: "/waitlist",
     isPopular: false,
     comingSoon: false,
@@ -53,7 +53,7 @@ const plans = [
       "Priority support",
     ],
     description: "Best value for the high-volume barber or booth renter.",
-    buttonText: "Join waitlist for discount",
+    buttonText: "Claim your founding spot",
     href: "/waitlist",
     isPopular: true,
     comingSoon: false,
@@ -144,8 +144,8 @@ export default function PricingSection() {
             Simple, transparent pricing
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-lg text-[#a3a3a3]">
-            Plans for every barber, from solo to shop owner. Join the waitlist
-            for early access and launch pricing.
+            Plans for every barber, from solo to shop owner. Claim a free
+            founding spot while they last.
           </p>
         </div>
 

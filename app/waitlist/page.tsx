@@ -53,17 +53,17 @@ export default function WaitlistPage() {
       <main className="section-inner px-4 pb-20 pt-4 sm:pb-24">
         <div className="mx-auto max-w-md">
           <h1 className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl [font-family:var(--font-satoshi)]">
-            Join the waitlist
+            Claim your free spot
           </h1>
           <p className="mt-3 text-center text-lg text-[#a3a3a3]">
-            Be the first to know when ChairFill launches. We will only use your email to notify you.
+            Now accepting founding barbers. Drop your email and we'll reach out to set you up.
           </p>
 
           {status === "success" ? (
             <div className="mt-10 rounded-2xl border border-[#D4AF37]/30 bg-[#141414] p-8 text-center shadow-lg">
-              <p className="text-xl font-semibold text-[#D4AF37]">You are on the list.</p>
+              <p className="text-xl font-semibold text-[#D4AF37]">You're in.</p>
               <p className="mt-2 text-[#a3a3a3]">
-                We will notify you when we launch. No spam, ever.
+                We'll reach out about your free founding spot. No spam, ever.
               </p>
               <Link
                 href="/"
@@ -117,7 +117,7 @@ export default function WaitlistPage() {
                 disabled={status === "loading"}
                 className="w-full rounded-full bg-[#D4AF37] px-8 py-4 text-base font-semibold text-black transition-all duration-200 hover:bg-[#E8C547] hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
               >
-                {status === "loading" ? "Joining…" : "Join waitlist"}
+                {status === "loading" ? "Claiming…" : "Claim my free spot"}
               </button>
             </form>
           )}

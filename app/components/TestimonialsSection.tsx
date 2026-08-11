@@ -101,7 +101,7 @@ export default function TestimonialsSection() {
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-12"
         >
           <span className="inline-block rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-sm font-medium text-[#D4AF37] mb-4">
-            From barbers on the waitlist
+            From founding barbers
           </span>
           <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
             Real talk, straight from the chair.
