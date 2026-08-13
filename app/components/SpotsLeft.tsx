@@ -3,19 +3,22 @@
 import { useEffect, useState } from "react";
 
 const TOTAL_SPOTS = 5;
-// One founding barber is already in — the API adds live signups on top
-// (mirrors FoundingMemberSection).
-const BASE_SPOTS_TAKEN = 1;
 
-/** Live "free founding spots left", fed by /api/spots-taken. */
+/**
+ * Live "free founding spots left", fed by /api/spots-taken (which proxies the
+ * backend's real active-barber count). No hardcoded floor — the number reflects
+ * genuinely active founding barbers, so it reads honestly (5 of 5 when none are
+ * live yet).
+ */
 export function useSpotsLeft(): number {
-  const [left, setLeft] = useState(TOTAL_SPOTS - BASE_SPOTS_TAKEN);
+  const [left, setLeft] = useState(TOTAL_SPOTS);
   useEffect(() => {
     fetch("/api/spots-taken")
       .then((r) => r.json())
       .then((d) => {
         if (typeof d?.spotsTaken === "number") {
-          setLeft(Math.max(0, TOTAL_SPOTS - Math.max(BASE_SPOTS_TAKEN, d.spotsTaken)));
+          const total = typeof d?.totalSpots === "number" ? d.totalSpots : TOTAL_SPOTS;
+          setLeft(Math.max(0, total - d.spotsTaken));
         }
       })
       .catch(() => {});
