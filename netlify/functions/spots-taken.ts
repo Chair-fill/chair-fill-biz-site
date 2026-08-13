@@ -33,7 +33,23 @@ export default async (req: Request, _context: Context): Promise<Response> => {
     return new Response(JSON.stringify({ error: "Method not allowed" }), { status: 405, headers: corsHeaders });
   }
 
-  // 1. Manual override (if set)
+  // 1a. Env-var override — the simple manual knob. Set FOUNDING_SPOTS_TAKEN
+  // (and optionally FOUNDING_SPOTS_TOTAL) in Netlify → Environment variables to
+  // control the number directly; redeploy to apply. This wins over everything.
+  const envTakenRaw = process.env.FOUNDING_SPOTS_TAKEN;
+  if (envTakenRaw !== undefined && envTakenRaw !== "") {
+    const envTaken = Number(envTakenRaw);
+    if (Number.isFinite(envTaken)) {
+      const envTotal = Number(process.env.FOUNDING_SPOTS_TOTAL);
+      const totalSpots = Number.isFinite(envTotal) && envTotal > 0 ? envTotal : TOTAL_SPOTS;
+      return new Response(
+        JSON.stringify({ spotsTaken: clamp(envTaken, totalSpots), totalSpots, source: "env" }),
+        { status: 200, headers: corsHeaders }
+      );
+    }
+  }
+
+  // 1b. Blobs override (if set via /api/admin/spots)
   try {
     const store = getStore({ name: SPOTS_STORE, consistency: "strong" });
     const override = (await store.get(OVERRIDE_KEY, { type: "json" })) as
