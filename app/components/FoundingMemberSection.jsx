@@ -3,21 +3,19 @@
 import { useState, useEffect } from "react";
 
 const TOTAL_SPOTS = 5;
-// One founding barber is already in — the API adds live signups on top.
-const BASE_SPOTS_TAKEN = 1;
 export default function FoundingMemberSection() {
-  const [spotsTaken, setSpotsTaken] = useState(BASE_SPOTS_TAKEN);
+  const [spotsTaken, setSpotsTaken] = useState(0);
   const [totalSpots] = useState(TOTAL_SPOTS);
-  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS - BASE_SPOTS_TAKEN);
+  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS);
   const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
-    // Fetch real spots count
+    // Fetch the real spots count (active barbers), no hardcoded floor.
     fetch("/api/spots-taken")
       .then((res) => res.json())
       .then((data) => {
         if (data.spotsTaken !== undefined) {
-          const taken = Math.max(BASE_SPOTS_TAKEN, data.spotsTaken);
+          const taken = Math.min(TOTAL_SPOTS, Math.max(0, data.spotsTaken));
           setSpotsTaken(taken);
           setSpotsLeft(TOTAL_SPOTS - taken);
         }

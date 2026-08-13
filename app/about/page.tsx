@@ -459,7 +459,7 @@ export default function AboutPage() {
               <Gold>in your phone.</Gold>
             </h2>
             <p className="text-[16px] text-foreground/50 max-w-[460px] mx-auto mb-9 leading-[1.7]">
-              5 founding spots. One is already claimed. Free for life, no card.
+              5 founding spots. Free for life, no card.
               We set it up for you. If it doesn't bring clients back, walk away.
               Nothing owed.
             </p>
