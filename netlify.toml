@@ -19,6 +19,34 @@
   status = 200
   force = true
 
+# Durable founding-member signups (Netlify Blobs) — .data/*.json is ephemeral on Netlify
+[[redirects]]
+  from = "/api/founding-member"
+  to = "/.netlify/functions/founding-member"
+  status = 200
+  force = true
+
+# Durable onboarding intake submissions (Netlify Blobs)
+[[redirects]]
+  from = "/api/intake"
+  to = "/.netlify/functions/intake"
+  status = 200
+  force = true
+
+# Protected admin: fetch founding-member signups
+[[redirects]]
+  from = "/api/admin/founding-members"
+  to = "/.netlify/functions/get-founding-members"
+  status = 200
+  force = true
+
+# Protected admin: fetch intake submissions
+[[redirects]]
+  from = "/api/admin/intake"
+  to = "/.netlify/functions/get-intake"
+  status = 200
+  force = true
+
 # Public: get spots taken count
 [[redirects]]
   from = "/api/spots-taken"

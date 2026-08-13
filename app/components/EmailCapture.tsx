@@ -11,10 +11,13 @@ export default function EmailCapture({ variant = "hero" }: { variant?: "hero" | 
     if (!email.trim()) return;
     setStatus("loading");
     try {
+      const trimmedEmail = email.trim();
       const res = await fetch("/api/join-waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), source: "marketing-site" }),
+        // join-waitlist requires a name; this is an email-only capture, so derive
+        // a fallback from the local-part (matches the promo-subscribe behavior).
+        body: JSON.stringify({ email: trimmedEmail, name: trimmedEmail.split("@")[0], source: "marketing-site" }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string; message?: string };
       if (!res.ok) {
