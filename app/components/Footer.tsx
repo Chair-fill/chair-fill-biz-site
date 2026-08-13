@@ -28,6 +28,12 @@ export default function Footer() {
             Claim free spot
           </Link>
           <Link
+            href="/book"
+            className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
+          >
+            Book a call
+          </Link>
+          <Link
             href="/blog"
             className="text-[0.78rem] text-[#777] uppercase tracking-[0.1em] hover:text-[#C9A84C] transition-colors"
           >

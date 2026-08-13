@@ -65,6 +65,12 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 Find a Shop
               </Link>
               <Link
+                href="/book"
+                className="whitespace-nowrap text-sm font-medium text-[#fafafa] hover:text-[#D4AF37]"
+              >
+                Book a call
+              </Link>
+              <Link
                 href="/founding-member"
                 className="cta-primary whitespace-nowrap px-5 py-2 text-sm"
               >
@@ -149,6 +155,13 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               onClick={() => setMobileOpen(false)}
             >
               Find a Shop
+            </Link>
+            <Link
+              href="/book"
+              className="py-2 text-sm font-medium text-white"
+              onClick={() => setMobileOpen(false)}
+            >
+              Book a call
             </Link>
             <Link
               href="/founding-member"
