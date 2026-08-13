@@ -47,7 +47,14 @@
   status = 200
   force = true
 
-# Public: get spots taken count
+# Admin: manually set/clear the founding-spots override (GET/POST/DELETE)
+[[redirects]]
+  from = "/api/admin/spots"
+  to = "/.netlify/functions/set-spots"
+  status = 200
+  force = true
+
+# Public: get spots taken count (manual override wins, else backend auto-count)
 [[redirects]]
   from = "/api/spots-taken"
   to = "/.netlify/functions/spots-taken"
