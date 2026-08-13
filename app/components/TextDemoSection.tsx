@@ -73,7 +73,7 @@ export default function TextDemoSection() {
 
   // spots meter (reuses the live /api/spots-taken endpoint)
   const TOTAL_SPOTS = 5;
-  const [spotsTaken, setSpotsTaken] = useState(1);
+  const [spotsTaken, setSpotsTaken] = useState(0);
 
   useEffect(() => {
     mountedAt.current = Date.now();
@@ -81,7 +81,7 @@ export default function TextDemoSection() {
       .then((r) => r.json())
       .then((d) => {
         if (typeof d?.spotsTaken === "number") {
-          setSpotsTaken(Math.min(TOTAL_SPOTS, Math.max(1, d.spotsTaken)));
+          setSpotsTaken(Math.min(TOTAL_SPOTS, Math.max(0, d.spotsTaken)));
         }
       })
       .catch(() => {});
