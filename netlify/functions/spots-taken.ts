@@ -32,7 +32,7 @@ export default async (req: Request, _context: Context): Promise<Response> => {
 
     return new Response(JSON.stringify({ 
       spotsTaken: count,
-      totalSpots: 10
+      totalSpots: 5
     }), { status: 200, headers: corsHeaders });
   } catch (err) {
     console.error("spots-taken error:", err);
