@@ -113,10 +113,10 @@ export default function MarketplaceExplorer({
           No listings yet for {cityName}.
         </p>
         <Link
-          href="/claim"
+          href="https://app.chairfill.co/login"
           className="mt-4 inline-block text-primary text-[13px] hover:underline"
         >
-          Own a shop here? Claim it free →
+          Own a shop here? Get started free →
         </Link>
       </div>
     );

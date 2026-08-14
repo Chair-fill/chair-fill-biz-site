@@ -191,7 +191,7 @@ export default function ShopPageClient({ shop, city, citySlug, shopSlug, reviewS
                       <p className="text-[28px] mb-2">✓</p>
                       <p className="font-semibold text-[14px] text-green-500 mb-1">Inquiry sent!</p>
                       <p className="text-[13px] text-foreground/50">The shop owner will follow up shortly.</p>
-                      <Link href="/inquiries" className="mt-4 block text-[13px] text-primary hover:underline">
+                      <Link href="https://app.chairfill.co" className="mt-4 block text-[13px] text-primary hover:underline">
                         View my inquiries →
                       </Link>
                     </div>
@@ -259,13 +259,13 @@ export default function ShopPageClient({ shop, city, citySlug, shopSlug, reviewS
                   <div className="border-t border-border pt-4">
                     <p className="text-[13px] font-semibold text-foreground mb-1">Own this shop?</p>
                     <p className="text-[12px] text-foreground/50 mb-3">
-                      Claim it free and start receiving inquiries from barbers.
+                      Run your shop on ChairFill — fill your chairs automatically.
                     </p>
                     <Link
-                      href="/claim"
+                      href="https://app.chairfill.co/login"
                       className="block text-center py-2.5 rounded-lg bg-primary text-black font-bold text-[13px] hover:brightness-110 transition-all"
                     >
-                      Claim it free →
+                      Get started free →
                     </Link>
                   </div>
                 </div>

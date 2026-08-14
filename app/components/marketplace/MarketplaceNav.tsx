@@ -19,18 +19,6 @@ export default function MarketplaceNav() {
         </Link>
         <div className="flex items-center gap-4">
           <Link
-            href="/barbers/looking"
-            className="text-[13px] text-foreground/60 hover:text-foreground transition-colors hidden sm:block"
-          >
-            I&apos;m looking for a chair
-          </Link>
-          <Link
-            href="/claim"
-            className="text-[13px] font-semibold px-3 py-1.5 rounded-lg border border-border hover:border-primary/40 hover:text-primary transition-all"
-          >
-            Claim your shop
-          </Link>
-          <Link
             href={APP_LOGIN_URL}
             className="text-[13px] font-semibold px-3 py-1.5 rounded-lg bg-primary text-black hover:brightness-110 transition-all"
           >

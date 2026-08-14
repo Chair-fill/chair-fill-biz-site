@@ -40,10 +40,10 @@ export default function ChairFillCTA({ variant = "default", className = "" }: Ch
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
-            href="/claim"
+            href="https://app.chairfill.co/login"
             className="px-6 py-3 rounded-xl bg-primary text-black font-bold text-[14px] hover:brightness-110 transition-all shadow-lg shadow-primary/10"
           >
-            Claim your shop free
+            Get started free
           </Link>
           <Link
             href="/"

@@ -37,14 +37,8 @@ export default function BoothRentalDirectoryPage() {
             <span className="block text-primary">Start building your book.</span>
           </h1>
           <p className="text-[16px] text-foreground/60 max-w-[520px] mx-auto leading-relaxed mb-8">
-            Browse available barber booth rentals from shops across the country. Filter by city, compare plans, and inquire directly.
+            Browse available barber booth rentals from shops across the country. Filter by city and compare plans.
           </p>
-          <Link
-            href="/barbers/looking"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-border text-[14px] font-semibold hover:border-primary/40 hover:text-primary transition-all"
-          >
-            I&apos;m looking for a chair →
-          </Link>
         </section>
 
         {/* Location + radius search (map + list) */}
@@ -92,16 +86,16 @@ export default function BoothRentalDirectoryPage() {
               Shop owners
             </p>
             <h2 className="font-black text-[28px] leading-tight mb-3">
-              Have an available booth?
+              Own a barbershop?
             </h2>
             <p className="text-[14px] text-foreground/60 max-w-[400px] mx-auto mb-6">
-              Claim your shop listing for free and start receiving inquiries from barbers in your city.
+              Run your shop on ChairFill — fill empty chairs and win back clients automatically.
             </p>
             <Link
-              href="/claim"
+              href="https://app.chairfill.co/login"
               className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-black font-bold text-[14px] hover:brightness-110 transition-all"
             >
-              Claim your shop free →
+              Get started free →
             </Link>
           </div>
         </section>
