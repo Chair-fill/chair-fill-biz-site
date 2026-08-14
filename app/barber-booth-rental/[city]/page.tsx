@@ -112,15 +112,9 @@ export default async function CityPage({ params }: Props) {
                     </>
                   ) : (
                     <p className="text-[13px] text-foreground/60">
-                      No barbers signed up yet in {city.name} — be the first.
+                      Barbers are looking for a chair in {city.name}.
                     </p>
                   )}
-                  <Link
-                    href="/barbers/looking"
-                    className="mt-3 block text-[12px] text-primary hover:underline"
-                  >
-                    Add your name →
-                  </Link>
                 </div>
 
                 <ChairFillCTA variant="banner" />
@@ -133,8 +127,8 @@ export default async function CityPage({ params }: Props) {
               {shops.length === 0 ? (
                 <div className="bg-card border border-border rounded-xl p-8 text-center">
                   <p className="text-foreground/50 text-[14px]">No listings yet for {city.name}.</p>
-                  <Link href="/claim" className="mt-4 inline-block text-primary text-[13px] hover:underline">
-                    Own a shop here? Claim it free →
+                  <Link href="https://app.chairfill.co/login" className="mt-4 inline-block text-primary text-[13px] hover:underline">
+                    Own a shop here? Get started free →
                   </Link>
                 </div>
               ) : (
@@ -203,25 +197,19 @@ export default async function CityPage({ params }: Props) {
                 <p className="text-[13px] text-foreground/60">
                   barbers actively looking for a chair in {city.name}
                 </p>
-                <Link
-                  href="/barbers/looking"
-                  className="mt-3 block text-[12px] text-primary hover:underline"
-                >
-                  Add your name →
-                </Link>
               </div>
 
               {/* Own a shop? */}
               <div className="bg-card border border-border rounded-xl p-5">
                 <p className="font-bold text-[14px] mb-2">Own a shop in {city.name}?</p>
                 <p className="text-[13px] text-foreground/60 mb-3">
-                  Claim your listing and start receiving inquiries from barbers for free.
+                  Run your shop on ChairFill — fill your chairs and manage your barbers.
                 </p>
                 <Link
-                  href="/claim"
+                  href="https://app.chairfill.co/login"
                   className="block text-center px-4 py-2.5 rounded-lg bg-primary text-black font-semibold text-[13px] hover:brightness-110 transition-all"
                 >
-                  Claim free →
+                  Get started free →
                 </Link>
               </div>
 

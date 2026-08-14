@@ -7,7 +7,7 @@ const SITE = "https://chairfill.co";
 /**
  * Sitemap. The marketplace is live (/find-a-shop + /barber-booth-rental/* +
  * /shops/*), so those routes are indexable and included below. Utility routes
- * (/claim, /intake, /barbers/looking) stay out — they keep their own noindex.
+ * like /intake stay out — they keep their own noindex.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

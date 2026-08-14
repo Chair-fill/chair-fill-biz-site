@@ -47,7 +47,6 @@ export default function MarketplaceFooter() {
             </p>
             <ul className="space-y-1.5">
               {[
-                ["I'm looking for a chair", "/barbers/looking"],
                 ["My inquiries", "https://app.chairfill.co"],
               ].map(([label, href]) => (
                 <li key={href}>
@@ -64,7 +63,6 @@ export default function MarketplaceFooter() {
             </p>
             <ul className="space-y-1.5">
               {[
-                ["Claim your shop", "/claim"],
                 ["Sign in", "https://app.chairfill.co/login"],
               ].map(([label, href]) => (
                 <li key={href}>
