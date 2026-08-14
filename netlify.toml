@@ -54,6 +54,13 @@
   status = 200
   force = true
 
+# Admin: manually run the abandoned-capture drip (authed; ?dryRun=1 supported)
+[[redirects]]
+  from = "/api/admin/nudge-run"
+  to = "/.netlify/functions/nudge-run"
+  status = 200
+  force = true
+
 # Lead magnet: reactivation-calculator email capture
 [[redirects]]
   from = "/api/lead-magnet"
