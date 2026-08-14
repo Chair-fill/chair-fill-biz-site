@@ -27,27 +27,27 @@ interface Lead {
   createdAt: string;
   nudgedAt?: string;
   phoneDigits?: string;
-  kind: "founding" | "leadmagnet";
+  kind: "waitlist" | "leadmagnet";
   raw: Record<string, unknown>;
 }
 
 function subjectFor(kind: Lead["kind"]): string {
-  return kind === "founding"
+  return kind === "waitlist"
     ? "Your free ChairFill spot is still open"
     : "Want ChairFill to send those texts for you?";
 }
 
 function htmlFor(kind: Lead["kind"], name: string): string {
   const hi = name ? `${esc(name)}, ` : "";
-  if (kind === "founding") {
+  if (kind === "waitlist") {
     return `
       <div style="font-family:system-ui,Segoe UI,Arial,sans-serif;color:#111">
-        <h2 style="margin:0 0 12px">${hi}your founding spot is still here 💈</h2>
-        <p>You started claiming a free ChairFill spot but didn't finish. No rush —
-        your spot's still open, and it's <strong>free for life</strong> as a founding barber.</p>
+        <h2 style="margin:0 0 12px">${hi}your ChairFill spot is still open 💈</h2>
+        <p>You put your name in for ChairFill but didn't claim your spot yet.
+        No rush — founding spots are still open and <strong>free for life</strong>.</p>
         <p>It takes about 90 seconds. We set the whole thing up for you and start
         winning back your quiet clients over iMessage, in your voice.</p>
-        <p><a href="https://chairfill.co/founding-member" style="display:inline-block;background:#D4AF37;color:#000;font-weight:bold;text-decoration:none;padding:12px 22px;border-radius:10px">Finish claiming my spot →</a></p>
+        <p><a href="https://chairfill.co/founding-member" style="display:inline-block;background:#D4AF37;color:#000;font-weight:bold;text-decoration:none;padding:12px 22px;border-radius:10px">Claim my free spot →</a></p>
         <p style="color:#666;font-size:13px;margin-top:16px">— ChairFill</p>
       </div>`;
   }
@@ -79,7 +79,7 @@ async function loadStore(name: string, kind: Lead["kind"]): Promise<Lead[]> {
       firstName: (v.firstName as string) || (v.preferredName as string) || undefined,
       createdAt: String(v.createdAt),
       nudgedAt: v.nudgedAt ? String(v.nudgedAt) : undefined,
-      phoneDigits: v.phoneDigits ? String(v.phoneDigits) : normPhone(v.phone),
+      phoneDigits: v.phoneDigits ? String(v.phoneDigits) : normPhone(v.cell ?? v.phone),
       kind,
       raw: v,
     });
@@ -101,8 +101,11 @@ export async function runNudge(opts: { dryRun?: boolean; limit?: number } = {}):
   const limit = Math.max(1, Math.min(200, opts.limit ?? 50));
   const now = Date.now();
 
-  const [founding, leadmagnet, intake] = await Promise.all([
-    loadStore("chairfill-founding-members", "founding"),
+  // Target the stores that actually capture an email (the drip is email-only).
+  // The founding-member form captures phone, not email, so it can't be nudged
+  // here — waitlist + lead-magnet are the email-bearing abandoned funnels.
+  const [waitlist, leadmagnet, intake] = await Promise.all([
+    loadStore("chairfill-waitlist", "waitlist"),
     loadStore("chairfill-leadmagnet", "leadmagnet"),
     loadStore("chairfill-intake", "leadmagnet"), // only used to build the completed set
   ]);
@@ -111,7 +114,7 @@ export async function runNudge(opts: { dryRun?: boolean; limit?: number } = {}):
   const completedEmails = new Set(intake.map((l) => l.email));
   const completedPhones = new Set(intake.map((l) => l.phoneDigits).filter(Boolean));
 
-  const candidates = [...founding, ...leadmagnet];
+  const candidates = [...waitlist, ...leadmagnet];
   let scanned = 0;
   let eligible = 0;
   let sent = 0;

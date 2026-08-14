@@ -197,7 +197,7 @@ export default function BookPage() {
               <p className="text-sm text-[#a3a3a3]">
                 Booking <strong className="text-white">{fmtSlot(slot)}</strong> on{" "}
                 <strong className="text-white">
-                  {new Date(slot).toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}
+                  {new Date(slot).toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric", timeZone: tz || undefined })}
                 </strong>
               </p>
               <input
