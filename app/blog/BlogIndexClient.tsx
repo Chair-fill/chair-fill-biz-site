@@ -175,6 +175,12 @@ export default function BlogIndexClient({ posts }: { posts: PostMeta[] }) {
           Claim your free spot
           <ArrowRight className="h-4 w-4" />
         </Link>
+        <p className="mt-5 text-sm text-[#888880]">
+          Not ready?{" "}
+          <Link href="/tools/reactivation-calculator" className="text-[#C9A84C] underline underline-offset-4 hover:text-[#D4AF37]">
+            See what your dormant clients cost you →
+          </Link>
+        </p>
       </div>
     </main>
   );
