@@ -122,7 +122,7 @@ export default function EmailCapturePopup() {
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#d4af37] text-black text-sm font-black tracking-tight hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-60 shadow-lg shadow-[#d4af37]/20"
                 >
                   {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
-                  {status === "loading" ? "Claiming..." : "Claim My Free Spot"}
+                  {status === "loading" ? "Claiming..." : "Claim your free spot"}
                 </button>
                 <p className="text-center text-[11px] text-white/30">
                   No credit card required · Cancel anytime
