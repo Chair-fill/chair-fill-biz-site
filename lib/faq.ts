@@ -2,12 +2,12 @@ export const faqs = [
   {
     question: "Do I need a credit card to start?",
     answer:
-      "No card, ever, for founding members. The first 5 barbers get ChairFill free for life — we don't collect any payment information at all. We set everything up for you. If it doesn't bring clients back, walk away and you owe nothing.",
+      "No card, ever, for founding members. The first 5 barbers get ChairFill free for life. We don't collect any payment information at all. We set everything up for you. If it doesn't bring clients back, walk away and you owe nothing.",
   },
   {
     question: "Will my clients know it's an AI?",
     answer:
-      "The messages are AI-assisted but calibrated to your communication style, so they feel personal — not like a generic blast. If a client ever asks directly, you can let them know. ChairFill is designed to feel like you, not like a bot.",
+      "The messages are AI-assisted but calibrated to your communication style, so they feel personal, not like a generic blast. If a client ever asks directly, you can let them know. ChairFill is designed to feel like you, not like a bot.",
   },
   {
     question: "What if a client says they're not interested?",

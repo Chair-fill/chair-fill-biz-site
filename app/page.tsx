@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Navbar from "./components/Navbar";
 import AnimateIn from "./components/AnimateIn";
 import FAQ from "./components/FAQ";
@@ -10,6 +11,15 @@ import {
   softwareApplicationJsonLd,
   faqPageJsonLd,
 } from "@/lib/seo";
+
+import AnimatedHero from "./components/AnimatedHero";
+import FoundingMemberSection from "./components/FoundingMemberSection";
+import TextDemoSection from "./components/TextDemoSection";
+import ObjectionsSection from "./components/ObjectionsSection";
+import BundleSection from "./components/BundleSection";
+import EmailCapturePopup from "./components/EmailCapturePopup";
+import ProductShowcase from "./components/ProductShowcase";
+import StatusSection from "./components/StatusSection";
 
 export const metadata: Metadata = {
   title: "ChairFill | AI Client Reactivation for Independent Barbers",
@@ -25,38 +35,47 @@ export const metadata: Metadata = {
     images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
   },
 };
-import {
-  Bot,
-  DollarSign,
-  ClipboardList,
-  Lightbulb,
-  CheckCircle2,
-  Smartphone,
-  Mic,
-  ShieldCheck,
-} from "lucide-react";
 
-// ── New components ───────────────────────────────────────────────────────
-import AnimatedHero from "./components/AnimatedHero"; // replaces static hero
-import FoundingMemberSection from "./components/FoundingMemberSection";
-import TextDemoSection from "./components/TextDemoSection";
-import { SpotsStat } from "./components/SpotsLeft";
-import ObjectionsSection from "./components/ObjectionsSection";
-import BundleSection from "./components/BundleSection";
-import EmailCapturePopup from "./components/EmailCapturePopup";
-import ProductShowcase from "./components/ProductShowcase";
-import StatusSection from "./components/StatusSection";
+const STEPS = [
+  {
+    title: "Upload your client list",
+    desc: "Export a CSV from the booking app you already use. We handle the setup from there.",
+  },
+  {
+    title: "ChairFill texts them for you",
+    desc: "Personal iMessages in your voice, one at a time. It sends reminders, chases no-shows, and offers open slots to the clients most likely to take them.",
+  },
+  {
+    title: "They book. You cut.",
+    desc: "When a client says yes, your booking link goes back right away and they get flagged as hot. You never leave the chair.",
+  },
+];
 
-// Founding-pricing deadline (Edit 2 / book p.41: pair scarcity with real urgency).
-// NON-resetting on purpose. Set this to a date you will actually hold, or remove
-// the line in the final CTA below. A fake/resetting countdown is the move the book
-// warns against — only keep this if it is real.
-const FOUNDING_DEADLINE = "September 30, 2026";
-
+// Read from the barber's phone: outgoing = blue/right, incoming = gray/left.
+const ANNOTATED_THREAD = [
+  {
+    from: "barber",
+    text: "Ty! You been good bro? I got a slot open this Friday at 11 if you tryna pull up 💈",
+    note: "Uses his nickname. Casual tone, no hard sell. It writes the way you already text.",
+    side: "left",
+  },
+  {
+    from: "client",
+    text: "Yeah I been slippin fr. You got me",
+    note: "Lands in iMessage next to texts from friends. No app to download, no spam folder.",
+    side: "right",
+  },
+  {
+    from: "barber",
+    text: "Let's get it. Locked in Friday 11am. If anything changes just lmk 🤙",
+    note: "Confirms and leaves the door open. If a client says they're busy, it backs off.",
+    side: "left",
+  },
+] as const;
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] overflow-x-hidden">
+    <div className="grain min-h-[100dvh] overflow-x-clip bg-[var(--ink)] text-[var(--text)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -70,342 +89,205 @@ export default function Home() {
         }}
       />
       <Navbar />
-      <div className="pt-5 lg:pt-0"></div>
 
-      {/* ── HERO. Animated rotating words (replaces static hero) ── */}
-      <AnimatedHero />
+      <main>
+        <AnimatedHero />
 
-      <div className="border-y border-[#222] bg-[#141414]/50 py-6 sm:py-8">
-        <div className="section-inner">
-          <div className="flex flex-wrap justify-center gap-8 sm:gap-16">
-            {[
-              { num: "98%", label: "iMessage open rate" },
-              { num: "3x", label: "More recovery vs email" },
-            ].map(({ num, label }) => (
-              <div key={label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-[#D4AF37] [font-family:var(--font-satoshi)]">
-                  {num}
-                </div>
-                <div className="text-[10px] sm:text-xs font-medium text-[#888880] uppercase tracking-widest mt-1">
-                  {label}
-                </div>
-              </div>
-            ))}
-            {/* Live founding-spots counter (client, /api/spots-taken) */}
-            <SpotsStat />
-          </div>
-        </div>
-      </div>
-
-      {/* ── THE PROBLEM ── */}
-      <section id="problem" className="bg-[#111111] py-20 sm:py-32">
-        <div className="section-inner">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            <AnimateIn direction="left">
-              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4">
-                The problem
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
-                You have clients who stopped coming. They didn't leave.
+        {/* ── THE PROBLEM ── */}
+        <section id="problem" className="border-t border-[var(--line)] py-24 sm:py-32">
+          <div className="section-inner grid gap-14 lg:grid-cols-12 lg:items-center">
+            <AnimateIn className="lg:col-span-7">
+              <h2 className="balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+                They didn&apos;t leave.
+                <br />
                 They just went quiet.
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-[#888880] max-w-xl">
-                The average barber has 40 to 60 clients who haven't shown
-                up in 60+ days. That's thousands of dollars in recurring
-                revenue sitting dormant in your phone.
-                <br />
-                <br />
-                The problem isn't that they don't want a cut.
-                It's that nobody reached out. ChairFill does that for you
-                automatically. It connects in a way that feels natural.
+              <p className="pretty mt-6 max-w-[54ch] text-lg leading-relaxed text-[var(--text-2)]">
+                The average barber has 40 to 60 clients who haven&apos;t sat in
+                the chair in 60+ days. They still want a cut. Nobody reached
+                out. ChairFill does, automatically, in a way that feels like
+                you.
               </p>
             </AnimateIn>
 
-            <AnimateIn direction="right" delay={150}>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  {
-                    type: "empty",
-                    time: "Mon 10:00 AM",
-                    name: "No booking",
-                    value: "$65 lost",
-                  },
-                  {
-                    type: "filled",
-                    time: "Mon 10:00 AM",
-                    name: "Devin W.",
-                    value: "+ $65 earned",
-                  },
-                  {
-                    type: "empty",
-                    time: "Wed 2:00 PM",
-                    name: "No booking",
-                    value: "$65 lost",
-                  },
-                  {
-                    type: "filled",
-                    time: "Wed 2:00 PM",
-                    name: "Jordan K.",
-                    value: "+ $65 earned",
-                  },
-                ].map((card, idx) => (
-                  <div
-                    key={idx}
-                    className={`p-6 rounded-2xl border ${
-                      card.type === "empty"
-                        ? "border-red-500/20 bg-red-500/5"
-                        : "border-[#D4AF37]/30 bg-[#D4AF37]/5"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-3">
-                      <div
-                        className={`h-1.5 w-1.5 rounded-full ${card.type === "empty" ? "bg-red-500" : "bg-[#D4AF37]"}`}
-                      />
-                      <span
-                        className={`text-[10px] font-bold uppercase tracking-wider ${card.type === "empty" ? "text-red-500" : "text-[#D4AF37]"}`}
-                      >
-                        {card.type === "empty" ? "Empty" : "Filled"}
-                      </span>
-                    </div>
-                    <div className="text-lg font-bold text-white [font-family:var(--font-satoshi)]">
-                      {card.time}
-                    </div>
-                    <div className="text-xs text-[#888880] mt-1">
-                      {card.name}
-                    </div>
-                    <div
-                      className={`text-xs font-bold mt-3 ${card.type === "empty" ? "text-red-500" : "text-[#D4AF37]"}`}
-                    >
-                      {card.value}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <AnimateIn delay={120} className="lg:col-span-5">
+              <dl className="tnum border-l border-[var(--line-strong)] pl-8 sm:pl-10">
+                <div className="flex items-baseline justify-between gap-6 py-3">
+                  <dt className="text-[var(--text-2)]">Quiet clients</dt>
+                  <dd className="text-2xl font-semibold">40</dd>
+                </div>
+                <div className="flex items-baseline justify-between gap-6 py-3">
+                  <dt className="text-[var(--text-2)]">One cut each</dt>
+                  <dd className="text-2xl font-semibold">× $65</dd>
+                </div>
+                <div className="mt-3 border-t border-[var(--line-strong)] pt-6">
+                  <dt className="sr-only">Total</dt>
+                  <dd className="text-6xl font-black tracking-[-0.04em] text-[var(--gold)] sm:text-7xl">
+                    $2,600
+                  </dd>
+                  <p className="mt-2 text-[var(--text)]">sitting in your phone.</p>
+                  <p className="mt-4 text-sm text-[var(--text-3)]">
+                    Example at $65 a cut, one visit each.
+                  </p>
+                </div>
+              </dl>
             </AnimateIn>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── HOW IT WORKS ── */}
-      <section id="how-it-works" className="bg-[#0a0a0a] py-20 sm:py-32">
-        <div className="section-inner">
-          <AnimateIn>
-            <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4 text-center">
-              How it works
+        {/* ── HOW IT WORKS ── */}
+        <section id="how-it-works" className="bg-[var(--ink-2)] py-24 sm:py-32">
+          <div className="section-inner grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <div className="lg:sticky lg:top-32">
+                <h2 className="balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+                  Three steps. Then it runs itself.
+                </h2>
+                <p className="mt-5 max-w-[40ch] text-lg leading-relaxed text-[var(--text-2)]">
+                  Founding members don&apos;t touch a setting. We build the first
+                  campaign and send it for you.
+                </p>
+              </div>
             </div>
-            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
-              Three steps. Then it runs itself.
-            </h2>
-          </AnimateIn>
-          <div className="mt-16 grid gap-2 sm:grid-cols-3 bg-[#222] border border-[#222] rounded-3xl overflow-hidden">
-            {[
-              {
-                step: "01",
-                title: "Add your clients",
-                desc: "Connect your client list or booking system. We sync with your schedule and openings.",
-                icon: <ClipboardList className="w-8 h-8 text-[#D4AF37]" />,
-              },
-              {
-                step: "02",
-                title: "AI reaches out for you",
-                desc: "Our AI sends reminders and rebooks no-shows. It fills last-minute slots with messages that actually get replies.",
-                icon: <Bot className="w-8 h-8 text-[#D4AF37]" />,
-              },
-              {
-                step: "03",
-                title: "Fill your chair",
-                desc: "Fewer empty chairs. More appointments. We handle outreach while you stay behind the chair.",
-                icon: <DollarSign className="w-8 h-8 text-[#D4AF37]" />,
-              },
-            ].map(({ step, title, desc, icon }) => (
-              <div key={step} className="bg-[#111111] p-10 group">
-                <div className="text-6xl font-bold text-[#C9A84C] [font-family:var(--font-satoshi)] mb-6 transition-none">
-                  {step}
-                </div>
-                <div className="mb-4">{icon}</div>
-                <h3 className="text-xl font-bold text-white mb-3 [font-family:var(--font-satoshi)]">{title}</h3>
-                <p className="leading-relaxed text-[#888880] text-sm">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ── NATURAL AI / iMESSAGE DEMO ── */}
-      <section id="natural" className="bg-[#111111] py-20 sm:py-32">
-        <div className="section-inner">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            <AnimateIn direction="left">
-              <div className="rounded-3xl border border-[#222] bg-[#161616] overflow-hidden shadow-2xl">
-                <div className="bg-[#111111] px-6 py-4 border-b border-[#222] flex items-center justify-between">
-                  <div className="flex gap-1.5">
-                    <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-                  </div>
-                  <div className="text-[10px] font-bold text-[#888880] uppercase tracking-widest [font-family:var(--font-satoshi)]">
-                    iMessage · Marcus and Tyler
-                  </div>
-                  <div className="w-10" />
-                </div>
-                <div className="p-8 flex flex-col gap-4">
-                  <div className="text-[10px] text-[#888880] font-medium uppercase tracking-widest">
-                    AI calibrated to Marcus
-                  </div>
-                  <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
-                    Ty! You been good bro? I got a slot open this Friday at 11
-                    if you're tryna pull up 💈
-                  </div>
-                  <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
-                    <Lightbulb className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
-                    <p className="text-[11px] text-[#D4AF37] leading-relaxed">
-                      Uses client's nickname, casual tone, no hard sell. It
-                      matches the way barbers actually text.
-                    </p>
-                  </div>
-                  <div className="self-end max-w-[85%] bg-[#3A3A3C] text-white p-4 rounded-2xl rounded-br-sm text-sm leading-relaxed">
-                    Yeah I been slippin fr. You got me
-                  </div>
-                  <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-4 rounded-2xl rounded-bl-sm text-sm leading-relaxed">
-                    Let's get it. I'll lock in Friday 11am. If
-                    anything changes just lmk 🤙
-                  </div>
-                  <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/20 rounded-xl p-3 flex gap-3 items-start">
-                    <CheckCircle2 className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
-                    <p className="text-[11px] text-[#D4AF37] leading-relaxed">
-                      Confirms booking naturally, leaves door open. No awkward
-                      robot speak.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </AnimateIn>
-
-            <AnimateIn direction="right" delay={150}>
-              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4">
-                Why it works
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)] leading-[1.1]">
-                Messages that feel personal, not like a blast.
-              </h2>
-              <div className="mt-10 space-y-8">
-                {[
-                  {
-                    icon: <Smartphone className="w-6 h-6 text-[#D4AF37]" />,
-                    title: "Delivered where clients actually read",
-                    desc: "Open rates that blow email out of the water. Clients see it in the same place as your real messages. No spam folder, no app to download.",
-                  },
-                  {
-                    icon: <Mic className="w-6 h-6 text-[#D4AF37]" />,
-                    title: "Calibrated to your style",
-                    desc: "We calibrate the AI to match your communication style. The result feels like it came from you — because it sounds like you.",
-                  },
-                  {
-                    icon: <ShieldCheck className="w-6 h-6 text-[#D4AF37]" />,
-                    title: "Annoyance shield built in",
-                    desc: "ChairFill knows when to stop. If a client says they're busy, it backs off and won't message them again until the right time.",
-                  },
-                ].map(({ icon, title, desc }) => (
-                  <div key={title} className="flex gap-5">
-                    <div className="h-12 w-12 shrink-0 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center">
-                      {icon}
-                    </div>
+            <ol className="lg:col-span-7">
+              {STEPS.map(({ title, desc }, i) => (
+                <AnimateIn key={title} delay={i * 80}>
+                  <li className="grid grid-cols-[3rem_1fr] gap-x-4 border-t border-[var(--line)] py-9 first:border-t-0 first:pt-0 sm:grid-cols-[4rem_1fr]">
+                    <span className="tnum pt-1 text-sm font-semibold text-[var(--gold)]">
+                      {i + 1}
+                    </span>
                     <div>
-                      <h4 className="text-white font-bold mb-1 [font-family:var(--font-satoshi)]">
+                      <h3 className="text-2xl font-bold tracking-[-0.02em] sm:text-3xl">
                         {title}
-                      </h4>
-                      <p className="text-sm text-[#888880] leading-relaxed">
+                      </h3>
+                      <p className="pretty mt-3 max-w-[52ch] leading-relaxed text-[var(--text-2)]">
                         {desc}
                       </p>
                     </div>
+                  </li>
+                </AnimateIn>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ── WHY IT WORKS: annotated thread ── */}
+        <section id="natural" className="py-24 sm:py-32">
+          <div className="section-inner">
+            <AnimateIn>
+              <h2 className="balance max-w-[18ch] text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+                Messages that read like you wrote them.
+              </h2>
+              <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-[var(--text-2)]">
+                ChairFill learns how you text, then writes like that. Every
+                message goes out on its own, never as a blast.
+              </p>
+            </AnimateIn>
+
+            <div className="mt-16 space-y-10 lg:space-y-6">
+              {ANNOTATED_THREAD.map((m, i) => (
+                <AnimateIn key={m.text} delay={i * 120}>
+                  <div className="grid gap-3 lg:grid-cols-[1fr_minmax(0,440px)_1fr] lg:items-center lg:gap-10">
+                    <div className="flex flex-col lg:col-start-2 lg:row-start-1">
+                      <div
+                        className={
+                          m.from === "barber"
+                            ? "max-w-[85%] self-end rounded-[22px] rounded-br-[6px] bg-[#1D86EA] px-4 py-3 leading-snug text-white"
+                            : "max-w-[85%] self-start rounded-[22px] rounded-bl-[6px] bg-[#3A3A3C] px-4 py-3 leading-snug text-white"
+                        }
+                      >
+                        {m.text}
+                      </div>
+                    </div>
+                    <p
+                      className={`pretty max-w-[34ch] text-sm leading-relaxed text-[var(--text-2)] lg:row-start-1 ${
+                        m.from === "barber" ? "justify-self-end text-right" : ""
+                      } ${
+                        m.side === "left"
+                          ? "lg:col-start-1 lg:justify-self-end lg:text-right"
+                          : "lg:col-start-3 lg:text-left"
+                      }`}
+                    >
+                      {m.note}
+                    </p>
                   </div>
-                ))}
+                </AnimateIn>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <StatusSection />
+
+        <ObjectionsSection />
+
+        <BundleSection />
+
+        <ProductShowcase />
+
+        <TextDemoSection />
+
+        <div id="founding">
+          <FoundingMemberSection />
+        </div>
+
+        {/* ── FAQ ── */}
+        <section id="faq" className="border-t border-[var(--line)] py-24 sm:py-32">
+          <div className="section-inner grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <h2 className="balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+                Straight answers.
+              </h2>
+              <p className="mt-5 max-w-[32ch] leading-relaxed text-[var(--text-2)]">
+                Something else on your mind?{" "}
+                <Link
+                  href="/book"
+                  className="text-[var(--text)] underline decoration-[var(--gold)]/50 underline-offset-4 transition-colors hover:decoration-[var(--gold)]"
+                >
+                  Book a call
+                </Link>{" "}
+                and ask the founder directly.
+              </p>
+            </div>
+            <div className="lg:col-span-8">
+              <FAQ />
+            </div>
+          </div>
+        </section>
+
+        {/* ── FINAL CTA ── */}
+        <section id="waitlist" className="relative overflow-hidden border-t border-[var(--line)] py-28 sm:py-40">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_60%_at_50%_100%,rgba(212,175,55,0.12),transparent_70%)]"
+          />
+          <div className="section-inner relative">
+            <AnimateIn>
+              <h2 className="balance max-w-[14ch] text-5xl font-black leading-[0.98] tracking-[-0.035em] sm:text-7xl">
+                Stop leaving money in your phone.
+              </h2>
+              <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+                <p className="pretty max-w-[46ch] text-lg leading-relaxed text-[var(--text-2)]">
+                  The first 5 barbers stay free for life. No card. We set it up
+                  for you. If it doesn&apos;t bring clients back, walk away and
+                  owe nothing.
+                </p>
+                <Link href="/founding-member" className="cta-primary group gap-2 self-start sm:self-auto">
+                  Claim your free spot
+                  <ArrowRight
+                    aria-hidden
+                    className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+                  />
+                </Link>
               </div>
             </AnimateIn>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      {/* ── STATUS / "WHO" (book p.140: how a full chair raises the barber's standing) ── */}
-      <StatusSection />
-
-      {/* ── OBJECTIONS ── */}
-      <ObjectionsSection />
-
-      {/* ── BUNDLE / FULL CHAIR SYSTEM ── */}
-      <BundleSection />
-
-      {/* ── PRODUCT SHOWCASE (dashboard preview with sample data) ── */}
-      <ProductShowcase />
-
-      {/* GuaranteeSection removed while the founding free-for-life offer runs —
-          its "pay after 30 days" risk-reversal contradicts a free offer.
-          Bring it back when paid plans launch. */}
-
-      {/* ── TEXT YOURSELF THE DEMO (interactive: barber texts their own phone) ── */}
-      <TextDemoSection />
-
-      {/* ── FOUNDING MEMBER SECTION (replaces testimonials/pricing during beta) ── */}
-      <div id="founding">
-        <FoundingMemberSection />
-      </div>
-
-      {/* ── FAQ ── */}
-      <section id="faq" className="py-20 sm:py-32 bg-[#0a0a0a]">
-        <div className="section-inner">
-          <AnimateIn>
-            <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-4 text-center">
-              FAQ
-            </div>
-            <h2 className="text-center text-4xl font-bold tracking-tight text-white sm:text-5xl [font-family:var(--font-satoshi)]">
-              Straight answers to real questions.
-            </h2>
-          </AnimateIn>
-          <AnimateIn delay={100} className="mt-12">
-            <FAQ />
-          </AnimateIn>
-        </div>
-      </section>
-
-      {/* ── FINAL CTA ── */}
-      <section id="waitlist" className="bg-[#111111] py-20 sm:py-32">
-        <div className="section-inner">
-          <AnimateIn>
-            <div className="max-w-3xl mx-auto rounded-[2.5rem] border border-[#222] bg-[#161616] p-12 sm:p-20 text-center relative overflow-hidden group">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
-              <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#D4AF37]/5 blur-[100px] pointer-events-none" />
-
-              <div className="text-[10px] sm:text-xs font-medium text-[#D4AF37] uppercase tracking-widest mb-6">
-                Limited spots
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl [font-family:var(--font-satoshi)] leading-[1.1] mb-6">
-                Stop leaving money in your phone.
-              </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg text-[#888880] leading-relaxed mb-10">
-                We're accepting barbers now. The first 5 in stay free for life,
-                no card. We set it up for you. If it doesn't bring clients
-                back, walk away. Nothing owed.
-              </p>
-              <p className="mx-auto max-w-xl text-sm font-semibold text-[#D4AF37] mb-10 [font-family:var(--font-satoshi)]">
-                Founding pricing ends {FOUNDING_DEADLINE}.
-              </p>
-              <div className="mt-8">
-                <Link
-                  href="/founding-member"
-                  className="cta-secondary inline-flex justify-center border-black bg-black text-[#D4AF37] hover:bg-black/90 hover:text-[#E8C547]"
-                >
-                  Claim a Free Spot →
-                </Link>
-              </div>
-            </div>
-          </AnimateIn>
-        </div>
-      </section>
-
-      {/* ── FOOTER ── */}
       <Footer />
 
-      {/* Marketing promo popup (founding free-for-life offer) — shown after a short delay */}
       <EmailCapturePopup />
     </div>
   );

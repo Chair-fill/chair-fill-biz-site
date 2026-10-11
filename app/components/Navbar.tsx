@@ -74,7 +74,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
                 href="/founding-member"
                 className="cta-primary whitespace-nowrap px-5 py-2 text-sm"
               >
-                Claim free spot
+                Claim your free spot
               </Link>
             </div>
 
@@ -168,7 +168,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
               className="cta-primary mt-2 text-center py-1 text-sm"
               onClick={() => setMobileOpen(false)}
             >
-              Claim free spot
+              Claim your free spot
             </Link>
           </div>
         </div>

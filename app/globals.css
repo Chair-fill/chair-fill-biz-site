@@ -2,7 +2,22 @@
 
 /* Golden & black theme */
 :root {
-  --background: #0a0a0a;
+  /* Homepage system: one warm-black family, one gold accent. */
+  --ink: #0b0a08;
+  --ink-2: #12110e;
+  --ink-3: #1b1a16;
+  --line: rgba(244, 239, 228, 0.08);
+  --line-strong: rgba(244, 239, 228, 0.14);
+  --text: #f4efe4;
+  --text-2: #aaa395;
+  --text-3: #8a8477;
+  --gold: #d4af37;
+  --gold-hi: #e6c457;
+  --gold-wash: rgba(212, 175, 55, 0.1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --background: #0b0a08;
   --foreground: #fafafa;
   --primary: #d4af37;
   --primary-dark: #b8962e;
@@ -55,25 +70,73 @@ textarea {
 
 /* Modern CTAs */
 .cta-primary {
-  @apply inline-flex items-center justify-center rounded-full px-8 py-2 text-base font-semibold text-black transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
-  background: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.cta-primary:hover {
-  background: var(--primary-light);
-  box-shadow: var(--shadow-lg);
+  @apply inline-flex items-center justify-center rounded-full px-7 py-3 text-base font-semibold whitespace-nowrap;
+  color: #14110a;
+  background: var(--gold);
+  box-shadow: 0 1px 0 rgba(255, 240, 200, 0.35) inset, 0 10px 24px -12px rgba(212, 175, 55, 0.55);
+  transition: background-color 200ms ease, box-shadow 200ms ease, transform 160ms var(--ease-out);
 }
 
 .cta-secondary {
-  @apply inline-flex items-center justify-center rounded-full border-2 px-8 py-4 text-base font-semibold transition-all duration-200;
-  border-color: var(--primary);
-  color: var(--primary);
+  @apply inline-flex items-center justify-center rounded-full border px-7 py-3 text-base font-semibold whitespace-nowrap;
+  border-color: var(--line-strong);
+  color: var(--text);
+  transition: border-color 200ms ease, background-color 200ms ease, transform 160ms var(--ease-out);
 }
 
-.cta-secondary:hover {
-  background: var(--primary);
-  color: black;
+@media (hover: hover) and (pointer: fine) {
+  .cta-primary:hover {
+    background: var(--gold-hi);
+  }
+  .cta-secondary:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    background: var(--gold-wash);
+  }
+}
+
+.cta-primary:active,
+.cta-secondary:active {
+  transform: scale(0.97);
+}
+
+/* The CTAs own their box-shadow, so they restate the focus ring explicitly */
+.cta-primary:focus-visible,
+.cta-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ink), 0 0 0 4px var(--gold);
+}
+
+/* Browser surfaces carry the palette too */
+::selection {
+  background: rgba(212, 175, 55, 0.32);
+  color: #fffaf0;
+}
+
+html {
+  scrollbar-color: #3a362c var(--ink);
+}
+
+/* Fixed film grain; sits above the page, never scrolls, never takes clicks */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.balance {
+  text-wrap: balance;
+}
+
+.pretty {
+  text-wrap: pretty;
 }
 
 /* Modern card. Golden border, dark bg */
@@ -97,6 +160,13 @@ textarea {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* Subtle focus ring for accessibility */

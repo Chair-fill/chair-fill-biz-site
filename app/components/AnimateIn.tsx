@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
 
 interface AnimateInProps {
   children: React.ReactNode;
@@ -8,6 +9,14 @@ interface AnimateInProps {
   delay?: number;
   direction?: "up" | "down" | "left" | "right" | "fade";
 }
+
+const OFFSETS: Record<NonNullable<AnimateInProps["direction"]>, string> = {
+  up: "translate3d(0, 16px, 0)",
+  down: "translate3d(0, -16px, 0)",
+  left: "translate3d(16px, 0, 0)",
+  right: "translate3d(-16px, 0, 0)",
+  fade: "translate3d(0, 0, 0)",
+};
 
 export default function AnimateIn({
   children,
@@ -17,8 +26,10 @@ export default function AnimateIn({
 }: AnimateInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
+    if (reduce) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -26,43 +37,26 @@ export default function AnimateIn({
           observer.unobserve(entry.target);
         }
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [reduce]);
 
-  const getInitialTransform = () => {
-    switch (direction) {
-      case "up":
-        return "translate3d(0, 40px, 0)";
-      case "down":
-        return "translate3d(0, -40px, 0)";
-      case "left":
-        return "translate3d(40px, 0, 0)";
-      case "right":
-        return "translate3d(-40px, 0, 0)";
-      case "fade":
-      default:
-        return "translate3d(0, 0, 0)";
-    }
-  };
+  // Reduced motion: render in place, no entrance.
+  const shown = reduce || isVisible;
 
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translate3d(0, 0, 0)" : getInitialTransform(),
-        transition: `opacity 0.6s ease-out ${delay}ms, transform 0.6s ease-out ${delay}ms`,
+        opacity: shown ? 1 : 0,
+        transform: shown ? "none" : OFFSETS[direction],
+        transition: reduce
+          ? "none"
+          : `opacity 700ms var(--ease-out) ${delay}ms, transform 700ms var(--ease-out) ${delay}ms`,
       }}
     >
       {children}
