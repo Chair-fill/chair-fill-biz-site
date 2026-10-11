@@ -1,267 +1,157 @@
 "use client";
 
+import { useId, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { Plus } from "lucide-react";
 import AnimateIn from "./AnimateIn";
 
 const ROWS = [
   {
-    problem:
-      "\"I don't want to spam my clients and look desperate.\"",
-    problemEm: "So they do nothing. And the clients keep drifting.",
-    solution:
-      "ChairFill messages feel like you wrote them — casual, timed right, one at a time. Clients don't feel marketed to. They feel like their barber remembered them.",
-    solutionEm:
-      "The difference between a text and a blast is how it reads. ChairFill always reads like a text.",
+    fear: "I don't want to spam my clients and look desperate.",
+    answer:
+      "ChairFill messages read like you wrote them: casual, timed right, one at a time. Clients don't feel marketed to. They feel like their barber remembered them.",
+    kicker: "The difference between a text and a blast is how it reads. ChairFill always reads like a text.",
     bubbles: [
-      { dir: "out", text: "Aye [Name] what's good, it's [Barber] 💈" },
-      {
-        dir: "out",
-        text: "Been a minute — wanted to stay in your contacts. Sending my card real quick",
-      },
+      { dir: "out", text: "Aye Jay what's good, it's Marcus 💈" },
+      { dir: "out", text: "Been a minute. Wanted to stay in your contacts, sending my card real quick" },
       { dir: "in", text: "Saved bro 🤝 been a minute, ima pull up soon" },
     ],
   },
   {
-    problem:
-      "\"My texts get ignored anyway. Why would this be different?\"",
-    problemEm:
-      "Because every text they've sent before looked like a text. ChairFill doesn't.",
-    solution:
-      "ChairFill reaches clients through the same personal channel they use to text friends and family. Not a marketing app. Not a mass text service. The messages land the way a personal text lands — and they get opened the same way.",
-    solutionEm:
-      "That's why the response rate is different. The channel is different.",
+    fear: "My texts get ignored anyway. Why would this be different?",
+    answer:
+      "Most business texts read like a blast, so people tune them out. ChairFill reaches clients through iMessage, the same place they text friends and family. Not a marketing app. Not a mass text service.",
+    kicker: "The channel is different, so the response is different.",
   },
   {
-    problem: "\"What if a client replies and I miss it?\"",
-    problemEm: "The fear of dropping the ball right when the system delivers.",
-    solution:
-      "Every reply triggers an instant alert. If a client is ready to book, your booking link goes back automatically and the lead is marked hot. If they ask a question, ChairFill handles it or flags it for you immediately.",
-    solutionEm:
-      "Nothing falls through. The system closes the loop before you even see the notification.",
+    fear: "What if a client replies and I miss it?",
+    answer:
+      "Every reply triggers an instant alert. If a client is ready to book, your booking link goes back automatically and they get marked hot. If they ask a question, ChairFill answers it or flags it for you.",
+    kicker: "Nothing falls through. The loop closes before you see the notification.",
   },
   {
-    problem: "\"I don't have time to learn new software.\"",
-    problemEm:
-      "Barbers are behind the chair all day. They can't afford to figure something out.",
-    solution:
-      "Founding members get a done-for-you launch. We build your first campaign, configure your setup, and send your first outreach. You're live — and already getting replies — before you've touched a single setting yourself.",
-    solutionEm: "You'll be cutting hair while ChairFill runs. That's the whole point.",
+    fear: "I don't have time to learn new software.",
+    answer:
+      "Founding members get a done-for-you launch. We build your first campaign, set everything up, and send your first outreach. You're live and getting replies before you touch a setting.",
+    kicker: "You'll be cutting hair while ChairFill runs. That's the point.",
   },
   {
-    problem: "\"I'm already using Booksy or Square. Why switch?\"",
-    problemEm:
-      "Because Booksy and Square have never sent a single message to bring a client back to your chair.",
-    solution:
-      "Your old booking software waits for clients to come to it. ChairFill goes out and gets them. It's your booking calendar and your reactivation system in one — built specifically for barbers who are done watching clients go quiet.",
-    solutionEm: "One platform. No duct tape. No wondering if your software is working.",
+    fear: "I already use Booksy or Square. Why switch?",
+    answer:
+      "You don't. Keep your booking app. It waits for clients to come back on their own. ChairFill goes out and gets them, then sends them to the booking link you already use.",
+    kicker: "Nothing to migrate. It adds the one job your booking app never does.",
   },
   {
-    problem: "\"What if I message a client who doesn't want to hear from me?\"",
-    problemEm: "A real concern. And one ChairFill takes seriously.",
-    solution:
-      "ChairFill only reaches clients who've already done business with you — people who chose you once and went quiet. Anyone who opts out is removed instantly and never contacted again. Your reputation stays clean. Always.",
-    solutionEm: "The system is built to protect your name, not risk it.",
+    fear: "What if I message someone who doesn't want to hear from me?",
+    answer:
+      "ChairFill only reaches clients who've already done business with you: people who chose you once and went quiet. Anyone who opts out is removed instantly and never contacted again.",
+    kicker: "It's built to protect your name, not risk it.",
   },
   {
-    problem: "\"How will I know if this is actually making me money?\"",
-    problemEm:
-      "Barbers have heard promises before. They've seen dashboards full of nothing.",
-    solution:
-      "Your dashboard shows Revenue Recovered — the actual dollar amount tied to every client ChairFill brought back. Not open rates. Not impressions. Real appointments, real money, traced to the exact outreach that triggered them.",
-    solutionEm: "You'll know what ChairFill made you this month. To the dollar.",
+    fear: "How will I know it's actually making me money?",
+    answer:
+      "Your dashboard shows Revenue Recovered: the dollar amount tied to every client ChairFill brought back. Not open rates. Real appointments, traced to the outreach that booked them.",
+    kicker: "You'll know what ChairFill made you this month, to the dollar.",
   },
 ];
 
-export default function ObjectionsSection() {
+function Answer({ row }) {
   return (
-    <div className="objections-scope">
-      <style>{`
-        .objections-scope {
-          background: #0a0a0a;
-          border-top: 1px solid #242424;
-          border-bottom: 1px solid #242424;
-          color: #F0EDE6;
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-        }
-        .objections-scope *, .objections-scope *::before, .objections-scope *::after {
-          box-sizing: border-box;
-        }
-        .objections-scope .obj-section {
-          padding: 96px 24px;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        .objections-scope .label {
-          display: inline-block;
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #C9A84C;
-          border: 1px solid rgba(201,168,76,0.25);
-          border-radius: 100px;
-          padding: 6px 16px;
-          margin-bottom: 28px;
-        }
-        .objections-scope .section-title {
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: clamp(30px, 4.5vw, 50px);
-          line-height: 1.1;
-          letter-spacing: -0.01em;
-          margin: 0 0 16px;
-          color: #F0EDE6;
-        }
-        .objections-scope .section-sub {
-          font-size: 16px;
-          color: #888880;
-          line-height: 1.75;
-          max-width: 580px;
-          margin: 0;
-        }
-        .objections-scope .obj-header { margin-bottom: 56px; }
-        .objections-scope .obj-col-labels {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2px;
-          margin-bottom: 2px;
-        }
-        .objections-scope .obj-col-label {
-          padding: 10px 28px;
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-        }
-        .objections-scope .obj-col-label.p {
-          color: #E05252;
-          background: rgba(224,82,82,0.06);
-        }
-        .objections-scope .obj-col-label.s {
-          color: #4CAF7D;
-          background: rgba(76,175,125,0.06);
-        }
-        .objections-scope .obj-grid { display: grid; gap: 2px; }
-        .objections-scope .obj-row {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2px;
-        }
-        .objections-scope .obj-cell {
-          padding: 28px 30px;
-          background: #111111;
-        }
-        .objections-scope .obj-cell.problem { border-left: 3px solid #E05252; }
-        .objections-scope .obj-cell.solution { border-left: 3px solid #4CAF7D; }
-        .objections-scope .obj-tag {
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          margin-bottom: 10px;
-        }
-        .objections-scope .obj-tag.t-problem { color: #E05252; }
-        .objections-scope .obj-tag.t-solution { color: #4CAF7D; }
-        .objections-scope .obj-text {
-          font-size: 14px;
-          line-height: 1.7;
-          color: #F0EDE6;
-          margin: 0;
-        }
-        .objections-scope .obj-text em {
-          display: block;
-          font-style: normal;
-          font-size: 12px;
-          color: #888880;
-          margin-top: 8px;
-          line-height: 1.6;
-        }
-        .objections-scope .mini-bubble-wrap {
-          margin-top: 14px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .objections-scope .mini-bubble {
-          display: inline-block;
-          max-width: 85%;
-          padding: 9px 14px;
-          border-radius: 16px;
-          font-size: 12px;
-          line-height: 1.5;
-          font-style: italic;
-        }
-        .objections-scope .mini-bubble.out {
-          background: #1B5299;
-          color: #fff;
-          align-self: flex-end;
-          border-bottom-right-radius: 4px;
-        }
-        .objections-scope .mini-bubble.in {
-          background: #2C2C2E;
-          color: #eee;
-          align-self: flex-start;
-          border-bottom-left-radius: 4px;
-        }
-        @media (max-width: 680px) {
-          .objections-scope .obj-row,
-          .objections-scope .obj-col-labels { grid-template-columns: 1fr; }
-        }
-      `}</style>
-
-      <section className="obj-section">
-        <AnimateIn direction="up">
-          <div className="obj-header">
-            <div className="label">Every Objection. Killed.</div>
-            <h2 className="section-title">
-              We already know
-              <br />
-              what&apos;s holding you back.
-            </h2>
-            <p className="section-sub">
-              These are the exact reasons barbers don&apos;t reactivate their
-              client list — and what ChairFill does about each one.
-            </p>
-          </div>
-        </AnimateIn>
-        <div className="obj-col-labels">
-          <div className="obj-col-label p">⚠ What barbers think</div>
-          <div className="obj-col-label s">✓ What actually happens</div>
-        </div>
-        <div className="obj-grid">
-          {ROWS.map((row, i) => (
-            <AnimateIn key={i} direction="up" delay={i * 80}>
-              <div className="obj-row">
-                <div className="obj-cell problem">
-                  <div className="obj-tag t-problem">The Fear</div>
-                  <p className="obj-text">
-                    {row.problem}
-                    <em>{row.problemEm}</em>
-                  </p>
-                </div>
-                <div className="obj-cell solution">
-                  <div className="obj-tag t-solution">What Happens</div>
-                  <p className="obj-text">
-                    {row.solution}
-                    <em>{row.solutionEm}</em>
-                  </p>
-                  {row.bubbles && (
-                    <div className="mini-bubble-wrap">
-                      {row.bubbles.map((b, bi) => (
-                        <div key={bi} className={`mini-bubble ${b.dir}`}>
-                          {b.text}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </AnimateIn>
+    <div>
+      <p className="pretty text-lg leading-relaxed text-[var(--text)]">{row.answer}</p>
+      <p className="pretty mt-4 leading-relaxed text-[var(--gold)]">{row.kicker}</p>
+      {row.bubbles && (
+        <div className="mt-8 flex max-w-sm flex-col gap-2">
+          {row.bubbles.map((b) => (
+            <div
+              key={b.text}
+              className={
+                b.dir === "out"
+                  ? "max-w-[85%] self-end rounded-[18px] rounded-br-[5px] bg-[#1D86EA] px-3.5 py-2 text-sm leading-snug text-white"
+                  : "max-w-[85%] self-start rounded-[18px] rounded-bl-[5px] bg-[#3A3A3C] px-3.5 py-2 text-sm leading-snug text-white"
+              }
+            >
+              {b.text}
+            </div>
           ))}
         </div>
-      </section>
+      )}
     </div>
+  );
+}
+
+export default function ObjectionsSection() {
+  const [open, setOpen] = useState(0);
+  const reduce = useReducedMotion();
+  const baseId = useId();
+
+  return (
+    <section id="objections" className="border-t border-[var(--line)] py-24 sm:py-32">
+      <div className="section-inner">
+        <AnimateIn>
+          <h2 className="balance max-w-[20ch] text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+            We already know what&apos;s holding you back.
+          </h2>
+          <p className="pretty mt-5 max-w-[54ch] text-lg leading-relaxed text-[var(--text-2)]">
+            The real reasons barbers don&apos;t text their old clients, and what
+            ChairFill does about each one.
+          </p>
+        </AnimateIn>
+
+        <div className="mt-14 grid gap-10 lg:grid-cols-12">
+          <ul className="lg:col-span-6">
+            {ROWS.map((row, i) => {
+              const active = open === i;
+              const panelId = `${baseId}-panel-${i}`;
+              return (
+                <li key={row.fear} className="border-t border-[var(--line)] last:border-b">
+                  <button
+                    type="button"
+                    aria-expanded={active}
+                    aria-controls={panelId}
+                    onClick={() => setOpen(i)}
+                    className={`group flex w-full items-center justify-between gap-6 py-5 text-left transition-colors duration-200 ${
+                      active ? "text-[var(--text)]" : "text-[var(--text-2)] hover:text-[var(--text)]"
+                    }`}
+                  >
+                    <span className="text-lg font-medium leading-snug sm:text-xl">
+                      &ldquo;{row.fear}&rdquo;
+                    </span>
+                    <Plus
+                      aria-hidden
+                      className={`h-5 w-5 shrink-0 transition-transform duration-200 ease-out ${
+                        active ? "rotate-45 text-[var(--gold)]" : ""
+                      }`}
+                    />
+                  </button>
+                  {/* Inline answer on small screens */}
+                  {active && (
+                    <div id={panelId} className="pb-8 lg:hidden">
+                      <Answer row={row} />
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="hidden lg:col-span-5 lg:col-start-8 lg:block">
+            <div className="sticky top-32" aria-live="polite">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={open}
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, filter: "blur(2px)", transform: "translateY(6px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)", transform: "translateY(0px)" }}
+                  exit={{ opacity: 0, filter: reduce ? "blur(0px)" : "blur(2px)" }}
+                  transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+                >
+                  <Answer row={ROWS[open]} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

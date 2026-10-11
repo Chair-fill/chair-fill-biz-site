@@ -1,202 +1,109 @@
 "use client";
 
-import { motion } from "motion/react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUp, Camera, Mic, LayoutGrid, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { useSpotsLeft } from "./SpotsLeft";
 
-const IMG_HERO_ILLUSTRATION =
-  "/assets/8f845499-d9e9-44f4-9672-25682e2938c4_removalai_preview.png";
+const HERO_PHOTO = "/assets/obi--sRVfY0f2d8-unsplash.jpg";
+
+// Read from the barber's phone: his texts are outgoing (blue, right),
+// the client's replies are incoming (gray, left).
+const THREAD = [
+  { from: "barber", text: "Dre! Been a minute. I got a 2pm open Saturday if you tryna slide through." },
+  { from: "client", text: "Bro yes, I been needing a cut. Lock me in 🤝" },
+  { from: "barber", text: "Done. You're booked Saturday at 2." },
+] as const;
+
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 export default function AnimatedHero() {
   const spotsLeft = useSpotsLeft();
+  const reduce = useReducedMotion();
+
   return (
-    <section
-      id="waitlist"
-      className="relative overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-24 min-h-[90vh] flex items-center"
-    >
-      {/* Background glow */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_80%_at_70%_50%,rgba(212,160,23,0.07)_0%,transparent_70%)]" />
+    <section className="relative overflow-hidden pt-10 pb-20 sm:pt-14 lg:pt-20 lg:pb-28">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[720px] bg-[radial-gradient(60%_55%_at_78%_20%,rgba(212,175,55,0.10),transparent_70%)]"
+      />
 
-      <div className="section-inner relative w-full">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Left: Phone Visual */}
-          <div className="relative order-2 flex justify-center lg:order-1 items-center">
-            <div className="absolute w-[300px] h-[300px] bg-[#D4AF37]/15 rounded-full blur-[40px] pointer-events-none" />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h1 className="balance font-black tracking-[-0.035em] leading-[0.98] text-[var(--text)] text-[clamp(2.6rem,5.4vw,4.25rem)]">
+          <span className="block">Your old clients aren&apos;t gone.</span>
+          <span className="block text-[var(--gold)]">They just need a text.</span>
+        </h1>
 
-            {/* Phone Visual with realistic 3D frame */}
-            <div className="relative z-10 [perspective:2000px]">
-              {/* Outer Case / 3D Frame */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 40, rotateY: -6, rotateX: 2 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  y: [0, -20, 0],
-                  rotateY: -6,
-                  rotateX: 2,
-                }}
-                transition={{
-                  opacity: { duration: 0.8 },
-                  scale: { duration: 0.8 },
-                  y: {
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  },
-                  delay: 0.2,
-                }}
-                className="relative w-[300px] sm:w-[320px] aspect-[1/2] bg-[#050505] rounded-[55px] p-1.5 border-[4px] border-[#2A2A2A] shadow-[15px_20px_50px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.1),-1px_0_10px_rgba(212,175,55,0.02)] flex flex-col overflow-hidden"
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                {/* 3D Depth Layer (Side Thickness) - Cleaner, less blurred */}
-                <div className="absolute -right-[2px] top-[5%] h-[90%] w-[6px] bg-gradient-to-b from-[#111] via-[#2A2A2A] to-[#111] rounded-r-[55px] -z-10 opacity-90" />
-
-                {/* Internal Bezel */}
-                <div className="absolute inset-0 rounded-[48px] border-[8px] border-black/90 pointer-events-none z-50 shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]" />
-
-                {/* Side Buttons (Refined for 3D) */}
-                <div className="absolute -left-[6px] top-28 w-[3px] h-8 bg-[#2A2A2A] rounded-l-sm shadow-[inset_-1px_0_2px_rgba(255,255,255,0.1)]" /> {/* Silent Switch */}
-                <div className="absolute -left-[6px] top-40 w-[3px] h-14 bg-[#2A2A2A] rounded-l-sm shadow-[inset_-1px_0_2px_rgba(255,255,255,0.1)]" /> {/* Vol Up */}
-                <div className="absolute -left-[6px] top-56 w-[3px] h-14 bg-[#2A2A2A] rounded-l-sm shadow-[inset_-1px_0_2px_rgba(255,255,255,0.1)]" /> {/* Vol Down */}
-                <div className="absolute -right-[6px] top-44 w-[4px] h-20 bg-[#3A3A3A] rounded-r-sm shadow-[1px_2px_4px_rgba(0,0,0,0.8)] z-10" /> {/* Power Button */}
-
-                {/* Screen Glow / Inner Atmosphere */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,160,23,0.08)_0%,transparent_70%)] pointer-events-none" />
-
-                {/* Moving Glass Reflection */}
-                <motion.div 
-                  animate={{ backgroundPosition: ["-200% 0%", "200% 0%"] }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 pointer-events-none z-40 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent bg-[length:200%_100%]" 
-                />
-
-                {/* Screen Content */}
-                <div className="relative flex-1 bg-[#1A1A1A] rounded-[42px] overflow-hidden flex flex-col p-3 pt-6">
-                  {/* Dynamic Island */}
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-[60] flex items-center justify-center border border-white/5 shadow-lg">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#1A1A1A] ml-auto mr-4 shadow-inner" />
-                  </div>
-
-                  {/* Chat Header - Fixed Spacing */}
-                  <div className="flex items-center gap-3 mb-6 px-1.5 shrink-0 mt-10">
-                    <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#8B6914] flex items-center justify-center font-bold text-sm text-black shrink-0 shadow-[0_4px_10px_rgba(212,175,55,0.3)]">
-                      CF
-                    </div>
-                    <div>
-                      <div className="text-[14px] font-bold text-white [font-family:var(--font-satoshi)] leading-none mb-0.5">
-                        Marcus (your AI)
-                      </div>
-                      <div className="text-[10px] text-[#888880] font-medium tracking-wide">
-                        Texting 12 clients now
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Chat Messages */}
-                  <div className="flex-1 flex flex-col gap-3 p-1.5 overflow-hidden">
-                    <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-3 rounded-[20px] rounded-bl-[4px] text-[13px] leading-relaxed shadow-sm">
-                      Yo Marcus, long time! Had a slot open Saturday at 2pm. You
-                      tryna slide through?
-                    </div>
-                    <div className="text-[10px] text-[#888880] text-center my-0.5 select-none font-medium">
-                      Delivered · 11:42 AM
-                    </div>
-
-                    <div className="self-end max-w-[85%] bg-[#3A3A3C] text-white p-3 rounded-[20px] rounded-br-[4px] text-[13px] leading-relaxed shadow-sm">
-                      Bro yes I been needing a cut 🤝 Lock me in
-                    </div>
-                    <div className="text-[10px] text-[#888880] text-center my-0.5 select-none font-medium">
-                      11:44 AM
-                    </div>
-
-                    <div className="self-start max-w-[85%] bg-[#1D86EA] text-white p-3 rounded-[20px] rounded-bl-[4px] text-[13px] leading-relaxed shadow-sm">
-                      Done ✅ You're booked. See you Saturday at 2.
-                    </div>
-                    <div className="text-[10px] text-[#888880] text-center mt-1 select-none font-medium">
-                      Delivered · 11:44 AM
-                    </div>
-
-                    <div className="flex gap-1 items-center bg-[#3A3A3C] p-3 rounded-[20px] rounded-br-[4px] w-fit self-end mt-1 shadow-sm">
-                      <div className="h-1.5 w-1.5 rounded-full bg-[#888880] animate-pulse" />
-                      <div className="h-1.5 w-1.5 rounded-full bg-[#888880] animate-pulse [animation-delay:0.2s]" />
-                      <div className="h-1.5 w-1.5 rounded-full bg-[#888880] animate-pulse [animation-delay:0.4s]" />
-                    </div>
-                  </div>
-
-                  {/* iMessage Input Bar */}
-                  <div className="mt-auto px-1 pb-4 shrink-0">
-                    <div className="flex items-center gap-2 text-[#888880]">
-                      <Camera className="w-5 h-5 shrink-0 hover:text-white transition-colors cursor-pointer" />
-                      <LayoutGrid className="w-5 h-5 shrink-0 hover:text-white transition-colors cursor-pointer" />
-                      <div className="flex-1 h-9 bg-[#1c1c1e] border border-white/5 rounded-full px-4 flex items-center justify-between">
-                        <span className="text-[13px] text-[#888880]">iMessage</span>
-                        <div className="h-6 w-6 rounded-full bg-[#1D86EA] flex items-center justify-center shrink-0">
-                          <ArrowUp className="w-4 h-4 text-white stroke-[3px]" />
-                        </div>
-                      </div>
-                      <Mic className="w-5 h-5 shrink-0 hover:text-white transition-colors cursor-pointer" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Right: Text Content */}
-          <div className="order-1 flex flex-col items-center text-center lg:order-2 lg:items-start lg:text-left">
-            <div className="hero-badge mb-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/40 bg-[#D4AF37]/10 px-4 py-1.5 text-[10px] lg:text-xs font-medium text-[#D4AF37] uppercase tracking-widest">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-              Now accepting barbers · {spotsLeft} of 5 free spots left
-            </div>
-
-            <h1 className="hero-headline font-bold leading-[1.0] tracking-tight text-white [font-family:var(--font-satoshi)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-4 w-full">
-              Your old clients
-              <br />
-              aren't gone.
-              <span className="block text-[#D4AF37]">They just need a text.</span>
-            </h1>
-
-            <p className="max-w-md text-lg leading-relaxed text-[#888880] mb-10 [font-family:var(--font-satoshi)] font-light">
-              Your booking software is a waiting room. ChairFill is a revenue
-              recovery machine. There are clients in your phone right now who
-              haven't booked in months — ChairFill goes and gets them back,
-              automatically.
+        <div className="mt-8 grid gap-12 lg:mt-12 lg:grid-cols-12 lg:items-start lg:gap-10">
+          <div className="lg:col-span-5 lg:pt-2">
+            <p className="pretty max-w-[38ch] text-lg leading-relaxed text-[var(--text-2)] sm:text-xl">
+              ChairFill texts the clients who stopped booking, in your voice,
+              and books them back.{" "}
+              <span className="text-[var(--gold)] tnum">
+                {spotsLeft} of 5 free founding spots left.
+              </span>
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Link
-                href="/founding-member"
-                className="cta-primary inline-flex justify-center group"
-              >
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Link href="/founding-member" className="cta-primary group gap-2">
                 Claim your free spot
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  aria-hidden
+                  className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+                />
               </Link>
-              <Link
-                href="#how-it-works"
-                className="cta-secondary inline-flex justify-center"
-              >
-                See how it works
+              <Link href="#text-demo" className="cta-secondary">
+                Text yourself the demo
               </Link>
-            </div>
-
-            <div className="flex items-center gap-4 text-xs text-[#888880]">
-              <div className="flex -space-x-2">
-                <div className="h-9 w-9 rounded-full border-2 border-[#141414] bg-gradient-to-br from-[#D4AF37] to-[#8B6914] flex items-center justify-center font-bold text-black shadow-lg">
-                  JD
-                </div>
-                <div className="h-9 w-9 rounded-full border-2 border-[#141414] bg-[#444] flex items-center justify-center font-bold text-white shadow-lg">
-                  MT
-                </div>
-                <div className="h-9 w-9 rounded-full border-2 border-[#141414] bg-[#555] flex items-center justify-center font-bold text-white shadow-lg">
-                  RK
-                </div>
-              </div>
-              <span className="uppercase tracking-widest font-medium">
-                Founding class open · {spotsLeft} of 5 spots left, free for life
-              </span>
             </div>
           </div>
+
+          <figure className="relative lg:col-span-7">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-[var(--ink-3)] sm:aspect-[5/4] lg:aspect-[6/5]">
+              <Image
+                src={HERO_PHOTO}
+                alt="A barber in a white sweater and gold chain lines up a client's curly top fade"
+                fill
+                priority
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="object-cover object-[50%_28%]"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-[linear-gradient(180deg,transparent_38%,rgba(11,10,8,0.55)_68%,rgba(11,10,8,0.9)_100%)]"
+              />
+
+              <div
+                className="absolute inset-x-4 bottom-4 ml-auto flex max-w-[330px] flex-col gap-2 sm:inset-x-6 sm:bottom-6"
+                aria-label="Example text thread sent by ChairFill"
+              >
+                {THREAD.map((m, i) => (
+                  <motion.div
+                    key={m.text}
+                    initial={reduce ? false : { opacity: 0, transform: "translateY(10px) scale(0.96)" }}
+                    animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
+                    transition={{ duration: 0.45, ease: EASE_OUT, delay: 0.5 + i * 0.85 }}
+                    className={
+                      m.from === "barber"
+                        ? "self-end max-w-[88%] origin-bottom-right rounded-[20px] rounded-br-[6px] bg-[#1D86EA] px-3.5 py-2.5 text-[14px] leading-snug text-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.8)]"
+                        : "self-start max-w-[88%] origin-bottom-left rounded-[20px] rounded-bl-[6px] bg-[#3A3A3C]/95 px-3.5 py-2.5 text-[14px] leading-snug text-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.8)]"
+                    }
+                  >
+                    {m.text}
+                  </motion.div>
+                ))}
+                <motion.span
+                  initial={reduce ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.5 + THREAD.length * 0.85 }}
+                  className="self-end pr-1 text-[11px] font-medium text-white/70"
+                >
+                  Delivered
+                </motion.span>
+              </div>
+            </div>
+          </figure>
         </div>
       </div>
     </section>

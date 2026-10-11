@@ -1,336 +1,101 @@
 "use client";
 
-import {
-  MessageSquare,
-  Smartphone,
-  ShieldX,
-  Zap,
-  BarChart3,
-  Wrench,
-} from "lucide-react";
 import AnimateIn from "./AnimateIn";
 
-const CARDS = [
+const ITEMS = [
   {
-    num: "01",
-    Icon: MessageSquare,
     name: "The Reactivation Engine™",
     tagline: "Your quiet clients, back in the chair.",
-    desc: "Identifies every client who's gone silent and reaches out automatically — timed to feel personal, written in your voice, sent at the pace of a real conversation. Not a blast. A reactivation.",
-    result:
-      "Clients who haven't booked in months start responding within days — without you making a single call or sending a single text yourself.",
+    desc: "Finds every client who's gone silent and reaches out in your voice, at the pace of a real conversation.",
     value: "$200/mo",
   },
   {
-    num: "02",
-    Icon: Smartphone,
     name: "Personal Channel Delivery™",
-    tagline: "Sent the way people actually respond to.",
-    desc: "ChairFill reaches clients through the same personal channel they use every day — not a marketing app, not a group text, not an email. The kind of message they open the second it lands.",
-    result:
-      "Your outreach gets seen. Not buried. Not ignored. The open rates are in a different category than anything you've tried before.",
+    tagline: "Sent where people actually reply.",
+    desc: "Messages go through iMessage, the channel clients use for friends and family. Not email, not a group text.",
     value: "$150/mo",
   },
   {
-    num: "03",
-    Icon: ShieldX,
     name: "The No-Show Shield™",
     tagline: "Stop giving away free appointments.",
-    desc: "A layered reminder system that runs automatically before every appointment — confirming, reminding, and following up at exactly the right intervals. No-shows drop. Revenue stops disappearing.",
-    result:
-      "The appointments you book actually show up. Every empty chair from a no-show is money your current system is silently costing you.",
+    desc: "Confirms, reminds, and follows up before every appointment so the people you book actually show.",
     value: "$100/mo",
   },
   {
-    num: "04",
-    Icon: Zap,
     name: "The Gap Filler™",
-    tagline: "Cancellations become revenue — automatically.",
-    desc: "The moment a slot opens, ChairFill reaches the clients most likely to book it — people who are overdue, who haven't been in a while, who are most likely to say yes right now.",
-    result:
-      "Last-minute cancellations stop being lost revenue. They become the nudge that brings a lapsed client back.",
+    tagline: "Cancellations become revenue.",
+    desc: "The moment a slot opens, it reaches the overdue clients most likely to take it.",
     value: "$120/mo",
   },
   {
-    num: "05",
-    Icon: BarChart3,
     name: "Revenue Recovered Dashboard™",
     tagline: "Not metrics. Money.",
-    desc: "Every client ChairFill brought back, every filled gap, every blocked no-show — tied to a real dollar amount. You see exactly what the system made you this month. Not open rates. Revenue.",
-    result:
-      "You always know your ROI. No guessing whether the system is working. The number is right there.",
+    desc: "Every client brought back and every gap filled, tied to a real dollar amount.",
     value: "$80/mo",
   },
   {
-    num: "06",
-    Icon: Wrench,
     name: "Done-For-You Launch™",
-    tagline: "Live in 48 hours. We handle everything.",
-    desc: "Founding members don't set anything up themselves. We configure the system, write the first campaign in your voice, and launch it. You'll see your first replies before you've touched a single setting.",
-    result:
-      "You go from signed up to seeing results in 48 hours — without learning software, reading docs, or figuring anything out on your own.",
-    value: "$300 one-time",
+    tagline: "Live in 48 hours.",
+    desc: "We configure everything, write the first campaign in your voice, and launch it for you.",
+    value: "$300 once",
   },
 ];
 
 export default function BundleSection() {
   return (
-    <div className="bundle-scope">
-      <style>{`
-        .bundle-scope {
-          background: #0a0a0a;
-          border-top: 1px solid #242424;
-          color: #F0EDE6;
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-        }
-        .bundle-scope *, .bundle-scope *::before, .bundle-scope *::after {
-          box-sizing: border-box;
-        }
-        .bundle-scope .b-section {
-          padding: 96px 24px;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        .bundle-scope .label {
-          display: inline-block;
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #C9A84C;
-          border: 1px solid rgba(201,168,76,0.25);
-          border-radius: 100px;
-          padding: 6px 16px;
-          margin-bottom: 28px;
-        }
-        .bundle-scope .section-title {
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: clamp(30px, 4.5vw, 50px);
-          line-height: 1.1;
-          letter-spacing: -0.01em;
-          margin: 0 0 16px;
-          color: #F0EDE6;
-        }
-        .bundle-scope .section-sub {
-          font-size: 16px;
-          color: #888880;
-          line-height: 1.75;
-          max-width: 580px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .bundle-scope .gold { color: #C9A84C; }
-        .bundle-scope .bundle-header { text-align: center; margin-bottom: 64px; }
-        .bundle-scope .bundle-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2px;
-        }
-        @media (max-width: 900px) {
-          .bundle-scope .bundle-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-          .bundle-scope .bundle-grid { grid-template-columns: 1fr; }
-        }
-        .bundle-scope .bundle-grid > div {
-          height: 100%;
-        }
-        .bundle-scope .bundle-card {
-          background: #111111;
-          padding: 34px 30px;
-          position: relative;
-          overflow: hidden;
-          transition: background 0.25s;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-        }
-        .bundle-scope .bundle-card:hover { background: #161616; }
-        .bundle-scope .bundle-card::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #6B5520, transparent);
-          opacity: 0;
-          transition: opacity 0.25s;
-        }
-        .bundle-scope .bundle-card:hover::after { opacity: 1; }
-        .bundle-scope .bundle-num {
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: 11px;
-          color: #6B5520;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          margin-bottom: 14px;
-        }
-        .bundle-scope .bundle-icon {
-          width: 42px;
-          height: 42px;
-          background: rgba(201,168,76,0.07);
-          border: 1px solid rgba(201,168,76,0.15);
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-bottom: 18px;
-          color: #C9A84C;
-        }
-        .bundle-scope .bundle-name {
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: 18px;
-          color: #F0EDE6;
-          margin: 0 0 6px;
-          line-height: 1.25;
-        }
-        .bundle-scope .bundle-tagline {
-          font-size: 12px;
-          font-weight: 600;
-          color: #C9A84C;
-          letter-spacing: 0.02em;
-          margin-bottom: 12px;
-        }
-        .bundle-scope .bundle-desc {
-          font-size: 13px;
-          color: #888880;
-          line-height: 1.8;
-          margin: 0 0 16px;
-          flex: 1;
-        }
-        .bundle-scope .bundle-result {
-          background: #0a0a0a;
-          border-left: 2px solid #6B5520;
-          padding: 10px 14px;
-          margin-bottom: 18px;
-          font-size: 12px;
-          color: #888880;
-          line-height: 1.6;
-        }
-        .bundle-scope .bundle-result strong { color: #F0EDE6; font-weight: 500; }
-        .bundle-scope .bundle-value {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .bundle-scope .bundle-value-label {
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #888880;
-        }
-        .bundle-scope .bundle-value-price {
-          font-size: 13px;
-          font-weight: 700;
-          color: #C9A84C;
-        }
-        .bundle-scope .bundle-total {
-          margin-top: 40px;
-          background: #111111;
-          border: 1px solid rgba(201,168,76,0.22);
-          border-radius: 14px;
-          padding: 40px 32px;
-          text-align: center;
-        }
-        .bundle-scope .bundle-total-label {
-          font-size: 10px;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #888880;
-          margin-bottom: 12px;
-        }
-        .bundle-scope .bundle-total-value {
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: clamp(26px, 4vw, 40px);
-          line-height: 1.15;
-          color: #F0EDE6;
-          margin: 0 0 6px;
-        }
-        .bundle-scope .bundle-total-value .strike {
-          color: #666;
-          text-decoration: line-through;
-          text-decoration-thickness: 2px;
-        }
-        .bundle-scope .bundle-total-sub {
-          font-size: 14px;
-          color: #888880;
-          line-height: 1.7;
-          max-width: 460px;
-          margin: 14px auto 0;
-        }
-        .bundle-scope .bundle-total-price {
-          display: inline-block;
-          margin-top: 22px;
-          font-family: var(--font-satoshi), system-ui, sans-serif;
-          font-weight: 700;
-          font-size: 15px;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: #C9A84C;
-          border: 1px solid rgba(201,168,76,0.35);
-          border-radius: 100px;
-          padding: 10px 22px;
-        }
-      `}</style>
-
-      <section className="b-section">
-        <AnimateIn direction="up">
-          <div className="bundle-header">
-            <div className="label">The Founding Member Stack</div>
-            <h2 className="section-title">
-              Everything inside
-              <br />
-              <span className="gold">The Full Chair System.</span>
+    <section id="system" className="bg-[var(--ink-2)] py-24 sm:py-32">
+      <div className="section-inner grid gap-14 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-32">
+            <h2 className="balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl">
+              Everything inside{" "}
+              <span className="text-[var(--gold)]">The Full Chair System.</span>
             </h2>
-            <p className="section-sub">
-              Not a subscription to features. A complete system — six named
-              components, each doing a specific job, all working together to keep
-              your chair full without you chasing anyone.
+            <p className="pretty mt-5 max-w-[42ch] text-lg leading-relaxed text-[var(--text-2)]">
+              Six parts, each with one job, all working to keep your chair full
+              without you chasing anyone.
             </p>
           </div>
-        </AnimateIn>
-        <div className="bundle-grid">
-          {CARDS.map(({ num, Icon, name, tagline, desc, result, value }, i) => (
-            <AnimateIn key={num} direction="up" delay={i * 100}>
-              <div className="bundle-card">
-                <div className="bundle-num">{num}</div>
-                <div className="bundle-icon">
-                  <Icon size={20} />
-                </div>
-                <h3 className="bundle-name">{name}</h3>
-                <div className="bundle-tagline">{tagline}</div>
-                <p className="bundle-desc">{desc}</p>
-                <div className="bundle-result">
-                  <strong>The result:</strong> {result}
-                </div>
-                <div className="bundle-value">
-                  <span className="bundle-value-label">Value</span>
-                  <span className="bundle-value-price">{value}</span>
-                </div>
-              </div>
-            </AnimateIn>
-          ))}
         </div>
 
-        <AnimateIn direction="up" delay={200}>
-          <div className="bundle-total">
-            <div className="bundle-total-label">Everything above, added up</div>
-            <p className="bundle-total-value">
-              <span className="strike">$650/mo</span> + <span className="strike">$300 setup</span> in value
-            </p>
-            <p className="bundle-total-sub">
-              Six components that keep your chair full — built and run for you.
-              As a founding member, you don&apos;t pay for any of it.
-            </p>
-            <span className="bundle-total-price">Your founding price: $0 — free for life</span>
+        <AnimateIn className="lg:col-span-7">
+          <div className="tnum rounded-[24px] border border-[var(--line)] bg-[var(--ink)] p-6 sm:p-10">
+            <ol>
+              {ITEMS.map(({ name, tagline, desc, value }) => (
+                <li
+                  key={name}
+                  className="grid grid-cols-[1fr_auto] gap-x-6 border-b border-dashed border-[var(--line-strong)] py-6 first:pt-0"
+                >
+                  <div>
+                    <h3 className="text-lg font-bold tracking-[-0.01em]">{name}</h3>
+                    <p className="mt-1 text-sm font-medium text-[var(--gold)]">{tagline}</p>
+                    <p className="pretty mt-2 max-w-[48ch] text-sm leading-relaxed text-[var(--text-2)]">
+                      {desc}
+                    </p>
+                  </div>
+                  <span className="pt-0.5 text-right font-semibold text-[var(--text)]">{value}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-8 flex items-baseline justify-between gap-6 text-[var(--text-2)]">
+              <span>Total value</span>
+              <span className="line-through decoration-[var(--text-3)] decoration-2">
+                $650/mo + $300 setup
+              </span>
+            </div>
+            <div className="mt-4 flex items-end justify-between gap-6">
+              <div>
+                <span className="text-lg font-semibold">Founding price</span>
+                <p className="mt-1 text-sm text-[var(--text-2)]">First 5 barbers. Free for life.</p>
+              </div>
+              <span className="text-6xl font-black leading-none tracking-[-0.04em] text-[var(--gold)]">
+                $0
+              </span>
+            </div>
           </div>
         </AnimateIn>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

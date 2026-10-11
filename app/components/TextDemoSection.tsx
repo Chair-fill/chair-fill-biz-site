@@ -212,18 +212,11 @@ export default function TextDemoSection() {
     <section id="text-demo" className="cf-demo">
       <style>{cfDemoCss}</style>
       <div className="cf-demo__inner">
-        <span className="cf-demo__badge">
-          <span className="cf-demo__pd" />
-          See it work · on your own phone
-        </span>
-
         <div className="cf-demo__grid">
           {/* LEFT — the pitch + flow */}
           <div>
             <h2 className="cf-demo__h2">
-              Text yourself
-              <br />
-              the <span className="cf-demo__gold">demo.</span>
+              Text yourself <span className="cf-demo__gold">the demo.</span>
             </h2>
 
             {step !== "done" && (
@@ -502,15 +495,15 @@ function PhonePreview({ name, play }: { name: string; play: boolean }) {
 
 /* scoped styles — namespaced .cf-demo, mirrors globals.css tokens */
 const cfDemoCss = `
-.cf-demo{background:radial-gradient(ellipse 60% 80% at 72% 45%,rgba(212,160,23,.07) 0%,transparent 70%),#0a0a0a;color:#fafafa;padding:clamp(48px,7vw,96px) clamp(16px,5vw,32px);overflow:hidden}
+.cf-demo{background:radial-gradient(ellipse 60% 80% at 72% 45%,rgba(212,160,23,.07) 0%,transparent 70%),var(--ink-2);color:#fafafa;padding:clamp(48px,7vw,96px) clamp(16px,5vw,32px);overflow:hidden}
 .cf-demo *{box-sizing:border-box}
 .cf-demo__inner{max-width:72rem;margin:0 auto}
 .cf-demo__badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,175,55,.4);background:rgba(212,175,55,.1);color:#d4af37;border-radius:100px;padding:6px 16px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .cf-demo__pd{width:6px;height:6px;border-radius:50%;background:#d4af37;animation:cfdpulse 1.8s infinite}
 @keyframes cfdpulse{0%,100%{opacity:1}50%{opacity:.35}}
-.cf-demo__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,60px);align-items:center;margin-top:clamp(22px,3vw,36px)}
+.cf-demo__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,60px);align-items:center;margin-top:0}
 @media(max-width:860px){.cf-demo__grid{grid-template-columns:1fr;gap:44px}}
-.cf-demo__h2{margin:20px 0 0;font-family:var(--font-bebas),"Arial Narrow",Impact,sans-serif;font-weight:400;font-size:clamp(52px,9vw,96px);line-height:.9;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;color:#fff}
+.cf-demo__h2{margin:0;font-family:var(--font-satoshi),system-ui,sans-serif;font-weight:900;font-size:clamp(40px,5.6vw,64px);line-height:.98;letter-spacing:-.035em;text-wrap:balance;color:var(--text)}
 .cf-demo__gold{color:#d4af37}
 .cf-demo__lede{margin:20px 0 0;max-width:36ch;font-size:clamp(16px,2vw,19px);line-height:1.55;color:#a3a3a3}
 .cf-demo__lede b{color:#fafafa;font-weight:600}

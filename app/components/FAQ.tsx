@@ -1,57 +1,48 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
+import { Plus } from "lucide-react";
 import { faqs } from "@/lib/faq";
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const baseId = useId();
 
   return (
-    <div className="mx-auto max-w-3xl">
-      <div className="divide-y divide-[#D4AF37]/30">
-        {faqs.map((faq, index) => (
-          <div key={index} className="py-5">
+    <ul className="border-b border-[var(--line)]">
+      {faqs.map((faq, index) => {
+        const open = openIndex === index;
+        const panelId = `${baseId}-faq-${index}`;
+        return (
+          <li key={faq.question} className="border-t border-[var(--line)]">
             <button
-              onClick={() => toggle(index)}
-              className="flex w-full items-center justify-between gap-4 text-left"
+              type="button"
+              aria-expanded={open}
+              aria-controls={panelId}
+              onClick={() => setOpenIndex(open ? null : index)}
+              className="flex w-full items-center justify-between gap-6 py-6 text-left"
             >
-              <span className="text-lg font-semibold text-white">
-                {faq.question}
-              </span>
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D4AF37]/20 text-[#D4AF37] transition-transform duration-200">
-                <svg
-                  className={`h-5 w-5 transition-transform duration-200 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </span>
+              <span className="text-lg font-semibold leading-snug sm:text-xl">{faq.question}</span>
+              <Plus
+                aria-hidden
+                className={`h-5 w-5 shrink-0 transition-transform duration-200 ease-out ${
+                  open ? "rotate-45 text-[var(--gold)]" : "text-[var(--text-2)]"
+                }`}
+              />
             </button>
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                openIndex === index
-                  ? "mt-3 max-h-96 opacity-100"
-                  : "max-h-0 opacity-0"
+              id={panelId}
+              className={`grid transition-[grid-template-rows] duration-300 ease-[var(--ease-out)] motion-reduce:transition-none ${
+                open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
               }`}
             >
-              <p className="leading-relaxed text-[#a3a3a3]">{faq.answer}</p>
+              <div className="overflow-hidden">
+                <p className="pretty max-w-[62ch] pb-6 leading-relaxed text-[var(--text-2)]">{faq.answer}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

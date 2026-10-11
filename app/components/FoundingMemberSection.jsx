@@ -1,358 +1,82 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 
 const TOTAL_SPOTS = 5;
+
+const INCLUDED = [
+  "Free for life. No card required.",
+  "We handle your full setup and onboarding.",
+  "iMessage outreach calibrated to sound like you.",
+  "A direct line to the founding team. Your feedback shapes the product.",
+  "Founding Member status on your profile, forever.",
+];
+
 export default function FoundingMemberSection() {
   const [spotsTaken, setSpotsTaken] = useState(0);
-  const [totalSpots] = useState(TOTAL_SPOTS);
-  const [spotsLeft, setSpotsLeft] = useState(TOTAL_SPOTS);
-  const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
-    // Fetch the real spots count (active barbers), no hardcoded floor.
+    // Real count of active founding barbers, no hardcoded floor.
     fetch("/api/spots-taken")
       .then((res) => res.json())
       .then((data) => {
         if (data.spotsTaken !== undefined) {
-          const taken = Math.min(TOTAL_SPOTS, Math.max(0, data.spotsTaken));
-          setSpotsTaken(taken);
-          setSpotsLeft(TOTAL_SPOTS - taken);
+          setSpotsTaken(Math.min(TOTAL_SPOTS, Math.max(0, data.spotsTaken)));
         }
       })
       .catch((err) => console.error("Error fetching spots:", err));
-
-    const interval = setInterval(() => setPulse((p) => !p), 1800);
-    return () => clearInterval(interval);
   }, []);
 
-  const filledSpots = Array.from(
-    { length: TOTAL_SPOTS },
-    (_, i) => i < spotsTaken,
-  );
+  const spotsLeft = TOTAL_SPOTS - spotsTaken;
 
   return (
-    <div
-      className="founding-member-scope"
-      style={{
-        fontFamily: "var(--font-satoshi), system-ui, sans-serif",
-        background: "#0a0a0a",
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "40px 20px",
-      }}
-    >
-      <style>{`
-        .founding-member-scope {
-          box-sizing: border-box;
-        }
-        
-        .founding-member-scope * {
-          box-sizing: border-box;
-        }
-
-        .founding-member-scope .gold { color: #D4AF37; }
-        .founding-member-scope .gold-bg { background: #D4AF37; }
-
-        @keyframes shimmer {
-          0% { background-position: -200% center; }
-          100% { background-position: 200% center; }
-        }
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(24px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse-ring {
-          0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
-          70% { box-shadow: 0 0 0 12px rgba(212,175,55,0); }
-          100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
-        }
-        @keyframes breathe {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-
-        .founding-member-scope .card {
-          animation: fadeUp 0.7s ease forwards;
-        }
-        .founding-member-scope .card:nth-child(2) { animation-delay: 0.1s; opacity: 0; }
-        .founding-member-scope .card:nth-child(3) { animation-delay: 0.2s; opacity: 0; }
-        .founding-member-scope .card:nth-child(4) { animation-delay: 0.3s; opacity: 0; }
-
-        .founding-member-scope .cta-btn {
-          background: linear-gradient(135deg, #D4AF37 0%, #f0d060 50%, #D4AF37 100%);
-          background-size: 200% auto;
-          color: #0a0a0a;
-          border: none;
-          cursor: pointer;
-          font-family: inherit;
-          font-weight: 700;
-          font-size: 1.05rem;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          padding: 18px 40px;
-          width: 100%;
-          border-radius: 4px;
-          transition: background-position 0.4s ease, transform 0.15s ease;
-        }
-        .founding-member-scope .cta-btn:hover {
-          background-position: right center;
-          transform: translateY(-1px);
-        }
-        .founding-member-scope .cta-btn:active {
-          transform: translateY(0);
-        }
-
-        .founding-member-scope .pulse-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #ef4444;
-          animation: pulse-ring 1.8s ease infinite, breathe 1.8s ease infinite;
-          display: inline-block;
-          margin-right: 8px;
-          vertical-align: middle;
-        }
-
-        .founding-member-scope .spot-taken {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background: #D4AF37;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 11px;
-          font-weight: 700;
-          color: #0a0a0a;
-        }
-        .founding-member-scope .spot-open {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          border: 2px dashed rgba(212,175,55,0.35);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 11px;
-          color: rgba(212,175,55,0.4);
-        }
-
-        .founding-member-scope .divider {
-          width: 40px;
-          height: 2px;
-          background: linear-gradient(90deg, #D4AF37, transparent);
-          margin: 20px 0;
-        }
-
-        .founding-member-scope .badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          border: 1px solid rgba(212,175,55,0.3);
-          border-radius: 100px;
-          padding: 5px 14px;
-          font-size: 0.72rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #D4AF37;
-          background: rgba(212,175,55,0.05);
-          margin-bottom: 24px;
-        }
-
-        .founding-member-scope .price-box {
-          background: rgba(212,175,55,0.04);
-          border: 1px solid rgba(212,175,55,0.15);
-          border-radius: 6px;
-          padding: 20px 24px;
-        }
-
-        .founding-member-scope .strikethrough {
-          text-decoration: line-through;
-          opacity: 0.4;
-          font-size: 1rem;
-          font-weight: 400;
-        }
-
-        .founding-member-scope .feature-row {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          padding: 10px 0;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-          font-size: 0.88rem;
-          color: rgba(255,255,255,0.75);
-        }
-        .founding-member-scope .feature-row:last-child { border-bottom: none; }
-
-        .founding-member-scope .check {
-          color: #D4AF37;
-          font-weight: 700;
-          flex-shrink: 0;
-          margin-top: 1px;
-        }
-
-        .founding-member-scope .urgency-bar {
-          background: rgba(239,68,68,0.08);
-          border: 1px solid rgba(239,68,68,0.2);
-          border-radius: 4px;
-          padding: 10px 16px;
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.7);
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-      `}</style>
-
-      <div style={{ maxWidth: 520, width: "100%" }}>
-        {/* Header */}
-        <div className="card" style={{ textAlign: "center", marginBottom: 32 }}>
-          <div className="badge">
-            <span className="pulse-dot" />
-            ChairFill Founding Member — {TOTAL_SPOTS} Spots Only
-          </div>
-          <h2
-            style={{
-              fontSize: "clamp(1.7rem, 5vw, 2.4rem)",
-              fontFamily: "var(--font-satoshi), system-ui, sans-serif",
-              fontWeight: 700,
-              letterSpacing: "-0.01em",
-              color: "#fff",
-              lineHeight: 1.2,
-              marginBottom: 14,
-            }}
-          >
-            <span className="gold">{spotsLeft} Free Spots</span> Left
-          </h2>
-          <p
-            style={{
-              fontSize: "0.95rem",
-              color: "rgba(255,255,255,0.55)",
-              lineHeight: 1.65,
-              maxWidth: 440,
-              margin: "0 auto",
-            }}
-          >
-            Free for life. No card required. We set everything up for you. If
-            it doesn't bring clients back, walk away. Nothing owed.
-          </p>
-        </div>
-
-        {/* Spot tracker */}
-        <div
-          className="card"
-          style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: 8,
-            padding: "20px 24px",
-            marginBottom: 16,
-          }}
-        >
+    <section className="py-24 sm:py-32">
+      <div className="section-inner">
+        <div className="relative overflow-hidden rounded-[32px] border border-[var(--gold)]/25 bg-[var(--ink-2)]">
           <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: 14,
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.78rem",
-                color: "rgba(255,255,255,0.4)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Spots claimed
-            </span>
-            <span
-              style={{ fontSize: "0.85rem", color: "#D4AF37", fontWeight: 600 }}
-            >
-              {spotsTaken}/{TOTAL_SPOTS} taken
-            </span>
-          </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {filledSpots.map((taken, i) =>
-              taken ? (
-                <div key={i} className="spot-taken">
-                  ✓
-                </div>
-              ) : (
-                <div key={i} className="spot-open">
-                  ?
-                </div>
-              ),
-            )}
-          </div>
-        </div>
-
-        {/* Features */}
-        <div
-          className="card"
-          style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: 8,
-            padding: "16px 20px",
-            marginBottom: 16,
-          }}
-        >
-          {[
-            "Free for life — no card required",
-            "We handle your full setup and onboarding for you",
-            "AI outreach via iMessage — calibrated to sound like you",
-            "Direct line to the founding team — your feedback shapes the product",
-            "Founding Member status on your profile forever",
-          ].map((f, i) => (
-            <div key={i} className="feature-row">
-              <span className="check">✓</span>
-              <span>{f}</span>
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_80%_at_0%_0%,rgba(212,175,55,0.12),transparent_60%)]"
+          />
+          <div className="relative grid gap-12 p-8 sm:p-12 lg:grid-cols-2 lg:gap-16 lg:p-16">
+            <div className="flex flex-col">
+              <p className="font-medium text-[var(--gold)]">ChairFill founding members</p>
+              <h2 className="tnum mt-4 text-5xl font-black leading-[0.98] tracking-[-0.035em] sm:text-6xl">
+                {spotsLeft} free {spotsLeft === 1 ? "spot" : "spots"} left.
+              </h2>
+              <p className="pretty mt-5 max-w-[42ch] text-lg leading-relaxed text-[var(--text-2)]">
+                Free for life. We set everything up for you. If it doesn&apos;t
+                bring clients back, walk away. Nothing owed.
+              </p>
+              <div className="mt-10 lg:mt-auto lg:pt-10">
+                <Link href="/founding-member" className="cta-primary group gap-2">
+                  Claim your free spot
+                  <ArrowRight
+                    aria-hidden
+                    className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+                  />
+                </Link>
+                <p className="mt-4 text-sm text-[var(--text-3)]">
+                  When the 5 spots are gone, this offer is gone.
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Urgency */}
-        <div className="card urgency-bar" style={{ marginBottom: 20 }}>
-          <span className="pulse-dot" style={{ width: 6, height: 6 }} />
-          <span>
-            <strong style={{ color: "#ef9999" }}>
-              {spotsLeft} of {TOTAL_SPOTS} free spots remaining.
-            </strong>{" "}
-            When they're gone, this offer is gone — no exceptions.
-          </span>
-        </div>
-
-        {/* CTA */}
-        <div className="card" style={{ opacity: 1 }}>
-          <a 
-            href="https://app.chairfill.co/signup" 
-            className="cta-btn"
-            style={{ 
-              display: "block", 
-              textAlign: "center", 
-              textDecoration: "none" 
-            }}
-          >
-            Start Free — No Card Required →
-          </a>
-          <p
-            style={{
-              textAlign: "center",
-              marginTop: 12,
-              fontSize: "0.75rem",
-              color: "rgba(255,255,255,0.3)",
-            }}
-          >
-            Free for life for the first {TOTAL_SPOTS} barbers. No card required.
-            Walk away anytime and you owe nothing.
-          </p>
+            <div className="lg:border-l lg:border-[var(--line)] lg:pl-16">
+              <h3 className="text-lg font-semibold">What founding members get</h3>
+              <ul className="mt-6 space-y-5">
+                {INCLUDED.map((item) => (
+                  <li key={item} className="flex gap-3 text-lg leading-relaxed">
+                    <Check aria-hidden className="mt-1.5 h-4 w-4 shrink-0 text-[var(--gold)]" strokeWidth={2.5} />
+                    <span className="text-[var(--text)]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
